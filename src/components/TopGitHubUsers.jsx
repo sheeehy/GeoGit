@@ -1,103 +1,130 @@
 import React, { useState, useEffect } from "react";
+import { GoPeople } from "react-icons/go";
+import { GoRepo } from "react-icons/go";
 
-const CITIES = ["san francisco", "new york"];
-
-export default function TopGitHubUsers() {
-  const [city, setCity] = useState(CITIES[0]);
+export default function TopGitHubUsers(props) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function fetchTopUsers() {
-      const response = await fetch(
-        `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`,
-        {
-          headers: {
-            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-          },
-        }
-      );
+      let url;
+      if (props.city) {
+        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=10`;
+      } else {
+        url = `https://api.github.com/users?sort=followers&order=desc&per_page=10`;
+      }
+
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+        },
+      });
 
       const data = await response.json();
       const usersWithDetails = await Promise.all(
         data.items.map(async (user) => {
-          const starCount = await fetchStarCount(user.login);
-          const contributionCount = await fetchContributionCount(user.login);
+          const userDetailsResponse = await fetch(
+            `https://api.github.com/users/${user.login}`,
+            {
+              headers: {
+                Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+              },
+            }
+          );
+          const userDetails = await userDetailsResponse.json();
 
           return {
             ...user,
-            starCount,
-            contributionCount,
-            score: user.followers + starCount + contributionCount,
+            name: userDetails.name,
+            reposCount: userDetails.public_repos,
+            followers: userDetails.followers,
           };
         })
       );
 
-      setUsers(usersWithDetails.sort((a, b) => b.score - a.score));
-    }
-
-    async function fetchStarCount(username) {
-      // Fetch top 5 repos for user and sum their stars
-      const repoResponse = await fetch(
-        `https://api.github.com/users/${username}/repos?sort=stargazers_count&per_page=5`,
-        {
-          headers: {
-            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-          },
-        }
-      );
-
-      const repos = await repoResponse.json();
-      return repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-    }
-
-    async function fetchContributionCount(username) {
-      const eventsResponse = await fetch(
-        `https://api.github.com/users/${username}/events/public`,
-        {
-          headers: {
-            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-          },
-        }
-      );
-
-      const events = await eventsResponse.json();
-      const pushEvents = events.filter((event) => event.type === "PushEvent");
-      return pushEvents.length;
+      setUsers(usersWithDetails.sort((a, b) => b.followers - a.followers));
     }
 
     fetchTopUsers();
-  }, [city]);
+  }, [props.city]);
 
   return (
     <div>
-      <select value={city} onChange={(e) => setCity(e.target.value)}>
-        {CITIES.map((city) => (
-          <option key={city} value={city}>
-            {city}
-          </option>
-        ))}
-      </select>
-
       <ul>
         {users.map((user, index) => (
-          <li key={user.id} style={{ margin: "20px 0" }}>
-            <strong>#{index + 1}</strong>
-            <br />
-            <span
-              style={{
-                border: "1px solid #ccc",
-                padding: "10px",
-                display: "inline-block",
-              }}
+          <li
+            key={user.id}
+            style={{
+              marginBottom: "1.5rem", // Vertical gap between user cards
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
+            }}
+            className="github-user"
+          >
+            <div
+              style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}
             >
-              Username: {user.login}
-              <br />
-              Followers: {user.followers}
-              <br />
-              Star Count: {user.starCount}
-              <br />
-              Contribution Count: {user.contributionCount}
-            </span>
+              <strong>#{index + 1}</strong>
+              <img
+                src={user.avatar_url}
+                alt={user.login}
+                style={{
+                  width: "3rem",
+                  height: "3rem",
+                  borderRadius: "50%",
+                  filter: "grayscale(0%)",
+                }}
+              />
+              <a
+                href={user.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "Mona-sans, sans-serif",
+                  maxWidth: "15rem",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {user.login}
+              </a>
+              <div
+                style={{
+                  maxWidth: "10rem",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                <span>{user.name}</span>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  minWidth: "60px",
+                }}
+              >
+                <GoPeople /> {user.followers}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  minWidth: "3rem",
+                }}
+              >
+                <GoRepo /> {user.reposCount}
+              </div>
+            </div>
           </li>
         ))}
       </ul>

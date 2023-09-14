@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <main className="bg-thegray">
+      <main className="bg-thegray home-no-scroll">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
           {/* Background blobs */}
           <div className="absolute w-full max-w-lg">
@@ -42,8 +42,8 @@ function Home() {
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4 ">
                   Start by entering the location you want to rank GitHub users
-                  from. It can be a city, state, or any specific location you
-                  are interested in.
+                  from. It can be a city, state, or any other location you are
+                  interested in.
                 </h2>
                 <Link to="/search" className="get-started-button font-mono">
                   Get Started
@@ -51,6 +51,16 @@ function Home() {
               </div>
             </div>
           </div>
+
+          <a
+            href="https://github.com/sheeehy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy"
+          >
+            Jack Sheehy :) <br />
+            ©2023
+          </a>
         </div>
       </main>
     </>

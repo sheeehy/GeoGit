@@ -9,40 +9,38 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent vertical scrolling */
-  overflow-y: hidden; /* Prevent vertical scrolling */
+  overflow-y: auto; /* Prevent vertical scrolling */
 
   background-color: #070707;
+}
+
+.jack-sheehy {
+  position: absolute; /* or absolute depending on the desired behavior */
+  bottom: 0;
+  z-index: 1000; /* high value to ensure it stays on top */
+  width: 100%;
+  text-align: center;
+}
+
+.home-no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .globe-position {
   padding-top: 2rem;
   top: calc(-8%);
 }
-
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
+body::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #070707;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #2f2f2f;
-  border-radius: 15px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #070707;
-}
-
-::selection {
-  background: #070707;
+/* For Firefox */
+body {
+  scrollbar-width: none;
 }
 
 @font-face {
@@ -67,6 +65,24 @@ body {
   justify-content: center;
 }
 
+.github-user {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  border-radius: 20px;
+  border: 1px solid rgb(128, 128, 128);
+  color: white;
+  padding: 1rem;
+  max-width: 40rem;
+  max-height: 10rem;
+  font-family: "Hublot-Sans";
+}
+
+.github-user-details {
+  font-family: "Mona-Sans";
+  font-size: 14px;
+  color: #333;
+}
 .custom-card {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8.5px);
