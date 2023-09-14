@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent vertical scrolling */
-  overflow-y: auto; /* Prevent vertical scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling */
 
   background-color: #070707;
 }

@@ -8,15 +8,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <main
-        className="bg-thegray"
-        style={{
-          overflowY: "hidden",
-          height: "100vh",
-          margin: "0",
-          padding: "0",
-        }}
-      >
+      <main className="bg-thegray">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
           {/* Background blobs */}
           <div className="absolute w-full max-w-lg">
