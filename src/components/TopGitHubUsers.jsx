@@ -17,38 +17,10 @@ function TopGithubUsers() {
     "dublin",
   ];
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        `https://api.github.com/search/users?q=location:berlin&sort=followers&order=desc&per_page=10`,
-        {
-          headers: {
-            Authorization: `token ${GITHUB_TOKEN}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("There was an issue fetching the data:", error);
-    }
-  };
-
   useEffect(() => {
     if (selectedLocation) {
-      fetch(
-        `https://api.github.com/search/users?q=location:${selectedLocation}&sort=followers&order=desc&per_page=10`,
-        {
-          headers: {
-            Authorization: `token ${GITHUB_TOKEN}`,
-          },
-        }
-      )
+      // Call the Vercel serverless function
+      fetch(`/api/github?location=${selectedLocation}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Failed to fetch GitHub users");
@@ -58,11 +30,7 @@ function TopGithubUsers() {
         .then((data) => {
           if (data && data.items) {
             const userPromises = data.items.map((user) =>
-              fetch(`https://api.github.com/users/${user.login}/repos`, {
-                headers: {
-                  Authorization: `token ${GITHUB_TOKEN}`,
-                },
-              })
+              fetch(`https://api.github.com/users/${user.login}/repos`)
                 .then((response) => {
                   if (!response.ok) {
                     throw new Error("Failed to fetch user repos");
@@ -89,7 +57,7 @@ function TopGithubUsers() {
           console.error(error);
         });
     }
-  }, [selectedLocation, GITHUB_TOKEN]);
+  }, [selectedLocation]);
 
   return (
     <div>
