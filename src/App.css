@@ -1,0 +1,129 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300&display=swap");
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  overflow-x: hidden; /* Prevent vertical scrolling */
+
+  background-color: #070707;
+}
+
+.globe-position {
+  padding-top: 2rem;
+  top: calc(-8%);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #070707;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2f2f2f;
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #070707;
+}
+
+::selection {
+  background: #070707;
+}
+
+@font-face {
+  font-family: "Mona-Sans";
+  src: url("./assets/fonts/Mona-Sans.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hublot-Sans";
+  src: url("./assets/fonts/Hubot-Sans.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.custom-card {
+  max-width: 45rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-card-NOT-USED {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  border-radius: 20px;
+  border: 1px solid rgb(128, 128, 128);
+  padding: 1.5rem;
+  max-width: 45rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .custom-card {
+    background: transparent;
+    border: none;
+    backdrop-filter: blur(0px);
+  }
+
+  .h2text {
+    display: none;
+  }
+
+  h1 {
+    padding-bottom: 2rem;
+  }
+  .GeoIcon {
+    display: none;
+  }
+}
+
+/*Blob Animation*/
+@layer utilities {
+  .animation-delay-1 {
+    animation-delay: 2s;
+  }
+}
+
+.get-started-button {
+  border: 2px solid rgb(194, 194, 194);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  color: white;
+  border-radius: 2rem;
+  padding: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.1s ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.get-started-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
