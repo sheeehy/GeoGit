@@ -12,6 +12,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.15",
     "cobe": "^0.6.3",
+    "dotenv": "^16.3.1",
     "postcss": "^8.4.29",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

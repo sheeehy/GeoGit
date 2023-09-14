@@ -1,13 +1,11 @@
 import { useState } from "react";
-import "../App.css";
-import "../index.css";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 import TopGithubUsers from "../components/TopGitHubUsers";
 
 function Search() {
   return (
     <>
-      <main className="bg-thegray">
+      <main className="bg-thegray" style={{ overflowY: "auto" }}>
         <div className="min-h-screen flex items-center justify-center relative pb-32">
           {/* Background blobs */}
           <div className="absolute w-full max-w-lg">
@@ -32,12 +30,15 @@ function Search() {
                 />
               </div>
 
-              <div className="custom-card">
+              <div className="HomeContainer">
                 <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-2xl">
                   Search
                 </h1>
               </div>
-              <TopGithubUsers />
+
+              <div className="custom-card font-Mona text-white">
+                <TopGithubUsers />
+              </div>
             </div>
           </div>
         </div>

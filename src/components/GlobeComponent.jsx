@@ -42,7 +42,6 @@ function GlobeComponent() {
           { location: [52.52, 13.405], size: 0.1 }, // Berlin
           { location: [43.6532, -79.3832], size: 0.1 }, // Toronto
           { location: [39.9042, 116.4074], size: 0.1 }, // Beijing
-          { location: [1.3521, 103.8198], size: 0.1 }, // Singapore
           { location: [35.6895, 139.6917], size: 0.1 }, // Tokyo
           { location: [37.5665, 126.978], size: 0.1 }, // Seoul
           { location: [53.3498, -6.2603], size: 0.1 }, // Dublin

@@ -8,15 +8,22 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <main className="bg-thegray">
+      <main
+        className="bg-thegray"
+        style={{
+          overflowY: "hidden",
+          height: "100vh",
+          margin: "0",
+          padding: "0",
+        }}
+      >
         <div className="min-h-screen flex items-center justify-center relative pb-32">
           {/* Background blobs */}
           <div className="absolute w-full max-w-lg">
             <div className="absolute -top-20 -left-6 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
             <div className="absolute -top-36 left-20 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-            <div className="absolute -bottom-14 left-72 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
+            <div className="absolute -top-24 left-72 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
             <div className="absolute top-10 -right-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-
             <div className="absolute top-40 -right-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
             <div className="absolute top-40 -left-10 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
           </div>
@@ -37,7 +44,7 @@ function Home() {
                 />
               </div>
 
-              <div className="custom-card">
+              <div className="HomeContainer">
                 <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-2xl ">
                   Rank the top GitHub users by location, simplified.
                 </h1>

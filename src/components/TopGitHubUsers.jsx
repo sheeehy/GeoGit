@@ -1,90 +1,106 @@
 import React, { useState, useEffect } from "react";
 
-function TopGithubUsers() {
-  const [users, setUsers] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState("");
+const CITIES = ["san francisco", "new york"];
 
-  const CITIES = [
-    "san francisco",
-    "new york",
-    "seattle",
-    "boston",
-    "london",
-    "bangalore",
-    "berlin",
-    "tel aviv",
-    "toronto",
-    "dublin",
-  ];
+export default function TopGitHubUsers() {
+  const [city, setCity] = useState(CITIES[0]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    if (selectedLocation) {
-      // Call the Vercel serverless function
-      fetch(`/api/github?location=${selectedLocation}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to fetch GitHub users");
-          }
-          return response.json();
+    async function fetchTopUsers() {
+      const response = await fetch(
+        `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`,
+        {
+          headers: {
+            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+      const usersWithDetails = await Promise.all(
+        data.items.map(async (user) => {
+          const starCount = await fetchStarCount(user.login);
+          const contributionCount = await fetchContributionCount(user.login);
+
+          return {
+            ...user,
+            starCount,
+            contributionCount,
+            score: user.followers + starCount + contributionCount,
+          };
         })
-        .then((data) => {
-          if (data && data.items) {
-            const userPromises = data.items.map((user) =>
-              fetch(`https://api.github.com/users/${user.login}/repos`)
-                .then((response) => {
-                  if (!response.ok) {
-                    throw new Error("Failed to fetch user repos");
-                  }
-                  return response.json();
-                })
-                .then((repos) => ({
-                  ...user,
-                  totalStars: repos.reduce(
-                    (acc, repo) => acc + repo.stargazers_count,
-                    0
-                  ),
-                }))
-            );
-            return Promise.all(userPromises);
-          }
-          return [];
-        })
-        .then((results) => {
-          results.sort((a, b) => b.totalStars - a.totalStars);
-          setUsers(results);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      );
+
+      setUsers(usersWithDetails.sort((a, b) => b.score - a.score));
     }
-  }, [selectedLocation]);
+
+    async function fetchStarCount(username) {
+      // Fetch top 5 repos for user and sum their stars
+      const repoResponse = await fetch(
+        `https://api.github.com/users/${username}/repos?sort=stargazers_count&per_page=5`,
+        {
+          headers: {
+            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+          },
+        }
+      );
+
+      const repos = await repoResponse.json();
+      return repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+    }
+
+    async function fetchContributionCount(username) {
+      const eventsResponse = await fetch(
+        `https://api.github.com/users/${username}/events/public`,
+        {
+          headers: {
+            Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+          },
+        }
+      );
+
+      const events = await eventsResponse.json();
+      const pushEvents = events.filter((event) => event.type === "PushEvent");
+      return pushEvents.length;
+    }
+
+    fetchTopUsers();
+  }, [city]);
 
   return (
     <div>
-      <select
-        value={selectedLocation}
-        onChange={(e) => setSelectedLocation(e.target.value)}
-      >
-        <option value="" disabled>
-          Select a city
-        </option>
+      <select value={city} onChange={(e) => setCity(e.target.value)}>
         {CITIES.map((city) => (
           <option key={city} value={city}>
-            {city.charAt(0).toUpperCase() + city.slice(1)}
+            {city}
           </option>
         ))}
       </select>
 
-      {users.map((user, index) => (
-        <div key={user.id}>
-          <h3>
-            {index + 1}. {user.login}
-          </h3>
-          <p>Total Stars: {user.totalStars}</p>
-        </div>
-      ))}
+      <ul>
+        {users.map((user, index) => (
+          <li key={user.id} style={{ margin: "20px 0" }}>
+            <strong>#{index + 1}</strong>
+            <br />
+            <span
+              style={{
+                border: "1px solid #ccc",
+                padding: "10px",
+                display: "inline-block",
+              }}
+            >
+              Username: {user.login}
+              <br />
+              Followers: {user.followers}
+              <br />
+              Star Count: {user.starCount}
+              <br />
+              Contribution Count: {user.contributionCount}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
-
-export default TopGithubUsers;
