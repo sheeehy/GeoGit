@@ -35,25 +35,6 @@ const customStyles = {
     color: state.isSelected ? "white" : provided.color, // adjust text color on selection
     backgroundColor: state.isFocused ? "gray" : null, // change background color on hover/focus
   }),
-  menu: (provided) => ({
-    ...provided,
-    overflowY: "auto",
-    scrollbarWidth: "thin",
-    "&::-webkit-scrollbar": {
-      width: "12px",
-    },
-    "&::-webkit-scrollbar-track": {
-      boxShadow: "inset 0 0 5px grey",
-      borderRadius: "10px",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "red",
-      borderRadius: "10px",
-    },
-    "&::-webkit-scrollbar-thumb:hover": {
-      backgroundColor: "#b30000",
-    },
-  }),
 };
 
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {

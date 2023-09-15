@@ -14,6 +14,30 @@ body {
   background-color: #070707;
 }
 
+.locationAutosuggestContainer {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  /* Adjust this value based on your requirements */
+  .locationAutosuggestContainer {
+    justify-content: flex-start;
+  }
+}
+
+/* Center for smaller screens by default */
+.centerOrLeft {
+  justify-content: center;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .centerOrLeft {
+    justify-content: flex-start;
+  }
+}
+
 .jack-sheehy {
   position: absolute; /* or absolute depending on the desired behavior */
   bottom: 0;

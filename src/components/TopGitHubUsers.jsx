@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { GoPeople } from "react-icons/go";
 import { GoRepo } from "react-icons/go";
+import GeoGitIcon from "../assets/GeoGitIcon.png";
+
+const BLANK_USERS = Array(5).fill({
+  avatar_url: "https://avatars.githubusercontent.com/u/9919?s=80&v=4",
+  login: "Github User",
+  name: "Name Name",
+  followers: "0",
+  reposCount: "0",
+});
 
 export default function TopGitHubUsers(props) {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(BLANK_USERS);
 
   useEffect(() => {
     async function fetchTopUsers() {
@@ -65,69 +74,48 @@ export default function TopGitHubUsers(props) {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              gap: "10px",
+              gap: "1.5rem",
+              width: "90rem",
             }}
-            className="github-user"
+            className="github-user "
           >
-            <div
-              style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}
-            >
+            <div className="flex items-center gap-6">
               <strong>#{index + 1}</strong>
-              <img
-                src={user.avatar_url}
-                alt={user.login}
-                style={{
-                  width: "3rem",
-                  height: "3rem",
-                  borderRadius: "50%",
-                  filter: "grayscale(0%)",
-                }}
-              />
+
               <a
-                href={user.html_url}
+                href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  fontFamily: "Mona-sans, sans-serif",
-                  maxWidth: "15rem",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
+              >
+                <img
+                  src={user.avatar_url}
+                  alt={user.login}
+                  className="w-12 h-12 rounded-full"
+                />
+              </a>
+
+              <a
+                href={user.html_url || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[15rem]"
               >
                 {user.login}
               </a>
-              <div
-                style={{
-                  maxWidth: "10rem",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                <span>{user.name}</span>
-              </div>
+
+              {/* Only show the name on larger screens and if the user has a name */}
+              {user.name && (
+                <div className="hidden md:block max-w-[10rem] whitespace-nowrap overflow-hidden overflow-ellipsis">
+                  <span>{user.name}</span>
+                </div>
+              )}
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "5px",
-                  minWidth: "60px",
-                }}
-              >
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 min-w-[60px]">
                 <GoPeople /> {user.followers}
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "5px",
-                  minWidth: "3rem",
-                }}
-              >
+              <div className="flex items-center gap-2 min-w-[3rem]">
                 <GoRepo /> {user.reposCount}
               </div>
             </div>
