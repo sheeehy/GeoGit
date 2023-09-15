@@ -46,6 +46,11 @@ export default function TopGitHubUsers(props) {
       setUsers(usersWithDetails.sort((a, b) => b.followers - a.followers));
     }
 
+    // Check if props.city is not set, then return early
+    if (!props.city) {
+      return;
+    }
+
     fetchTopUsers();
   }, [props.city]);
 
@@ -56,7 +61,7 @@ export default function TopGitHubUsers(props) {
           <li
             key={user.id}
             style={{
-              marginBottom: "1.5rem", // Vertical gap between user cards
+              marginBottom: "1.5rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",

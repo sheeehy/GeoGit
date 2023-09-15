@@ -3,49 +3,56 @@ import Select from "react-select";
 import { LOCATION_OPTIONS } from "../components/LocationOptions"; // Import the options
 
 const customStyles = {
+  singleValue: (provided) => ({
+    ...provided,
+    color: "white",
+  }),
   container: (provided) => ({
     ...provided,
     marginBottom: "5rem",
-    width: "400px", // Adjust the width to your desired value
     fontFamily: "Hublot-sans",
+    width: "15rem",
+  }),
+  input: (provided) => ({
+    ...provided,
+    color: "white", // Make the text you're typing white
   }),
   control: (provided, state) => ({
     ...provided,
     background: "#070707",
-    borderColor: state.isFocused ? "#ffffff" : "#808080",
-    minHeight: "2rem",
-    height: "2rem",
-    boxShadow: state.isFocused ? "0 0 0 1px #ffffff" : "none",
-    borderRadius: "15px",
-    width: "400px", // Adjust the width here as well
     fontFamily: "Hublot-sans", // set font for the control
-  }),
-  valueContainer: (provided) => ({
-    ...provided,
-    height: "30px",
-    padding: "0px 10px",
-    fontFamily: "Hublot-sans", // set font for the value container
-  }),
-  input: (provided) => ({
-    ...provided,
-    margin: "10px",
-    fontFamily: "Hublot-sans",
-    color: "#ffffff", // set the input text color to white
-    height: "40px", // Adjust the height to your desired value
-    padding: "8px 10px 8px", // Adjust the padding as needed
-  }),
+    borderColor: state.isFocused ? "gray" : provided.borderColor, // change border color on focus
+    boxShadow: state.isFocused ? "0 0 0 1px gray" : null, // remove blue border shadow
+    color: "white",
+    borderRadius: "0.75rem",
 
-  placeholder: (defaultStyles) => {
-    return {
-      ...defaultStyles,
-      color: "#9e9e9e",
-      fontFamily: "Hublot-sans", // set font for the placeholder
-    };
-  },
+    "&:hover": {
+      borderColor: "gray", // change border color on hover
+    },
+  }),
   option: (provided, state) => ({
     ...provided,
-    backgroundColor: state.isFocused ? "#d6d6d6" : null,
-    fontFamily: "Hublot-sans", // set font for the options
+    color: state.isSelected ? "white" : provided.color, // adjust text color on selection
+    backgroundColor: state.isFocused ? "gray" : null, // change background color on hover/focus
+  }),
+  menu: (provided) => ({
+    ...provided,
+    overflowY: "auto",
+    scrollbarWidth: "thin",
+    "&::-webkit-scrollbar": {
+      width: "12px",
+    },
+    "&::-webkit-scrollbar-track": {
+      boxShadow: "inset 0 0 5px grey",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "red",
+      borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: "#b30000",
+    },
   }),
 };
 
