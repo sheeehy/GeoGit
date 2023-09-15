@@ -3,13 +3,14 @@ import { GoPeople } from "react-icons/go";
 import { GoRepo } from "react-icons/go";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 
-const BLANK_USERS = Array(5).fill({
+const BLANK_USERS = [...Array(5)].map((_, idx) => ({
+  id: -idx - 1,
   avatar_url: "https://avatars.githubusercontent.com/u/9919?s=80&v=4",
   login: "Github User",
   name: "Name Name",
   followers: "0",
   reposCount: "0",
-});
+}));
 
 export default function TopGitHubUsers(props) {
   const [users, setUsers] = useState(BLANK_USERS);
@@ -67,18 +68,7 @@ export default function TopGitHubUsers(props) {
     <div>
       <ul>
         {users.map((user, index) => (
-          <li
-            key={user.id}
-            style={{
-              marginBottom: "1.5rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "1.5rem",
-              width: "90rem",
-            }}
-            className="github-user "
-          >
+          <li key={user.id} style={{}} className="github-user ">
             <div className="flex items-center gap-6">
               <strong>#{index + 1}</strong>
 
@@ -86,11 +76,12 @@ export default function TopGitHubUsers(props) {
                 href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
+                className=""
               >
                 <img
                   src={user.avatar_url}
                   alt={user.login}
-                  className="w-12 h-12 rounded-full"
+                  className="w-12 h-12 rounded-full "
                 />
               </a>
 
@@ -98,14 +89,13 @@ export default function TopGitHubUsers(props) {
                 href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[15rem]"
+                className=" font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[15rem] "
               >
                 {user.login}
               </a>
 
-              {/* Only show the name on larger screens and if the user has a name */}
               {user.name && (
-                <div className="hidden md:block max-w-[10rem] whitespace-nowrap overflow-hidden overflow-ellipsis">
+                <div className="hidden md:block max-w-[8rem] whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-300">
                   <span>{user.name}</span>
                 </div>
               )}

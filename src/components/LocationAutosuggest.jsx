@@ -9,7 +9,7 @@ const customStyles = {
   }),
   container: (provided) => ({
     ...provided,
-    marginBottom: "5rem",
+    marginBottom: "0rem",
     fontFamily: "Hublot-sans",
     width: "15rem",
   }),
@@ -38,13 +38,10 @@ const customStyles = {
 };
 
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
-  const [isClearable, setIsClearable] = useState(true);
-  const [isSearchable, setIsSearchable] = useState(true);
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      {/* Centered container */}
       <div>
         <Select
           styles={customStyles}
@@ -60,8 +57,8 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           onChange={(selectedOption) =>
             onCityChange(selectedOption ? selectedOption.value : "")
           }
+          isLoading={isLoading} // Pass the loading state here
         />
-
         <div
           style={{
             fontFamily: "Hublot-sans",
