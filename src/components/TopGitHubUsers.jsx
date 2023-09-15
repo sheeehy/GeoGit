@@ -9,9 +9,9 @@ export default function TopGitHubUsers(props) {
     async function fetchTopUsers() {
       let url;
       if (props.city) {
-        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=10`;
+        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=1`;
       } else {
-        url = `https://api.github.com/users?sort=followers&order=desc&per_page=10`;
+        url = `https://api.github.com/users?sort=followers&order=desc&per_page=1`;
       }
 
       const response = await fetch(url, {
