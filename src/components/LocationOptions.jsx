@@ -3,7 +3,7 @@ export const LOCATION_OPTIONS = [
   { value: "Dublin", label: "Dublin" },
   { value: "san francisco", label: "San Francisco" },
   { value: "Berlin", label: "Berlin" },
-  { value: "new york", label: "New York" },
+  { value: "New York", label: "New York" },
   { value: "London", label: "London" },
   // Add other cities or locations as needed
 

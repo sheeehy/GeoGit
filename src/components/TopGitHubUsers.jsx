@@ -9,9 +9,9 @@ export default function TopGitHubUsers(props) {
     async function fetchTopUsers() {
       let url;
       if (props.city) {
-        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=1`;
+        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=5`;
       } else {
-        url = `https://api.github.com/users?sort=followers&order=desc&per_page=1`;
+        url = `https://api.github.com/users?sort=followers&order=desc&per_page=5`;
       }
 
       const response = await fetch(url, {
@@ -21,8 +21,9 @@ export default function TopGitHubUsers(props) {
       });
 
       const data = await response.json();
+      const usersList = props.city ? data.items : data;
       const usersWithDetails = await Promise.all(
-        data.items.map(async (user) => {
+        usersList.map(async (user) => {
           const userDetailsResponse = await fetch(
             `https://api.github.com/users/${user.login}`,
             {
