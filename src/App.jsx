@@ -8,7 +8,7 @@ import GeoGitIcon from "./assets/GeoGitIcon.png";
 function App() {
   return (
     <Router>
-      <header className="bg-thegray py-2">
+      <header className="bg-transparent py-2">
         <div className="container mx-auto pt-6 px-12 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <Link to="/" className="text-white font-bold text-2xl">
@@ -21,7 +21,7 @@ function App() {
             />
           </div>
           <nav>
-            <ul className="flex space-x-8 text-white font-semibold">
+            <ul className="flex space-x-8  text-white font-semibold">
               <li>
                 <Link to="/" className="">
                   Home
