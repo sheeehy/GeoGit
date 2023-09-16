@@ -3,7 +3,7 @@ export const LOCATION_OPTIONS = [
   { value: "San-Francisco", label: "San Francisco" },
   { value: "Dublin", label: "Dublin" },
   { value: "Berlin", label: "Berlin" },
-  { value: "New York", label: "New York" },
+  { value: "New-York", label: "New York" },
   { value: "London", label: "London" },
 
   { value: "Madrid", label: "Madrid" },
@@ -78,7 +78,7 @@ export const LOCATION_OPTIONS = [
   { value: "Larissa", label: "Larissa" },
 
   // US CITIES W/ STATES
-  { value: "New York,-NY", label: "New York, NY" },
+  { value: "New-York,-NY", label: "New York, NY" },
   { value: "Los-Angeles,-CA", label: "Los Angeles, CA" },
   { value: "Chicago,-IL", label: "Chicago, IL" },
   { value: "Houston,-TX", label: "Houston, TX" },
@@ -102,9 +102,9 @@ export const LOCATION_OPTIONS = [
   { value: "El-Paso,-TX", label: "El Paso, TX" },
   { value: "Nashville,-TN", label: "Nashville, TN" },
   { value: "Detroit,-MI", label: "Detroit, MI" },
-  { value: "Oklahoma City,-OK", label: "Oklahoma City, OK" },
+  { value: "Oklahoma-City,-OK", label: "Oklahoma City, OK" },
   { value: "Portland,-OR", label: "Portland, OR" },
-  { value: "Las Vegas,-NV", label: "Las Vegas, NV" },
+  { value: "Las-Vegas,-NV", label: "Las Vegas, NV" },
   { value: "Memphis,-TN", label: "Memphis, TN" },
   { value: "Louisville,-KY", label: "Louisville, KY" },
   { value: "Baltimore,-MD", label: "Baltimore, MD" },

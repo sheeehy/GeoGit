@@ -3,7 +3,7 @@ import { GoPeople } from "react-icons/go";
 import { GoRepo } from "react-icons/go";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 
-const BLANK_USERS = [...Array(5)].map((_, idx) => ({
+const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
   avatar_url: "https://avatars.githubusercontent.com/u/9919?s=80&v=4",
   login: "Github User",
@@ -19,9 +19,9 @@ export default function TopGitHubUsers(props) {
     async function fetchTopUsers() {
       let url;
       if (props.city) {
-        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=5`;
+        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=10`;
       } else {
-        url = `https://api.github.com/users?sort=followers&order=desc&per_page=5`;
+        url = `https://api.github.com/users?sort=followers&order=desc&per_page=10`;
       }
 
       const response = await fetch(url, {

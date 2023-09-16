@@ -109,7 +109,7 @@ body {
 @media (max-width: 42rem) {
   /* A little above the max-width set for the cards */
   .github-user {
-    width: 25rem;
+    width: 20rem;
   }
 }
 
