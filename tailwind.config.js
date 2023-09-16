@@ -7,6 +7,9 @@ export default {
         smaller: "2.5rem",
         smallish: "5rem",
       },
+      spacing: {
+        blob1: "65rem", // or however much you want
+      },
       colors: {
         thegray: "#070707",
         myYellow: "#ffbe0b",

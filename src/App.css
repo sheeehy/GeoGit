@@ -151,6 +151,12 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .cobe-hide-sm {
+    display: none !important;
+  }
+}
+
 /*Blob Animation*/
 @layer utilities {
   .animation-delay-1 {

@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
-import Contact from "./pages/Contact";
+import About from "./pages/About";
 import GeoGitIcon from "./assets/GeoGitIcon.png";
 
 function App() {
@@ -33,8 +33,8 @@ function App() {
                 </Link>
               </li>
               <li>
-                <Link to="/Contact" className="">
-                  Contact
+                <Link to="/About" className="">
+                  About
                 </Link>
               </li>
             </ul>
@@ -45,7 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Search" element={<Search />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route path="/About" element={<About />} />
       </Routes>
     </Router>
   );

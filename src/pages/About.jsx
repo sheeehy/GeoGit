@@ -3,7 +3,7 @@ import "../App.css";
 import "../index.css";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 
-function Contact() {
+function About() {
   return (
     <>
       <main className="bg-thegray">
@@ -33,7 +33,7 @@ function Contact() {
 
               <div className="custom-card">
                 <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-2xl">
-                  Contact
+                  About
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-6 pb-4 ">
                   Start by entering the location you want to rank GitHub users
@@ -51,4 +51,4 @@ function Contact() {
     </>
   );
 }
-export default Contact;
+export default About;

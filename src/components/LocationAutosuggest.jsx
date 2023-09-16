@@ -54,9 +54,12 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           isSearchable={true}
           name="location"
           options={LOCATION_OPTIONS}
-          onChange={(selectedOption) =>
-            onCityChange(selectedOption ? selectedOption.value : "")
-          }
+          onChange={(selectedOption) => {
+            onCityChange(
+              selectedOption ? selectedOption.value : "",
+              selectedOption ? selectedOption.coordinates : [0, 0] // default to [0,0]
+            );
+          }}
           isLoading={isLoading} // Pass the loading state here
         />
         <div
