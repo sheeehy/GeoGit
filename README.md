@@ -13,13 +13,7 @@ GeoGit is a React-based web application designed to rank the top GitHub users by
 React
 Vite
 Tailwind CSS
-Components Overview
-Home Component: The main landing page with descriptive text and a call-to-action button.
-Search Component: Page where users can search for GitHub users by city. Integrates with the LocationAutosuggest component to provide location suggestions and the TopGithubUsers component to display the ranked list.
-About Component: Contains detailed information about the app and its functionality.
-GlobeComponent: A visual representation of the globe, used as a background element.
-LocationAutosuggest: Autocomplete component for suggesting cities as users type.
-TopGithubUsers: Displays the top GitHub users for the selected city.
+
 # How It Works
 Choose a City: Users can enter a city into the search box to view the top GitHub users from that location. Note: The displayed results are based on the location provided by the users themselves on their GitHub profiles.
 Fetch and Display: GeoGit interfaces with the GitHub API to fetch the top users for the specified location. The primary metric for ranking is the number of followers, but this may change in future iterations.
