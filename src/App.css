@@ -9,7 +9,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: auto; /* Prevent vertical scrolling */
+  overflow-y: auto;
 
   background-color: #070707;
 }
@@ -25,12 +25,10 @@ body {
   }
 }
 
-/* Center for smaller screens by default */
 .centerOrLeft {
   justify-content: center;
 }
 
-/* Media query for larger screens */
 @media (min-width: 768px) {
   .centerOrLeft {
     justify-content: flex-start;
@@ -38,9 +36,9 @@ body {
 }
 
 .jack-sheehy {
-  position: absolute; /* or absolute depending on the desired behavior */
+  position: absolute;
   bottom: 0;
-  z-index: 1000; /* high value to ensure it stays on top */
+  z-index: 1000;
   width: 100%;
   text-align: center;
 }
@@ -58,7 +56,6 @@ body::-webkit-scrollbar {
   background: transparent;
 }
 
-/* For Firefox */
 body {
   scrollbar-width: none;
 }
@@ -105,18 +102,17 @@ body {
 
 @media (max-width: 42rem) {
   .github-user {
-    width: 100%; /* Make the card full width on smaller screens */
-    padding: 0.5rem; /* Reduce padding */
-    margin-bottom: 1rem; /* Reduce margin */
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
   }
 }
 
 @media (max-width: 600px) {
-  /* For even smaller devices like phones */
   .github-user {
-    width: 90%; /* Leave a little space on the sides */
+    width: 90%;
     margin-left: auto;
-    margin-right: auto; /* Center the card */
+    margin-right: auto;
   }
 }
 .github-user-details {
@@ -163,7 +159,6 @@ body {
   }
 }
 
-/*Blob Animation*/
 @layer utilities {
   .animation-delay-1 {
     animation-delay: 2s;

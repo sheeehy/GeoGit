@@ -37,12 +37,10 @@ const customStyles = {
 };
 
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
-  const [isLoading, setIsLoading] = useState(false); // Set to false by default
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Example function to simulate loading
   const handleInputChange = (inputValue) => {
     setIsLoading(true);
-    // Simulate an asynchronous action
     setTimeout(() => {
       setIsLoading(false);
     }, 850);
@@ -69,7 +67,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
             );
           }}
           isLoading={isLoading}
-          onInputChange={handleInputChange} // Add this to simulate loading for demonstration
+          onInputChange={handleInputChange}
         />
         <div
           style={{

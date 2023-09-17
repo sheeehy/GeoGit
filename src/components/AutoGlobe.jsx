@@ -62,7 +62,7 @@ function Cobe({ coordinates = defaultCoordinates }) {
         width: "100%",
         maxWidth: 600,
         aspectRatio: 1,
-        position: "fixed", // Changed to 'fixed'
+        position: "fixed",
         right: 0,
         zIndex: 0,
         marginTop: "5rem",
