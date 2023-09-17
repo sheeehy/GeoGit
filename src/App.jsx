@@ -16,7 +16,9 @@ function App() {
               alt="GeoGit Icon"
               className="GeoIcon max-w-smaller"
             />
-            <span className="text-white font-bold text-2xl">GeoGit</span>
+            <span className="hidden sm:inline text-white font-bold text-2xl">
+              GeoGit
+            </span>
           </Link>
 
           <nav className="flex items-center">
