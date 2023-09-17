@@ -103,16 +103,25 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  flex-wrap: wrap; /* Adjust content on smaller screens */
+  flex-wrap: wrap;
 }
 
 @media (max-width: 42rem) {
-  /* A little above the max-width set for the cards */
   .github-user {
-    width: 26rem;
+    width: 100%; /* Make the card full width on smaller screens */
+    padding: 0.5rem; /* Reduce padding */
+    margin-bottom: 1rem; /* Reduce margin */
   }
 }
 
+@media (max-width: 600px) {
+  /* For even smaller devices like phones */
+  .github-user {
+    width: 90%; /* Leave a little space on the sides */
+    margin-left: auto;
+    margin-right: auto; /* Center the card */
+  }
+}
 .github-user-details {
   font-family: "Mona-Sans";
   font-size: 14px;
