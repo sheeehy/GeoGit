@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { LOCATION_OPTIONS } from "../components/LocationOptions"; // Import the options
+import { LOCATION_OPTIONS } from "../components/LocationOptions";
 
 const customStyles = {
   singleValue: (provided) => ({
@@ -15,30 +15,38 @@ const customStyles = {
   }),
   input: (provided) => ({
     ...provided,
-    color: "white", // Make the text you're typing white
+    color: "white",
   }),
   control: (provided, state) => ({
     ...provided,
     background: "#070707",
-    fontFamily: "Hublot-sans", // set font for the control
-    borderColor: state.isFocused ? "gray" : provided.borderColor, // change border color on focus
-    boxShadow: state.isFocused ? "0 0 0 1px gray" : null, // remove blue border shadow
+    fontFamily: "Hublot-sans",
+    borderColor: state.isFocused ? "gray" : provided.borderColor,
+    boxShadow: state.isFocused ? "0 0 0 1px gray" : null,
     color: "white",
     borderRadius: "0.75rem",
-
     "&:hover": {
-      borderColor: "gray", // change border color on hover
+      borderColor: "gray",
     },
   }),
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? "white" : provided.color, // adjust text color on selection
-    backgroundColor: state.isFocused ? "gray" : null, // change background color on hover/focus
+    color: state.isSelected ? "white" : provided.color,
+    backgroundColor: state.isFocused ? "gray" : null,
   }),
 };
 
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
-  const [isLoading, setIsLoading] = useState(false); // New state for loading
+  const [isLoading, setIsLoading] = useState(false); // Set to false by default
+
+  // Example function to simulate loading
+  const handleInputChange = (inputValue) => {
+    setIsLoading(true);
+    // Simulate an asynchronous action
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 850);
+  };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -57,10 +65,11 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           onChange={(selectedOption) => {
             onCityChange(
               selectedOption ? selectedOption.value : "",
-              selectedOption ? selectedOption.coordinates : [0, 0] // default to [0,0]
+              selectedOption ? selectedOption.coordinates : [0, 0]
             );
           }}
-          isLoading={isLoading} // Pass the loading state here
+          isLoading={isLoading}
+          onInputChange={handleInputChange} // Add this to simulate loading for demonstration
         />
         <div
           style={{

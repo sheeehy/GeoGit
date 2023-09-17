@@ -11,12 +11,9 @@ function Search() {
     <>
       <main className="bg-thegray relative">
         <div className="fixed w-full max-w-lg right-64">
-          <div className="absolute -top-20 -right-6 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-          <div className="absolute -top-36 right-20 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-          <div className="absolute -top-24 right-72 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-          <div className="absolute top-10 -right-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-          <div className="absolute top-40 left-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
-          <div className="absolute top-40 -right-10 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
+          <div className="absolute top-2 -right-64 w-[40rem] h-[40rem] bg-blue-300 rounded-full filter blur-5xl opacity-10 animate-blob animation-delay-1"></div>{" "}
+          <div className="absolute top-16 -right-12 w-[40rem] h-[40rem] bg-blue-300 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>{" "}
+          <div className="absolute top-64 right-20 w-[30rem] h-[30rem] bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>{" "}
         </div>
 
         <div className="hidden lg:block">
@@ -47,6 +44,15 @@ function Search() {
             <TopGithubUsers city={city} />
           </div>
         </div>
+        <a
+          href="https://github.com/sheeehy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy"
+        >
+          Jack Sheehy :) <br />
+          ©2023
+        </a>
       </main>
     </>
   );

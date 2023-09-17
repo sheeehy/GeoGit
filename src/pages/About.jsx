@@ -11,13 +11,9 @@ function About() {
       <main className="bg-thegray home-no-scroll">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
           {/* Background blobs */}
-          <div className="absolute w-full max-w-lg">
-            <div className="absolute -top-20 -left-6 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-            <div className="absolute -top-36 left-20 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-            <div className="absolute -top-24 left-72 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-            <div className="absolute top-10 -right-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
-            <div className="absolute top-40 -right-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
-            <div className="absolute top-40 -left-10 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
+          <div className="absolute w-full max-w-lg -right-64">
+            <div className="absolute -top-32 -right-0 w-[40rem] h-[40rem] bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
+            <div className="absolute -top-0 -left-0 w-[40rem] h-[40rem] bg-blue-300 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>
           </div>
 
           <div className="relative">
@@ -30,33 +26,43 @@ function About() {
                 />
               </div>
 
-              <div className="HomeContainer">
-                <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-2xl ">
+              <div className="pt-10 max-w-[40rem] px-5">
+                <h1 className="text-left font-Mona font-bold text-white text-5xl leading-20 pb-2  ">
                   About GeoGit
                 </h1>
-                <h2 className=" h2text text-left font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4 ">
-                  GeoGit is a streamlined tool designed to provide insights into
-                  the GitHub community. Through our platform, users can rank the
-                  top GitHub profiles based on location, offering both a global
-                  perspective and a more nuanced, local viewpoint of GitHub
-                  enthusiasts.
-                </h2>
+                <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
+                  GeoGit is a tool designed to provide insights into the GitHub
+                  community around the world. It allows users to rank the top
+                  GitHub users based on location, offering both a global
+                  perspective and a more local viewpoint. This project was
+                  mainly built to improve my knowledge of React, Tailwind and
+                  API's.
+                </p>
 
-                <h1 className="pt-10 text-center font-Mona font-bold text-white text-5xl leading-20 max-w-2xl ">
+                <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-5xl leading-20  ">
                   How It Works
                 </h1>
-                <h2 className=" h2text text-left font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4 ">
-                  1. Location Input: Begin by entering your desired location
-                  into the search box. This could be as specific as a city or as
-                  broad as an entire state.
-                  <br /> 2. Fetch and Display: Our application immediately
-                  scours GitHub's vast database to fetch the top 10 GitHub users
-                  for your specified location. This ranking is based primarily
-                  on the number of followers.
-                  <br /> 3. User Insights: For each listed user, GeoGitRank
-                  displays: User avatar Username Actual Name (if available)
-                  Number of Followers Count of Public Repositories
-                </h2>
+                <p className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
+                  <h2 className="text-white font-bold text-xl pb-2">
+                    1 Choose a City
+                  </h2>
+                  Start by entering your desired city into the search box. For
+                  now, it just includes cities. Keep in mind, the results
+                  reflect the location users have entered themselves.
+                  <h2 className="text-white font-bold text-xl pb-2 pt-4">
+                    2 Fetch and Display
+                  </h2>
+                  Using the GitHub API, the top 10 GitHub users for your
+                  specified location are displayed. For now, the ranking is
+                  based on followers, though this will change in the future.
+                  <h2 className="text-white font-bold text-xl pb-2 pt-4">
+                    3 User Insights
+                  </h2>
+                  Each user has their profile picture, username, full name,
+                  followers and number of public repositories displayed, as well
+                  as a link to their GitHub. To reduce API usage, only 10 users
+                  are displayed.
+                </p>
               </div>
             </div>
           </div>
