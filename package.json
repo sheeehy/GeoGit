@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coreui/react": "^5.0.0-alpha.1",
+    "@tamagui/accordion": "^1.67.0",
     "autoprefixer": "^10.4.15",
     "cobe": "^0.6.3",
     "dotenv": "^16.3.1",

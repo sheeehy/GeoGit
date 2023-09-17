@@ -96,7 +96,7 @@ body {
   border: 1px solid rgb(128, 128, 128);
   color: white;
   padding: 1rem;
-  max-width: 40rem;
+  width: 40rem;
   max-height: 10rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -109,7 +109,7 @@ body {
 @media (max-width: 42rem) {
   /* A little above the max-width set for the cards */
   .github-user {
-    width: 20rem;
+    width: 26rem;
   }
 }
 

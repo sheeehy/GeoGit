@@ -10,6 +10,15 @@ function Search() {
   return (
     <>
       <main className="bg-thegray relative">
+        <div className="fixed w-full max-w-lg right-64">
+          <div className="absolute -top-20 -right-6 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
+          <div className="absolute -top-36 right-20 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
+          <div className="absolute -top-24 right-72 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
+          <div className="absolute top-10 -right-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
+          <div className="absolute top-40 left-10 w-72 h-72 bg-blue-400 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
+          <div className="absolute top-40 -right-10 w-72 h-72 bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
+        </div>
+
         <div className="hidden lg:block">
           <Cobe coordinates={coordinates} />
         </div>

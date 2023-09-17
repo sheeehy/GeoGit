@@ -6,8 +6,8 @@ import GeoGitIcon from "../assets/GeoGitIcon.png";
 const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
   avatar_url: "https://avatars.githubusercontent.com/u/9919?s=80&v=4",
-  login: "Github User",
-  name: "Name Name",
+  login: "GithubUser",
+  name: "Github User",
   followers: "0",
   reposCount: "0",
 }));
@@ -56,7 +56,6 @@ export default function TopGitHubUsers(props) {
       setUsers(usersWithDetails.sort((a, b) => b.followers - a.followers));
     }
 
-    // Check if props.city is not set, then return early
     if (!props.city) {
       return;
     }
