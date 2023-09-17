@@ -54,19 +54,28 @@ function Search() {
           />
         </div>
 
+        <div className="h2text text-center font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4"></div>
+
         <div className="flex flex-col items-start justify-center relative pb-32 px-4 md:px-8 lg:px-32">
           <div className="relative z-1000 pt-0 pb-0">
             <TopGithubUsers city={city} />
           </div>
         </div>
+
         <a
-          href="https://github.com/sheeehy"
+          href="https://github.com/sheeehy/Geo-Git-v2"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy"
+          className="text-white font-Hublot leading-5 tracking-wider pb-10 jack-sheehy"
         >
-          Jack Sheehy :) <br />
-          ©2023
+          <a
+            href="https://github.com/sheeehy/Geo-Git-v2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition duration-100 ease-in-out hover:text-gray-400 font-bold text-gray-200"
+          >
+            Leave a ★ on the repo!
+          </a>
         </a>
       </main>
     </>

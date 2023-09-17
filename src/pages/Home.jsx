@@ -42,7 +42,8 @@ function Home() {
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4 ">
                   Start by entering the city you want to rank GitHub users from.
-                  For now, ranks are based on followers. Leave a ★ on the{" "}
+                  For now, ranks are based on followers. Leave a{" "}
+                  <span className="text-white">★</span> on the{" "}
                   <a
                     href="https://github.com/sheeehy/Geo-Git-v2"
                     target="_blank"
