@@ -63,6 +63,14 @@ function About() {
                   as a link to their GitHub. To reduce API usage, only 10 users
                   are displayed.
                 </p>
+                <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-5xl leading-20  ">
+                  Future Updates
+                </h1>
+                <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
+                  • Add 'Public Commits' to ranking considerations.
+                  <br /> • Add pageination to display more users at a time
+                  <br /> • Add more locations.
+                </p>
               </div>
             </div>
           </div>
