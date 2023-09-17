@@ -15,9 +15,14 @@ Vite
 Tailwind CSS
 
 # How It Works
-Choose a City: Users can enter a city into the search box to view the top GitHub users from that location. Note: The displayed results are based on the location provided by the users themselves on their GitHub profiles.
-Fetch and Display: GeoGit interfaces with the GitHub API to fetch the top users for the specified location. The primary metric for ranking is the number of followers, but this may change in future iterations.
-User Insights: The app displays profile details of each ranked user, such as their profile picture, username, full name, follower count, number of public repositories, and a direct link to their GitHub profile. Due to API usage restrictions, only 10 users are displayed at a time.
+Choose a City:
+Users can enter a city into the search box to view the top GitHub users from that location. Note: The displayed results are based on the location provided by the users themselves on their GitHub profiles.
+
+Fetch and Display:
+GeoGit interfaces with the GitHub API to fetch the top users for the specified location. The primary metric for ranking is the number of followers, but this may change in future iterations.
+
+User Insights:
+The app displays profile details of each ranked user, such as their profile picture, username, full name, follower count, number of public repositories, and a direct link to their GitHub profile. Due to API usage restrictions, only 10 users are displayed at a time.
 # Setup and Installation
 Make sure you have Node.js and npm installed.
 
