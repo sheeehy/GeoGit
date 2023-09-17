@@ -1,9 +1,9 @@
-GeoGit
+#GeoGit
 GeoGit is a React-based web application designed to rank the top GitHub users by location. Users can search by city and view a ranked list of GitHub users based on their follower count.
 
-GeoGit
 
-Features
+
+#Features
 Home Page: Showcases the purpose of the app and provides a direct link to start the search.
 Search Page: Allows users to search for top GitHub users by city. Results are then displayed with their respective GitHub statistics.
 About Page: Provides detailed information about GeoGit and explains how the application works.
