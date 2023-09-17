@@ -103,7 +103,6 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  flex-wrap: wrap;
 }
 
 @media (max-width: 42rem) {
@@ -120,6 +119,7 @@ body {
     width: 90%; /* Leave a little space on the sides */
     margin-left: auto;
     margin-right: auto; /* Center the card */
+    padding: 0.5rem; /* Reduce padding */
   }
 }
 .github-user-details {
