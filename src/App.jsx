@@ -1,26 +1,12 @@
-import {
-  Routes,
-  Route,
-  BrowserRouter as Router,
-  Link,
-  useLocation,
-} from "react-router-dom";
-import { useEffect } from "react";
+import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import About from "./pages/About";
 import GeoGitIcon from "./assets/GeoGitIcon.png";
+import ReactGA from "react-ga";
 
 function App() {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.gtag("config", "G-CPYGMJH0MH", {
-      page_path: location.pathname,
-    });
-  }, [location]);
-
   return (
     <Router>
       <header className="bg-transparent py-2">
