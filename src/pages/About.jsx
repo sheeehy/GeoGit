@@ -17,7 +17,7 @@ function About() {
           </div>
 
           <div className="relative">
-            <div className="relative z-10 pt-0 pb-20">
+            <div className="relative z-10 pt-5 pb-20">
               <div className="flex justify-center">
                 <img
                   src={GeoGitIcon}

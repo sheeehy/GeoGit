@@ -41,9 +41,17 @@ function Home() {
                   Rank the top GitHub users by location, simplified.
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4 ">
-                  Start by entering the location you want to rank GitHub users
-                  from. It can be a city, state, or any other location you are
-                  interested in.
+                  Start by entering the city you want to rank GitHub users from.
+                  For now, ranks are based on followers. Leave a ★ on the{" "}
+                  <a
+                    href="https://github.com/sheeehy/Geo-Git-v2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition duration-100 ease-in-out hover:text-gray-400 font-bold text-white"
+                  >
+                    repo
+                  </a>
+                  !
                 </h2>
                 <Link to="/search" className="get-started-button font-mono">
                   Get Started
