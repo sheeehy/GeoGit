@@ -10,7 +10,7 @@ function About() {
     <>
       <main className="bg-thegray home-no-scroll">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
-          {/* Background GIT! blobs */}
+          {/* Background   blobs */}
           <div className="absolute w-full max-w-lg -right-64">
             <div className="absolute -top-32 -right-0 w-[40rem] h-[40rem] bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>
             <div className="absolute -top-0 -left-0 w-[40rem] h-[40rem] bg-blue-300 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>
