@@ -13,7 +13,6 @@ function Search() {
     <>
       <main className="bg-thegray relative">
         <div className="fixed w-full max-w-lg right-64">
-          <div className="absolute top-2 -right-64 w-[40rem] h-[40rem] bg-blue-300 rounded-full filter blur-5xl opacity-10 animate-blob animation-delay-1"></div>{" "}
           <div className="absolute top-16 -right-12 w-[40rem] h-[40rem] bg-blue-300 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>{" "}
           <div className="absolute top-64 right-20 w-[30rem] h-[30rem] bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>{" "}
         </div>
@@ -66,16 +65,10 @@ function Search() {
           href="https://github.com/sheeehy/Geo-Git-v2"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white font-Hublot leading-5 tracking-wider pb-10 jack-sheehy"
+          className=" font-Hublot leading-5 tracking-wider pb-10 jack-sheehy transition duration-100 ease-in-out hover:text-gray-100 font-bold text-gray-300"
         >
-          <a
-            href="https://github.com/sheeehy/Geo-Git-v2"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition duration-100 ease-in-out hover:text-gray-400 font-bold text-gray-200"
-          >
-            Leave a ★ on the repo!
-          </a>
+          Leave a <span className="text-white">★</span> on the{" "}
+          <span className="text-white">repo</span>!
         </a>
       </main>
     </>

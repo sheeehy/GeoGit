@@ -1,6 +1,4 @@
-import { useState } from "react";
 import "../App.css";
-import "../index.css";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";

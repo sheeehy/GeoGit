@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import About from "./pages/About";
 import GeoGitIcon from "./assets/GeoGitIcon.png";
-import ReactGA from "react-ga";
 
 function App() {
   return (
