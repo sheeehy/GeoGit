@@ -707,6 +707,12 @@ export const LOCATION_OPTIONS = [
     label: "Brasilia",
     coordinates: [-15.780148, -47.92917],
   },
+  {
+    value: "Chittagong",
+    label: "Chittagong",
+    coordinates: [22.3569, 91.7832],
+  },
+
   { value: "Manaus", label: "Manaus", coordinates: [-3.119027, -60.021731] },
   { value: "Lima", label: "Lima", coordinates: [-12.046373, -77.042754] },
 ];
