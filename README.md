@@ -29,7 +29,8 @@ The app displays profile details of each ranked user, such as their profile pict
 
 <br>
 
-## 🤖 Tech Stack
+
+
 
 <p align="left">
  
@@ -38,6 +39,8 @@ The app displays profile details of each ranked user, such as their profile pict
   <b>Tailwind CSS</b> - For styling elements.<br>
    <b>Vite </b> - Build tool and development server.
 </p>
+
+<br>
 
 ## 📦 Packages
    <b>Cobe</b> - Globe elements.<br>
