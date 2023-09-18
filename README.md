@@ -19,6 +19,7 @@
 
 
 <br>
+
 ## 🌎 About GeoGit
 
 Allows users to search for top GitHub users by location. Results are then displayed with their respective GitHub statistics.
@@ -27,6 +28,7 @@ GeoGit interfaces with the GitHub API to fetch the top users for the specified l
 The app displays profile details of each ranked user, such as their profile picture, username, full name, follower count, number of public repositories, and a direct link to their GitHub profile. Due to API usage restrictions, only 10 users are displayed at a time.
 
 <br>
+
 ## 🤖 Tech Stack
 
 <p align="left">
@@ -46,6 +48,8 @@ The app displays profile details of each ranked user, such as their profile pict
 
 
 </p>
+<br>
+
 
 ## 🛠 Setup and Installation
 Make sure you have Node.js and npm installed.
