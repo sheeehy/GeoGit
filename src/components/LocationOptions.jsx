@@ -400,7 +400,11 @@ export const LOCATION_OPTIONS = [
     label: "Los Angeles",
     coordinates: [34.052235, -118.243683],
   },
-  { value: "Chicago", label: "Chicago", coordinates: [41.878113, -87.629799] },
+  {
+    value: "Chicago",
+    label: "Chicago",
+    coordinates: [41.878113, -87.629799],
+  },
   { value: "Houston", label: "Houston", coordinates: [29.760427, -95.369804] },
   { value: "Phoenix", label: "Phoenix", coordinates: [33.448376, -112.074036] },
   {

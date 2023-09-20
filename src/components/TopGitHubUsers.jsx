@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { GoPeople } from "react-icons/go";
-import { GoRepo } from "react-icons/go";
-import GeoGitIcon from "../assets/GeoGitIcon.png";
+import { GoPeople, GoRepo } from "react-icons/go";
 
+// Placeholder users for initial render - update to GeoGit Icon
 const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
   avatar_url: "https://avatars.githubusercontent.com/u/9919?s=80&v=4",
@@ -12,26 +11,23 @@ const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   reposCount: "0",
 }));
 
-export default function TopGitHubUsers(props) {
+export default function TopGitHubUsers({ city }) {
   const [users, setUsers] = useState(BLANK_USERS);
 
   useEffect(() => {
     async function fetchTopUsers() {
-      let url;
-      if (props.city) {
-        url = `https://api.github.com/search/users?q=location:${props.city}&sort=followers&order=desc&per_page=10`;
-      } else {
-        url = `https://api.github.com/users?sort=followers&order=desc&per_page=10`;
-      }
+      const base_url = city
+        ? `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`
+        : `https://api.github.com/users?sort=followers&order=desc&per_page=10`;
 
-      const response = await fetch(url, {
+      const response = await fetch(base_url, {
         headers: {
           Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
         },
       });
 
       const data = await response.json();
-      const usersList = props.city ? data.items : data;
+      const usersList = city ? data.items : data;
       const usersWithDetails = await Promise.all(
         usersList.map(async (user) => {
           const userDetailsResponse = await fetch(
@@ -53,53 +49,49 @@ export default function TopGitHubUsers(props) {
         })
       );
 
+      // Sort users by followers and update the state
       setUsers(usersWithDetails.sort((a, b) => b.followers - a.followers));
     }
 
-    if (!props.city) {
-      return;
+    // Fetch data only if city prop is passed
+    if (city) {
+      fetchTopUsers();
     }
+  }, [city]); // Dependency array for useEffect
 
-    fetchTopUsers();
-  }, [props.city]);
-
+  // Render the list of users
   return (
     <div>
       <ul>
         {users.map((user, index) => (
-          <li key={user.id} style={{}} className="github-user ">
+          <li key={user.id} className="github-user">
             <div className="flex items-center gap-6">
               <strong>#{index + 1}</strong>
-
               <a
                 href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className=""
               >
                 <img
                   src={user.avatar_url}
                   alt={user.login}
-                  className="w-12 h-12 rounded-full "
+                  className="w-12 h-12 rounded-full"
                 />
               </a>
-
               <a
                 href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[15rem] "
+                className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[15rem]"
               >
                 {user.login}
               </a>
-
               {user.name && (
                 <div className="hidden md:block max-w-[8rem] whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-300">
-                  <span>{user.name}</span>
+                  {user.name}
                 </div>
               )}
             </div>
-
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 min-w-[60px]">
                 <GoPeople /> {user.followers}
