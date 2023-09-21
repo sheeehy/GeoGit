@@ -4,9 +4,10 @@ import { GoPeople, GoRepo } from "react-icons/go";
 // Placeholder users for initial render - update to GeoGit Icon
 const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
-  avatar_url: "https://avatars.githubusercontent.com/u/9919?s=80&v=4",
-  login: "GithubUser",
-  name: "Github User",
+  avatar_url:
+    "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
+  login: "Github User",
+  name: " ",
   followers: "0",
   reposCount: "0",
 }));
