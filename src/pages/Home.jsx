@@ -46,7 +46,11 @@ function Home() {
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
                   </span>
-                  . Leave a <span className="text-white">★</span> on the{" "}
+                  . Leave a{" "}
+                  <span className="text-white select-none transition-all duration-300 ease-in-out hover:text-yellow-500  ">
+                    ★
+                  </span>{" "}
+                  on the{" "}
                   <a
                     href="https://github.com/sheeehy/Geo-Git-v2"
                     target="_blank"
