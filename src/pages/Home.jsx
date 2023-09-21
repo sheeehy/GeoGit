@@ -2,6 +2,9 @@ import "../App.css";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
+import { IoLogoOctocat } from "react-icons/io5";
+import { FaCity } from "react-icons/fa6";
+import { GoPeople, GoOrganization, GoCopilot } from "react-icons/go";
 
 function Home() {
   return (
@@ -13,7 +16,7 @@ function Home() {
 
           <div className="relative">
             {/* Globe behind */}
-            <div className="absolute flex justify-center pl-3 globe-position">
+            <div className="absolute flex justify-center  globe-position">
               <GlobeComponent />
             </div>
             <div className="relative z-10 pt-0 pb-20">
@@ -28,13 +31,22 @@ function Home() {
               </div>
 
               <div className="HomeContainer">
-                <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-2xl ">
+                <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-[40rem] ">
                   Rank the top GitHub users by location, simplified.
                 </h1>
-                <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4 ">
-                  Start by entering the city you want to rank GitHub users from.
-                  For now, ranks are based on followers. Leave a{" "}
-                  <span className="text-white">★</span> on the{" "}
+                <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-[32rem] leading-20 pt-4 pb-4 ">
+                  Start by entering the{" "}
+                  <span className="text-white">
+                    <GoOrganization className="inline align-text-bottom" /> city{" "}
+                  </span>
+                  you want to rank{" "}
+                  <GoCopilot className="inline align-text-bottom" />{" "}
+                  <span className="text-white">GitHub</span> users from. For
+                  now, ranks are based on{" "}
+                  <span className="text-white">
+                    <GoPeople className="inline align-text-bottom" /> followers
+                  </span>
+                  . Leave a <span className="text-white">★</span> on the{" "}
                   <a
                     href="https://github.com/sheeehy/Geo-Git-v2"
                     target="_blank"

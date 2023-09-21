@@ -1,5 +1,8 @@
 import "../App.css";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
+import { FaCity } from "react-icons/fa6";
+import { GoQuestion, GoGraph } from "react-icons/go";
+import { BsGear } from "react-icons/bs";
 
 function About() {
   return (
@@ -22,21 +25,23 @@ function About() {
                 />
               </div>
 
-              <div className="pt-10 max-w-[40rem] px-5">
+              <div className="pt-10 max-w-[42rem] px-5">
                 <h1 className="text-left font-Mona font-bold text-white text-5xl leading-20 pb-2  ">
-                  About GeoGit
+                  <GoQuestion className="inline align-top" /> About GeoGit
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
                   GeoGit is a tool designed to provide insights into the GitHub
                   community around the world. It allows users to rank the top
                   GitHub users based on location, offering both a global
-                  perspective and a more local viewpoint. This project was
-                  mainly built to improve my knowledge of React, Tailwind and
-                  API's.
+                  perspective and a more local viewpoint.{" "}
+                  <p className="text-left font-Hublot text-gray-300 text-lg leading-20 pt-2">
+                    This project was mainly built to improve my knowledge of
+                    React, Tailwind and API's.
+                  </p>
                 </p>
 
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-5xl leading-20  ">
-                  How It Works
+                  <BsGear className="inline align-top " /> How It Works
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
                   <h2 className="text-white font-bold text-xl pb-2">
@@ -60,10 +65,10 @@ function About() {
                   are displayed.
                 </p>
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-5xl leading-20  ">
-                  Future Updates
+                  <GoGraph className="inline align-text-top" /> Future Updates
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
-                  • Add 'Public Commits' to ranking considerations.
+                  • Add 'Public Commits' to ranking criteria.
                   <br /> • Add pageination to display more users at a time
                   <br /> • Add more locations.
                 </p>
