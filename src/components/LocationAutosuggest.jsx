@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { LOCATION_OPTIONS } from "../components/LocationOptions";
 
+//Search input custom styles
 const customStyles = {
   singleValue: (provided) => ({
     ...provided,
@@ -36,6 +37,7 @@ const customStyles = {
   }),
 };
 
+//Set loading Icon - needs work -
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,6 +48,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
     }, 850);
   };
 
+  //Return Search input 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>

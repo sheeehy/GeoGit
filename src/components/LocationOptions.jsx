@@ -1,3 +1,6 @@
+
+//Array with location options
+
 export const LOCATION_OPTIONS = [
   { value: "", label: "" },
   {

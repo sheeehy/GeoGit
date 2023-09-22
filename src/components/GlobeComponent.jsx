@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import createGlobe from "cobe";
 
+
+//Home page globe component - stil taking up too much memory
 function GlobeComponent() {
   const canvasRef = useRef(null);
   let globe;

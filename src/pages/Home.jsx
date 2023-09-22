@@ -11,11 +11,12 @@ function Home() {
     <>
       <main className="bg-thegray home-no-scroll">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
+          {/*Background blobs behind other elemetns */}
           <div className="absolute top-[24rem]  w-[45rem] h-[45rem] bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
           <div className="absolute top-[24rem]  w-[30rem] h-[30rem] bg-blue-400 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>
 
           <div className="relative">
-            {/* Globe behind */}
+            {/* Globe behind other elements*/}
             <div className="absolute flex justify-center  globe-position">
               <GlobeComponent />
             </div>
@@ -30,6 +31,7 @@ function Home() {
                 />
               </div>
 
+              {/*Main content / Hero section */}
               <div className="HomeContainer">
                 <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-[40rem] ">
                   Rank the top GitHub users by location, simplified.

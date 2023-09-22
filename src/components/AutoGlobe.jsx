@@ -1,8 +1,9 @@
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 
-const defaultCoordinates = [40.7128, -74.006];
 
+//Search page auto-rotating globe component - taking too much memory
+const defaultCoordinates = [40.7128, -74.006];
 function Cobe({ coordinates = defaultCoordinates }) {
   const canvasRef = useRef();
   const locationToAngles = (lat, long) => {
@@ -11,6 +12,7 @@ function Cobe({ coordinates = defaultCoordinates }) {
       (lat * Math.PI) / 180,
     ];
   };
+
   const focusRef = useRef(locationToAngles(...coordinates));
 
   useEffect(() => {
