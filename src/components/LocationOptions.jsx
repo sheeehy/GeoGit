@@ -1,4 +1,3 @@
-
 //Array with location options
 
 export const LOCATION_OPTIONS = [
@@ -462,7 +461,7 @@ export const LOCATION_OPTIONS = [
   {
     value: "Washington,-D.C.",
     label: "Washington, D.C.",
-    coordinates: [38.89511, -77.036366],
+    coordinates: [38.89511, -77.036365],
   },
   { value: "Boston", label: "Boston", coordinates: [42.360081, -71.058884] },
   { value: "El-Paso", label: "El Paso", coordinates: [31.761878, -106.485022] },

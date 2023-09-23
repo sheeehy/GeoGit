@@ -26,7 +26,7 @@ function About() {
               </div>
 
               <div className="pt-10 max-w-[42rem] px-5">
-                <h1 className="text-left font-Mona font-bold text-white text-5xl leading-20 pb-2  ">
+                <h1 className="text-left font-Mona font-bold text-white text-4xl leading-20 pb-2  ">
                   <GoQuestion className="inline align-top" /> About GeoGit
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
@@ -40,7 +40,7 @@ function About() {
                   </p>
                 </p>
 
-                <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-5xl leading-20  ">
+                <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
                   <BsGear className="inline align-top " /> How It Works
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
@@ -64,7 +64,7 @@ function About() {
                   as a link to their GitHub. To reduce API usage, only 10 users
                   are displayed.
                 </p>
-                <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-5xl leading-20  ">
+                <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
                   <GoGraph className="inline align-text-top" /> Future Updates
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
