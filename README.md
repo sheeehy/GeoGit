@@ -6,7 +6,7 @@
   GeoGit - v2
 </h1>
 <p align="center">
-  The second iteration of <a href="https://geo-git-v2.vercel.app/" target="_blank">GeoGit</a> built with <a href="https://react.dev/" target="_blank">React</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>.
+  The second iteration of <a href="https://geogitv2.vercel.app/" target="_blank">GeoGit</a> built with <a href="https://react.dev/" target="_blank">React</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>.
 </p>
 <p align="center">
   Previous iterations:
