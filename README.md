@@ -22,7 +22,7 @@
 
 ## 🌎 About GeoGit
 
-Allows users to search for top GitHub users by location. Results are then displayed with their respective GitHub statistics.
+GeoGit allows users to search for top GitHub users by location. Results are then displayed with their respective GitHub statistics.
 Users can enter a city into the search box to view the top GitHub users from that location. Note: The displayed results are based on the location provided by the users themselves on their GitHub profiles.
 <br> <br>
 GeoGit interfaces with the GitHub API to fetch the top users for the specified location. The primary metric for ranking is the number of followers, but this may change in future iterations.
