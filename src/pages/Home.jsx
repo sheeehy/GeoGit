@@ -3,7 +3,6 @@ import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoLogoOctocat } from "react-icons/io5";
-import { FaCity } from "react-icons/fa6";
 import { GoPeople, GoOrganization, GoCopilot } from "react-icons/go";
 
 function Home() {
@@ -42,7 +41,7 @@ function Home() {
                     <GoOrganization className="inline align-text-bottom" /> city{" "}
                   </span>
                   you want to rank{" "}
-                  <GoCopilot className="inline align-text-bottom" />{" "}
+                  <IoLogoOctocat className="inline align-text-bottom" />{" "}
                   <span className="text-white">GitHub</span> users from. For
                   now, ranks are based on{" "}
                   <span className="text-white">
