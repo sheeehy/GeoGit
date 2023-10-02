@@ -6,7 +6,7 @@
   GeoGit - v2
 </h1>
 <p align="center">
-  The second iteration of <a href="https://geo-git-v2.vercel.app/" target="_blank">GeoGit</a> built with <a href="https://react.dev/" target="_blank">React</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>.
+  The second iteration of <a href="https://geogit.vercel.app/" target="_blank">GeoGit</a> built with <a href="https://react.dev/" target="_blank">React</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>.
 </p>
 <p align="center">
   Previous iterations:
@@ -22,7 +22,7 @@
 
 ## 🌎 About GeoGit
 
-Allows users to search for top GitHub users by location. Results are then displayed with their respective GitHub statistics.
+GeoGit allows users to search for top GitHub users by location. Results are then displayed with their respective GitHub statistics.
 Users can enter a city into the search box to view the top GitHub users from that location. Note: The displayed results are based on the location provided by the users themselves on their GitHub profiles.
 <br> <br>
 GeoGit interfaces with the GitHub API to fetch the top users for the specified location. The primary metric for ranking is the number of followers, but this may change in future iterations.

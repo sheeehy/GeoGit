@@ -10,7 +10,7 @@ function Home() {
     <>
       <main className="bg-thegray home-no-scroll">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
-          {/*Background blobs behind other elemetns */}
+          {/*Background behind other elemetns */}
           <div className="absolute top-[24rem]  w-[45rem] h-[45rem] bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
           <div className="absolute top-[24rem]  w-[30rem] h-[30rem] bg-blue-400 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>
 

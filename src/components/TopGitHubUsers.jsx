@@ -49,11 +49,9 @@ export default function TopGitHubUsers({ city }) {
           };
         })
       );
-
       // Sort users by followers and update the state
       setUsers(usersWithDetails.sort((a, b) => b.followers - a.followers));
     }
-
     // Fetch data only if city prop is passed
     if (city) {
       fetchTopUsers();
