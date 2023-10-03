@@ -8,6 +8,11 @@ export const LOCATION_OPTIONS = [
     label: "San Francisco",
     coordinates: [37.78, -122.412],
   },
+  { value: "Novi-Sad", label: "Novi Sad", coordinates: [45.2396, 19.8227] },
+  { value: "Belgrade", label: "Belgrade", coordinates: [44.8125, 20.4612] },
+  { value: "Zagreb", label: "Zagreb", coordinates: [45.815, 15.9819] },
+  { value: "Sarajevo", label: "Sarajevo", coordinates: [43.8563, 18.4131] },
+  { value: "Banja-Luka", label: "Banja-Luka", coordinates: [44.7722, 17.191] },
   { value: "Dublin", label: "Dublin", coordinates: [53.349805, -6.26031] },
 
   { value: "Berlin", label: "Berlin", coordinates: [52.520008, 13.404954] },
@@ -66,9 +71,6 @@ export const LOCATION_OPTIONS = [
   { value: "Belfast", label: "Belfast", coordinates: [54.597285, -5.93012] },
   { value: "Derry", label: "Derry", coordinates: [54.997632, -7.308574] },
   { value: "Bray", label: "Bray", coordinates: [53.2009, -6.1114] },
-
-
-
 
   {
     value: "Waterford",
