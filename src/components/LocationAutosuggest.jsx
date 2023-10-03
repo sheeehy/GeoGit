@@ -37,6 +37,10 @@ const customStyles = {
   }),
 };
 
+const sortedOptions = [...LOCATION_OPTIONS].sort((a, b) =>
+  a.value > b.value ? 1 : -1
+);
+
 //Set loading Icon - needs work -
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +52,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
     }, 850);
   };
 
-  //Return Search input 
+  //Return Search input
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
@@ -62,7 +66,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           isClearable={false}
           isSearchable={true}
           name="location"
-          options={LOCATION_OPTIONS}
+          options={sortedOptions}
           onChange={(selectedOption) => {
             onCityChange(
               selectedOption ? selectedOption.value : "",
