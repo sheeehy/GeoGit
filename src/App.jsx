@@ -5,7 +5,6 @@ import Search from "./pages/Search";
 import About from "./pages/About";
 import { inject } from "@vercel/analytics";
 inject();
-
 import GeoGitIcon from "./assets/GeoGitIcon.png";
 
 function App() {
