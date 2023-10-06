@@ -27,7 +27,8 @@ function About() {
 
               <div className="pt-10 max-w-[42rem] px-5">
                 <h1 className="text-left font-Mona font-bold text-white text-4xl leading-20 pb-2  ">
-                  <GoQuestion className="inline align-top" /> About GeoGit
+                  <GoQuestion className="inline align-top text-4xl" /> About
+                  GeoGit
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
                   GeoGit is a tool designed to provide insights into the GitHub
