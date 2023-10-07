@@ -4,6 +4,7 @@ import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoLogoOctocat } from "react-icons/io5";
 import { GoPeople, GoOrganization, GoCopilot } from "react-icons/go";
+import TypingAnimation from "../components/TypingAnimation";
 
 function Home() {
   return (
@@ -32,8 +33,8 @@ function Home() {
 
               {/*Main content / Hero section */}
               <div className="HomeContainer">
-                <h1 className="text-center font-Mona font-bold text-white text-5xl leading-20 max-w-[40rem] ">
-                  Rank the top GitHub users by location, simplified.
+                <h1 className="text-center font-Mona font-bold text-white text-6xl leading-20 max-w-[38rem] ">
+                  Rank the top GitHub Users in <TypingAnimation />
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-[32rem] leading-20 pt-4 pb-4 ">
                   Start by entering the{" "}
