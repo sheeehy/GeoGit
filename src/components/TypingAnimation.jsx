@@ -6,8 +6,17 @@ const TypingAnimation = () => {
   const [reverse, setReverse] = useState(false);
   const [text, setText] = useState("");
   const [isPaused, setIsPaused] = useState(false);
+  const [isCursorVisible, setIsCursorVisible] = useState(true);
 
-  const cities = ["Dublin", "Berlin", "Austin", "Taipei", "Seattle"];
+  const cities = ["Dublin.", "Berlin.", "Boston.", "Tokyo.", "Miami."];
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setIsCursorVisible((prevIsCursorVisible) => !prevIsCursorVisible);
+    }, 500);
+
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
@@ -44,14 +53,35 @@ const TypingAnimation = () => {
   return (
     <span
       style={{
-        minWidth: "13rem",
+        minWidth: "18rem",
         display: "inline-block",
         textAlign: "left",
         color: "white",
-        textShadow: "0 0 15px lightskyblue, 0 0 20px lightskyblue",
       }}
     >
-      {text}
+      {text.split("").map((char, i) => (
+        <span
+          key={i}
+          style={{
+            textShadow:
+              char === "."
+                ? "none"
+                : "0 0 5px lightskyblue, 0 0 10px lightskyblue",
+          }}
+        >
+          {char}
+        </span>
+      ))}
+      <span
+        style={{
+          display: isCursorVisible ? "inline-block" : "none",
+          color: "lightgray",
+          textShadow: "none",
+          transform: "scaleX(0.4)",
+        }}
+      >
+        |
+      </span>
     </span>
   );
 };

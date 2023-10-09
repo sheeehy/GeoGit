@@ -81,7 +81,7 @@ export default function TopGitHubUsers({ city }) {
                 href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[15rem]"
+                className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[11rem]" // Was 8rem.
               >
                 {user.login}
               </a>

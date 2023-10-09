@@ -1,7 +1,6 @@
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 
-
 //Search page auto-rotating globe component - taking too much memory
 const defaultCoordinates = [40.7128, -74.006];
 function Cobe({ coordinates = defaultCoordinates }) {

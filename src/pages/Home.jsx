@@ -2,38 +2,40 @@ import "../App.css";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
-import { IoLogoOctocat } from "react-icons/io5";
+import { IoLogoOctocat, IoSparklesSharp } from "react-icons/io5";
 import { GoPeople, GoOrganization, GoCopilot } from "react-icons/go";
+
 import TypingAnimation from "../components/TypingAnimation";
 
 function Home() {
   return (
     <>
       <main className="bg-thegray home-no-scroll">
-        <div className="min-h-screen flex items-center justify-center relative pb-32">
+        <div className="min-h-screen flex items-center justify-center relative pb-20">
           {/*Background behind other elemetns */}
           <div className="absolute top-[24rem]  w-[45rem] h-[45rem] bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
           <div className="absolute top-[24rem]  w-[30rem] h-[30rem] bg-blue-400 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>
 
           <div className="relative">
             {/* Globe behind other elements*/}
-            <div className="absolute flex justify-center  globe-position">
+            <div className="absolute flex justify-center globe-position">
               <GlobeComponent />
             </div>
             <div className="relative z-10 pt-0 pb-20">
               {/* Other elements */}
 
-              <div className="flex justify-center">
+              {/* <div className="flex justify-center">
                 <img
                   src={GeoGitIcon}
                   alt="GeoGit Icon"
                   className="max-w-smallish pb-3"
                 />
-              </div>
+              </div> 
+*/}
 
               {/*Main content / Hero section */}
               <div className="HomeContainer">
-                <h1 className="text-center font-Mona font-bold text-white text-6xl leading-20 max-w-[38rem] ">
+                <h1 className="text-center font-Mona text-gray-100 leading-[1.1]  text-7xl leading-20 max-w-[48rem] ">
                   Rank the top GitHub Users in <TypingAnimation />
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-[32rem] leading-20 pt-4 pb-4 ">
@@ -64,7 +66,8 @@ function Home() {
                   !
                 </h2>
                 <Link to="/search" className="get-started-button font-mono">
-                  Get Started
+                  <IoSparklesSharp className="inline align-text-top" /> Get
+                  Started
                 </Link>
               </div>
             </div>

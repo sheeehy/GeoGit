@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import createGlobe from "cobe";
 
-
 //Home page globe component - stil taking up too much memory
 function GlobeComponent() {
   const canvasRef = useRef(null);
@@ -44,7 +43,7 @@ function GlobeComponent() {
     <canvas
       ref={canvasRef}
       id="cobe"
-      className="z-0"
+      className="z-0 mx-auto"
       style={{ width: "1000px", height: "1000px" }}
       width="750px"
       height="750px"
