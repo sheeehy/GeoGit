@@ -15,7 +15,7 @@
 
 
 
-![](https://github.com/sheeehy/Geo-Git-v2/assets/116221302/2961e5bb-5397-47ca-9f35-9cc13b28d9a1)
+![](https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitHero.JPG)
 
 
 <br>
