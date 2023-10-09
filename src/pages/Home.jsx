@@ -36,7 +36,7 @@ function Home() {
               {/*Main content / Hero section */}
               <div className="HomeContainer">
                 <h1 className="text-center font-Mona text-gray-100 leading-[1.1]  text-7xl leading-20 max-w-[48rem] ">
-                  Rank the top GitHub Users in <TypingAnimation />
+                  Rank the top GitHub users in <TypingAnimation />
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-[32rem] leading-20 pt-4 pb-4 ">
                   Start by entering the{" "}
