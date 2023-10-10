@@ -67,9 +67,6 @@ export const LOCATION_OPTIONS = [
   { value: "Derry", label: "Derry", coordinates: [54.997632, -7.308574] },
   { value: "Bray", label: "Bray", coordinates: [53.2009, -6.1114] },
 
-
-
-
   {
     value: "Waterford",
     label: "Waterford",
@@ -879,12 +876,26 @@ export const LOCATION_OPTIONS = [
   { value: "Cairo", label: "Cairo", coordinates: [30.04442, 31.235712] },
   { value: "Tehran", label: "Tehran", coordinates: [35.689487, 51.37638] },
   { value: "Baghdad", label: "Baghdad", coordinates: [33.315244, 44.366067] },
-<<<<<<< HEAD
-  { value: "Buenos-Aires", label: "Buenos Aires",  coordinates: [-34.611765, -58.417011],},
-  { value: "Sao-Paulo", label: "Sao Paulo", coordinates: [-23.55052, -46.633308],},
-  { value: "Rio-de-Janeiro", label: "Rio de Janeiro", coordinates: [-22.906847, -43.172897],},
-  { value: "Santiago", label: "Santiago", coordinates: [-33.44889, -70.669265],},
-=======
+  {
+    value: "Buenos-Aires",
+    label: "Buenos Aires",
+    coordinates: [-34.611765, -58.417011],
+  },
+  {
+    value: "Sao-Paulo",
+    label: "Sao Paulo",
+    coordinates: [-23.55052, -46.633308],
+  },
+  {
+    value: "Rio-de-Janeiro",
+    label: "Rio de Janeiro",
+    coordinates: [-22.906847, -43.172897],
+  },
+  {
+    value: "Santiago",
+    label: "Santiago",
+    coordinates: [-33.44889, -70.669265],
+  },
   {
     value: "Buenos-Aires",
     label: "Buenos Aires",
@@ -906,7 +917,6 @@ export const LOCATION_OPTIONS = [
     label: "Santiago",
     coordinates: [-33.44889, -70.669265],
   },
->>>>>>> 0709cb7e170e33974f593b00012b59e7a5b142f8
   { value: "Bogota", label: "Bogota", coordinates: [4.710989, -74.07209] },
   { value: "Caracas", label: "Caracas", coordinates: [10.491016, -66.879191] },
   { value: "Quito", label: "Quito", coordinates: [-0.229498, -78.524277] },
