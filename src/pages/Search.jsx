@@ -33,11 +33,11 @@ function Search() {
               </p>
               <p className="font-Hublot text-gray-300 hidden md:block">
                 <span className="flex items-center mr-4 mb-2">
-                  <GoPeople />
+                  <GoPeople className="text-white" />
                   <span className="ml-2">Followers</span>
                 </span>
                 <span className="flex items-center">
-                  <GoRepo />
+                  <GoRepo className="text-white" />
                   <span className="ml-2">Public Repos</span>
                 </span>
               </p>
