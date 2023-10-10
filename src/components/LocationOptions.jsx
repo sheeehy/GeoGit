@@ -208,7 +208,6 @@ export const LOCATION_OPTIONS = [
   { value: "Buenos-Aires", label: "Buenos Aires",  coordinates: [-34.611765, -58.417011],},
   { value: "Sao-Paulo", label: "Sao Paulo", coordinates: [-23.55052, -46.633308],},
   { value: "Rio-de-Janeiro", label: "Rio de Janeiro", coordinates: [-22.906847, -43.172897],},
-  { value: "Lima", label: "Lima", coordinates: [-12.046373, -77.042754] },
   { value: "Santiago", label: "Santiago", coordinates: [-33.44889, -70.669265],},
   { value: "Bogota", label: "Bogota", coordinates: [4.710989, -74.07209] },
   { value: "Caracas", label: "Caracas", coordinates: [10.491016, -66.879191] },

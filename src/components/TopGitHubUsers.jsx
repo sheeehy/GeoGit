@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoPeople, GoRepo } from "react-icons/go";
 
-// Placeholder users for initial render - update to GeoGit Icon
+// Placeholder users for initial render
 const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
   avatar_url:
@@ -59,7 +59,7 @@ export default function TopGitHubUsers({ city }) {
   }, [city]); // Dependency array for useEffect
 
   // Render the list of users
-  return (
+  return ( // change to return elements.
     <div>
       <ul>
         {users.map((user, index) => (
