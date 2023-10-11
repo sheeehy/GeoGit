@@ -48,7 +48,7 @@ body {
 }
 
 .globe-position {
-  padding-left: 3rem;
+  padding-left: 3.6rem;
   padding-top: rem;
   top: calc(-8%);
 }
@@ -87,7 +87,8 @@ body {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);
-  border-radius: 20px;
+
+  border-radius: 1rem;
   border: 1px solid rgb(128, 128, 128);
   color: white;
   padding: 1rem;
