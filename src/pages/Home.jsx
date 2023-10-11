@@ -3,7 +3,7 @@ import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoLogoOctocat, IoSparklesSharp } from "react-icons/io5";
-import { GoPeople, GoOrganization, GoCopilot } from "react-icons/go";
+import { GoPeople, GoOrganization, } from "react-icons/go";
 
 import TypingAnimation from "../components/TypingAnimation";
 

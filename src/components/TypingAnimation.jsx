@@ -26,7 +26,7 @@ const TypingAnimation = () => {
       setTimeout(() => {
         setIsPaused(false);
         setReverse(true);
-      }, 1000);
+      }, 1500);
       return;
     }
 
@@ -53,7 +53,7 @@ const TypingAnimation = () => {
   return (
     <span
       style={{
-        minWidth: "18rem",
+        minWidth: "15rem",
         display: "inline-block",
         textAlign: "left",
         color: "white",
