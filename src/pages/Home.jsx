@@ -18,24 +18,24 @@ function Home() {
 
           <div className="relative">
             {/* Globe behind other elements*/}
-            <div className="absolute flex justify-center globe-position">
+            <div className="absolute flex justify-center globe-position pt-12">
               <GlobeComponent />
             </div>
             <div className="relative z-10 pt-0 pb-20">
               {/* Other elements */}
 
-              {/* <div className="flex justify-center">
+               <div className="flex justify-center">
                 <img
                   src={GeoGitIcon}
                   alt="GeoGit Icon"
                   className="max-w-smallish pb-3"
                 />
               </div> 
-*/}
+
 
               {/*Main content / Hero section */}
               <div className="HomeContainer">
-                <h1 className="text-center font-Mona text-gray-100 leading-[1.1]  text-7xl leading-20 max-w-[48rem] ">
+                <h1 className="text-center font-Mona text-gray-100 leading-[1.1]  text-6xl leading-20 max-w-[48rem] ">
                   Rank the top GitHub users in <TypingAnimation />
                 </h1>
                 <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-[32rem] leading-20 pt-4 pb-4 ">
