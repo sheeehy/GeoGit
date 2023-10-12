@@ -59,7 +59,8 @@ export default function TopGitHubUsers({ city }) {
   }, [city]); // Dependency array for useEffect
 
   // Render the list of users
-  return ( // change to return elements.
+  return (
+    // change to return elements.
     <div>
       <ul>
         {users.map((user, index) => (

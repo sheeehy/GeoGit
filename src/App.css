@@ -49,8 +49,7 @@ body {
 
 .globe-position {
   padding-left: 3.6rem;
-  padding-top: rem;
-  top: calc(-8%);
+  top: calc(-5%);
 }
 
 body::-webkit-scrollbar {
@@ -81,6 +80,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 4rem;
 }
 
 .github-user {
@@ -88,7 +88,7 @@ body {
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);
 
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   border: 1px solid rgb(128, 128, 128);
   color: white;
   padding: 1rem;

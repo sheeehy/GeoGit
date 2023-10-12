@@ -1,8 +1,6 @@
 //Array with location options, used in TopGitHubUsers.jsx
 
 export const LOCATION_OPTIONS = [
-  { value: "", label: "" }, // Default  option for input
-
   {
     value: "San-Francisco",
     label: "San Francisco",
@@ -139,17 +137,7 @@ export const LOCATION_OPTIONS = [
     coordinates: [35.338735, 25.144213],
   },
   { value: "Larissa", label: "Larissa", coordinates: [39.639293, 22.420808] },
-  {
-    value: "New-York,-NY",
-    label: "New York, NY",
-    coordinates: [40.712776, -74.005974],
-  },
 
-  {
-    value: "Chicago,-IL",
-    label: "Chicago, IL",
-    coordinates: [41.878113, -87.629799],
-  },
   {
     value: "Houston,-TX",
     label: "Houston, TX",
@@ -190,11 +178,7 @@ export const LOCATION_OPTIONS = [
     label: "Austin, TX",
     coordinates: [30.267153, -97.743061],
   },
-  {
-    value: "Jacksonville,-FL",
-    label: "Jacksonville, FL",
-    coordinates: [30.332184, -81.655651],
-  },
+
   {
     value: "Fort-Worth,-TX",
     label: "Fort Worth, TX",
@@ -230,11 +214,7 @@ export const LOCATION_OPTIONS = [
     label: "Denver, CO",
     coordinates: [39.739236, -104.990251],
   },
-  {
-    value: "Washington,-D.C.",
-    label: "Washington, D.C.",
-    coordinates: [38.89511, -77.036366],
-  },
+
   {
     value: "Boston,-MA",
     label: "Boston, MA",
@@ -364,244 +344,6 @@ export const LOCATION_OPTIONS = [
     value: "Tampa,-FL",
     label: "Tampa, FL",
     coordinates: [27.950575, -82.457178],
-  },
-
-  { value: "Chicago", label: "Chicago", coordinates: [41.878113, -87.629799] },
-
-  {
-    value: "New-York,-NY",
-    label: "New York, NY",
-    coordinates: [40.712776, -74.005974],
-  },
-  {
-    value: "Los-Angeles,-CA",
-    label: "Los Angeles, CA",
-    coordinates: [34.052235, -118.243683],
-  },
-  {
-    value: "Chicago,-IL",
-    label: "Chicago, IL",
-    coordinates: [41.878113, -87.629799],
-  },
-  {
-    value: "Houston,-TX",
-    label: "Houston, TX",
-    coordinates: [29.760427, -95.369804],
-  },
-  {
-    value: "Phoenix,-AZ",
-    label: "Phoenix, AZ",
-    coordinates: [33.448376, -112.074036],
-  },
-  {
-    value: "Philadelphia,-PA",
-    label: "Philadelphia, PA",
-    coordinates: [39.952583, -75.165222],
-  },
-  {
-    value: "San-Antonio,-TX",
-    label: "San Antonio, TX",
-    coordinates: [29.424122, -98.493628],
-  },
-  {
-    value: "San-Diego,-CA",
-    label: "San Diego, CA",
-    coordinates: [32.715736, -117.161087],
-  },
-  {
-    value: "Dallas,-TX",
-    label: "Dallas, TX",
-    coordinates: [32.776272, -96.796856],
-  },
-  {
-    value: "San-Jose,-CA",
-    label: "San Jose, CA",
-    coordinates: [37.354107, -121.955238],
-  },
-  {
-    value: "Austin,-TX",
-    label: "Austin, TX",
-    coordinates: [30.267153, -97.743061],
-  },
-  {
-    value: "Jacksonville,-FL",
-    label: "Jacksonville, FL",
-    coordinates: [30.332184, -81.655651],
-  },
-  {
-    value: "Fort-Worth,-TX",
-    label: "Fort Worth, TX",
-    coordinates: [32.755488, -97.330766],
-  },
-  {
-    value: "Columbus,-OH",
-    label: "Columbus, OH",
-    coordinates: [39.961178, -82.998794],
-  },
-  {
-    value: "Charlotte,-NC",
-    label: "Charlotte, NC",
-    coordinates: [35.227085, -80.843124],
-  },
-  {
-    value: "Indianapolis,-IN",
-    label: "Indianapolis, IN",
-    coordinates: [39.768403, -86.158068],
-  },
-  {
-    value: "San-Francisco,-CA",
-    label: "San Francisco, CA",
-    coordinates: [37.774929, -122.419416],
-  },
-  {
-    value: "Seattle,-WA",
-    label: "Seattle, WA",
-    coordinates: [47.606209, -122.332069],
-  },
-  {
-    value: "Denver,-CO",
-    label: "Denver, CO",
-    coordinates: [39.739236, -104.990251],
-  },
-  {
-    value: "Washington,-D.C.",
-    label: "Washington, D.C.",
-    coordinates: [38.89511, -77.036366],
-  },
-  {
-    value: "Boston,-MA",
-    label: "Boston, MA",
-    coordinates: [42.360081, -71.058884],
-  },
-  {
-    value: "El-Paso,-TX",
-    label: "El Paso, TX",
-    coordinates: [31.761878, -106.485022],
-  },
-  {
-    value: "Nashville,-TN",
-    label: "Nashville, TN",
-    coordinates: [36.16223, -86.774353],
-  },
-  {
-    value: "Detroit,-MI",
-    label: "Detroit, MI",
-    coordinates: [42.331429, -83.045753],
-  },
-  {
-    value: "Oklahoma-City,-OK",
-    label: "Oklahoma City, OK",
-    coordinates: [35.463368, -97.515956],
-  },
-  {
-    value: "Portland,-OR",
-    label: "Portland, OR",
-    coordinates: [45.505106, -122.675026],
-  },
-  {
-    value: "Las-Vegas,-NV",
-    label: "Las Vegas, NV",
-    coordinates: [36.169941, -115.13983],
-  },
-  {
-    value: "Memphis,-TN",
-    label: "Memphis, TN",
-    coordinates: [35.149502, -90.04985],
-  },
-  {
-    value: "Louisville,-KY",
-    label: "Louisville, KY",
-    coordinates: [38.252659, -85.758455],
-  },
-  {
-    value: "Baltimore,-MD",
-    label: "Baltimore, MD",
-    coordinates: [39.290385, -76.612189],
-  },
-  {
-    value: "Milwaukee,-WI",
-    label: "Milwaukee, WI",
-    coordinates: [43.038902, -87.906474],
-  },
-  {
-    value: "Albuquerque,-NM",
-    label: "Albuquerque, NM",
-    coordinates: [35.084103, -106.650985],
-  },
-  {
-    value: "Tucson,-AZ",
-    label: "Tucson, AZ",
-    coordinates: [32.222606, -110.97471],
-  },
-  {
-    value: "Fresno,-CA",
-    label: "Fresno, CA",
-    coordinates: [36.737232, -119.787125],
-  },
-  {
-    value: "Mesa,-AZ",
-    label: "Mesa, AZ",
-    coordinates: [33.415184, -111.831472],
-  },
-  {
-    value: "Sacramento,-CA",
-    label: "Sacramento, CA",
-    coordinates: [38.581572, -121.4944],
-  },
-  {
-    value: "Atlanta,-GA",
-    label: "Atlanta, GA",
-    coordinates: [33.749027, -84.388229],
-  },
-  {
-    value: "Kansas-City,-MO",
-    label: "Kansas City, MO",
-    coordinates: [39.099727, -94.578567],
-  },
-  {
-    value: "Miami,-FL",
-    label: "Miami, FL",
-    coordinates: [25.76168, -80.19179],
-  },
-  {
-    value: "Raleigh,-NC",
-    label: "Raleigh, NC",
-    coordinates: [35.779591, -78.638176],
-  },
-  {
-    value: "Omaha,-NE",
-    label: "Omaha, NE",
-    coordinates: [41.256536, -95.934502],
-  },
-  {
-    value: "Long-Beach,-CA",
-    label: "Long Beach, CA",
-    coordinates: [33.77005, -118.193741],
-  },
-  {
-    value: "Oakland,-CA",
-    label: "Oakland, CA",
-    coordinates: [37.804363, -122.271111],
-  },
-  {
-    value: "Minneapolis,-MN",
-    label: "Minneapolis, MN",
-    coordinates: [44.977753, -93.265015],
-  },
-  {
-    value: "Tulsa,-OK",
-    label: "Tulsa, OK",
-    coordinates: [36.1548, -95.993507],
-  },
-  {
-    value: "Tampa,-FL",
-    label: "Tampa, FL",
-    coordinates: [27.950575, -82.457178],
-  },
-  {
-    value: "Arlington, TX",
-    label: "Arlington, TX",
-    coordinates: [32.735687, -97.108066],
   },
 
   //US CITIES W/ NO STATE ABREVIATIONS
@@ -615,7 +357,6 @@ export const LOCATION_OPTIONS = [
     label: "Chicago",
     coordinates: [41.878113, -87.629799],
   },
-  { value: "Houston", label: "Houston", coordinates: [29.760427, -95.369804] },
   { value: "Phoenix", label: "Phoenix", coordinates: [33.448376, -112.074036] },
   {
     value: "Philadelphia",
@@ -750,6 +491,7 @@ export const LOCATION_OPTIONS = [
     label: "Arlington",
     coordinates: [32.735687, -97.108066],
   },
+
   { value: "Toronto", label: "Toronto", coordinates: [43.65107, -79.347015] },
   {
     value: "Vancouver",

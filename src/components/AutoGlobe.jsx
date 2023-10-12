@@ -32,7 +32,7 @@ function Cobe({ coordinates = defaultCoordinates }) {
       theta: 0,
       dark: 1,
       diffuse: 1,
-      mapSamples: 6000,
+      mapSamples: 9000,
       mapBrightness: 2,
       baseColor: [0.5, 0.5, 0.5],
       markerColor: [0.815, 0.904, 0.99],

@@ -53,7 +53,7 @@ function Search() {
           />
         </div>
 
-        <div className="h2text text-center font-Hublot text-gray-300 text-lg max-w-md leading-20 pt-4 pb-4"></div>
+        <div className=" pt-2 "></div>
 
         <div className="flex flex-col items-start justify-center relative pb-32 px-4 md:px-8 lg:px-32">
           <div className="relative z-1000 pt-0 pb-0">
