@@ -144,11 +144,7 @@ export const LOCATION_OPTIONS = [
     label: "New York, NY",
     coordinates: [40.712776, -74.005974],
   },
-  {
-    value: "Los-Angeles,-CA",
-    label: "Los Angeles, CA",
-    coordinates: [34.052235, -118.243683],
-  },
+
   {
     value: "Chicago,-IL",
     label: "Chicago, IL",
@@ -369,11 +365,7 @@ export const LOCATION_OPTIONS = [
     label: "Tampa, FL",
     coordinates: [27.950575, -82.457178],
   },
-  {
-    value: "Los-Angeles",
-    label: "Los Angeles",
-    coordinates: [34.052235, -118.243683],
-  },
+
   { value: "Chicago", label: "Chicago", coordinates: [41.878113, -87.629799] },
 
   {
