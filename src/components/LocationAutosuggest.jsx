@@ -18,7 +18,7 @@ const customStyles = {
   input: (provided) => ({
     ...provided,
     color: "white",
-    marginTop: "3px",
+    marginTop: "0px",
   }),
   menu: (provided) => ({
     ...provided,
@@ -74,7 +74,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
 
   const ValueContainer = ({ children, ...props }) => (
     <div style={{ display: "flex", alignItems: "center", marginLeft: "10px" }}>
-      <IoSearch style={{ marginBottom: "2px", marginRight: "8px" }} />
+      <IoSearch style={{ marginBottom: "0px", marginRight: "8px" }} />
       {children}
     </div>
   );
