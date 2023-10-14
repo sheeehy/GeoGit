@@ -3,7 +3,7 @@ import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoLogoOctocat, IoSparklesSharp } from "react-icons/io5";
-import { GoPeople, GoOrganization, } from "react-icons/go";
+import { GoPeople, GoOrganization } from "react-icons/go";
 
 import TypingAnimation from "../components/TypingAnimation";
 
@@ -24,14 +24,13 @@ function Home() {
             <div className="relative z-10 pt-0 pb-20">
               {/* Other elements */}
 
-               <div className="flex justify-center">
+              <div className="flex justify-center">
                 <img
                   src={GeoGitIcon}
                   alt="GeoGit Icon"
                   className="max-w-smallish pb-3"
                 />
-              </div> 
-
+              </div>
 
               {/*Main content / Hero section */}
               <div className="HomeContainer">

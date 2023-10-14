@@ -22,7 +22,7 @@ function App() {
           </Link>
 
           <nav className="flex items-center">
-            <ul className="flex space-x-4 sm:space-x-8 text-white font-semibold">
+            <ul className="flex space-x-4 sm:space-x-8 text-white font-bold">
               <li>
                 <Link to="/" className="">
                   Home

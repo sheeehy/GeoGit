@@ -83,7 +83,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
         <Select
-          placeholder="Search for a City "
+          placeholder=""
           components={{
             DropdownIndicator: null,
             ValueContainer,
