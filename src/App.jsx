@@ -4,8 +4,14 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import About from "./pages/About";
 import GeoGitIcon from "./assets/GeoGitIcon.png";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+  const LoginButton = () => {
+    const { loginWithRedirect } = useAuth0();
+
+    return <button onClick={() => loginWithRedirect()}>Login</button>;
+  };
   return (
     <Router>
       <header className="bg-transparent py-2">
@@ -37,6 +43,9 @@ function App() {
                 <Link to="/About" className="">
                   About
                 </Link>
+              </li>
+              <li>
+                <LoginButton>Log in</LoginButton>
               </li>
             </ul>
           </nav>
