@@ -79,10 +79,13 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
     </div>
   );
 
+  const selectRef = React.useRef();
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
         <Select
+          ref={selectRef}
           placeholder=""
           components={{
             DropdownIndicator: null,
@@ -94,7 +97,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           value={LOCATION_OPTIONS.find(
             (option) => option.value === selectedCity
           )}
-          isClearable={false}
+          isClearable={true}
           isSearchable={true}
           isLoading={isLoading}
           noOptionsMessage={noOptionsMessage}
@@ -102,14 +105,16 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           options={LOCATION_OPTIONS}
           filterOption={filterOption}
           onChange={(selectedOption) => {
-            setIsLoading(true);
-            onCityChange(
-              selectedOption ? selectedOption.value : "",
-              selectedOption ? selectedOption.coordinates : [0, 0]
-            );
-            setTimeout(() => {
-              setIsLoading(false);
-            }, 850);
+            if (selectedOption) {
+              setIsLoading(true);
+              onCityChange(selectedOption.value, selectedOption.coordinates);
+              setTimeout(() => {
+                setIsLoading(false);
+              }, 850);
+            } else {
+              onCityChange("", [0, 0]);
+              setTimeout(() => selectRef.current.focus(), 0);
+            }
           }}
         />
         <div
