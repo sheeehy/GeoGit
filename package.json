@@ -17,6 +17,7 @@
     "autoprefixer": "^10.4.15",
     "cobe": "^0.6.3",
     "dotenv": "^16.3.1",
+    "graphql-request": "^6.1.0",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",
     "react": "^18.2.0",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { GoPeople, GoRepo } from "react-icons/go";
+import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
+import { request, gql } from "graphql-request";
 
-// Placeholder users for initial render
 const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
   avatar_url:
@@ -10,16 +10,48 @@ const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   name: " ",
   followers: "0",
   reposCount: "0",
+  publicCommits: "0", // Added publicCommits
 }));
+
+async function getPublicCommits(username) {
+  const query = gql`
+    {
+      user(login: "${username}") {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const endpoint = "https://api.github.com/graphql";
+    const token = import.meta.env.VITE_GITHUB_TOKEN;
+    const headers = {
+      Authorization: `bearer ${token}`,
+    };
+    const data = await request(endpoint, query, {}, headers);
+    return data.user.contributionsCollection.contributionCalendar
+      .totalContributions;
+  } catch (error) {
+    console.error(`Failed to get commit count for ${username}`, error);
+    return 0;
+  }
+}
 
 export default function TopGitHubUsers({ city }) {
   const [users, setUsers] = useState(BLANK_USERS);
 
   useEffect(() => {
+    if (!city) {
+      setUsers(BLANK_USERS);
+      return;
+    }
+
     async function fetchTopUsers() {
-      const base_url = city
-        ? `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`
-        : `https://api.github.com/users?sort=followers&order=desc&per_page=10`;
+      const base_url = `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`;
 
       const response = await fetch(base_url, {
         headers: {
@@ -28,7 +60,8 @@ export default function TopGitHubUsers({ city }) {
       });
 
       const data = await response.json();
-      const usersList = city ? data.items : data;
+      const usersList = data.items;
+
       const usersWithDetails = await Promise.all(
         usersList.map(async (user) => {
           const userDetailsResponse = await fetch(
@@ -41,36 +74,36 @@ export default function TopGitHubUsers({ city }) {
           );
           const userDetails = await userDetailsResponse.json();
 
+          const publicCommits = await getPublicCommits(user.login); // Fetch publicCommits
+
           return {
             ...user,
             name: userDetails.name,
             reposCount: userDetails.public_repos,
             followers: userDetails.followers,
+            publicCommits, // Added publicCommits
           };
         })
       );
-      // Sort users by followers and update the state
+
       setUsers(usersWithDetails.sort((a, b) => b.followers - a.followers));
     }
-    // Fetch data only if city prop is passed
-    if (city) {
-      fetchTopUsers();
-    }
-  }, [city]); // Dependency array for useEffect
 
-  // Render the list of users
+    fetchTopUsers();
+  }, [city]);
+
   return (
-    // change to return elements.
     <div>
       <ul>
         {users.map((user, index) => (
           <li key={user.id} className="github-user">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center ">
               <strong>#{index + 1}</strong>
               <a
                 href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="pl-3"
               >
                 <img
                   src={user.avatar_url}
@@ -82,19 +115,22 @@ export default function TopGitHubUsers({ city }) {
                 href={user.html_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[11rem]" // Was 8rem.
+                className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[10rem] pl-3"
               >
                 {user.login}
               </a>
               {user.name && (
-                <div className="hidden md:block max-w-[8rem] whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-300">
+                <div className="hidden md:block max-w-[8rem] whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-300 pl-2">
                   {user.name}
                 </div>
               )}
             </div>
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 min-w-[60px]">
+              <div className="flex items-center gap-2 min-w-[3rem]">
                 <GoPeople /> {user.followers}
+              </div>
+              <div className="flex items-center gap-2 min-w-[3rem]">
+                <GoGitPullRequest /> {user.publicCommits}
               </div>
               <div className="flex items-center gap-2 min-w-[3rem]">
                 <GoRepo /> {user.reposCount}
