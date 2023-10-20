@@ -55,22 +55,21 @@ function About() {
                     2 Fetch and Display
                   </h2>
                   Using the GitHub API, the top 10 GitHub users for your
-                  specified location are displayed. For now, the ranking is
-                  based on followers, though this will change in the future.
+                  specified location are displayed. The ranking is based on
+                  followers and public commits this year.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">
                     3 User Insights
                   </h2>
                   Each user has their profile picture, username, full name,
-                  followers and number of public repositories displayed, as well
-                  as a link to their GitHub. To reduce API usage, only 10 users
-                  are displayed.
+                  followers, public commits this year and number of public
+                  repositories displayed, as well as a link to their GitHub. To
+                  reduce API usage, only 10 users are displayed.
                 </p>
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
                   <GoGraph className="inline align-text-top" /> Future Updates
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
-                  • Add 'Public Commits' to ranking criteria.
-                  <br /> • Add pageination to display more users at a time
+                  • Add pageination to display more users at a time
                   <br /> • Add more locations.
                 </p>
               </div>

@@ -82,11 +82,12 @@ export default function TopGitHubUsers({ city }) {
             reposCount: userDetails.public_repos,
             followers: userDetails.followers,
             publicCommits, // Added publicCommits
+            score: 0.7 * userDetails.followers + 0.3 * publicCommits,
           };
         })
       );
 
-      setUsers(usersWithDetails.sort((a, b) => b.followers - a.followers));
+      setUsers(usersWithDetails.sort((a, b) => b.score - a.score));
     }
 
     fetchTopUsers();

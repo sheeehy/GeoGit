@@ -3,7 +3,7 @@ import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoLogoOctocat, IoSparklesSharp } from "react-icons/io5";
-import { GoPeople, GoOrganization } from "react-icons/go";
+import { GoPeople, GoOrganization, GoGitPullRequest } from "react-icons/go";
 
 import TypingAnimation from "../components/TypingAnimation";
 
@@ -38,17 +38,19 @@ function Home() {
                   Rank the top GitHub users in <TypingAnimation />
                 </h1>
 
-                <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-[32rem] leading-20 pt-4 pb-4 ">
-                  Start by entering the{" "}
-                  <span className="text-white">
-                    <GoOrganization className="inline align-text-bottom" /> city{" "}
-                  </span>
-                  you want to rank{" "}
+                <h2 className=" h2text text-center font-Hublot text-gray-300 text-lg max-w-[30.5rem] leading-20 pt-4 pb-4 ">
+                  Start by entering the city you want to rank{" "}
                   <IoLogoOctocat className="inline align-text-bottom" />{" "}
-                  <span className="text-white">GitHub</span> users from. For
-                  now, ranks are based on{" "}
+                  <span className="text-white">GitHub</span> users from, based
+                  on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
+                  </span>{" "}
+                  and
+                  <span className="text-white">
+                    {" "}
+                    <GoGitPullRequest className="inline align-text-bottom" />{" "}
+                    commits
                   </span>
                   . Leave a{" "}
                   <span className="text-white select-none transition-all duration-300 ease-in-out hover:text-yellow-500  ">

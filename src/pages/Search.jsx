@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import TopGithubUsers from "../components/TopGitHubUsers";
 import LocationAutosuggest from "../components/LocationAutosuggest";
 import Cobe from "../components/AutoGlobe";
-import { GoPeople } from "react-icons/go";
-import { GoRepo } from "react-icons/go";
+import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 
 function Search() {
   const [city, setCity] = useState("");
-  const [coordinates, setCoordinates] = useState([0, 0]);
+  const [coordinates, setCoordinates] = useState([45, 10]);
 
   return (
     <>
@@ -26,16 +25,22 @@ function Search() {
               Search
             </h1>
             <div className="flex">
-              <p className="font-Hublot text-gray-300 mr-4 max-w-md">
+              <p className="font-Hublot text-gray-300 mr-4 max-w-[26rem] leading-[1.7rem]">
                 Start by entering the city you want to rank GitHub users from.
                 Keep in mind, the results reflect the location users have
                 entered themselves.
               </p>
               <p className="font-Hublot text-gray-300 hidden md:block">
-                <span className="flex items-center mr-4 mb-2">
+                <span className="flex items-center mr-4 mb-1">
                   <GoPeople className="text-white" />
                   <span className="ml-2">Followers</span>
                 </span>
+
+                <span className="flex items-center mb-1">
+                  <GoGitPullRequest className="text-white" />
+                  <span className="ml-2">Public Commits</span>
+                </span>
+
                 <span className="flex items-center">
                   <GoRepo className="text-white" />
                   <span className="ml-2">Public Repos</span>
