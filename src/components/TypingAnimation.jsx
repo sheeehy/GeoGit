@@ -53,7 +53,7 @@ const TypingAnimation = () => {
   return (
     <span
       style={{
-        minWidth: "15rem",
+        minWidth: "19rem",
         display: "inline-block",
         textAlign: "left",
         color: "white",

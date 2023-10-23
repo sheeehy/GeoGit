@@ -11,8 +11,8 @@ function GlobeComponent() {
     if (canvasRef.current) {
       globe = createGlobe(canvasRef.current, {
         devicePixelRatio: 1,
-        width: 650,
-        height: 650,
+        width: 1000,
+        height: 1000,
         phi: 1,
         theta: 0,
         dark: 1,
@@ -45,8 +45,8 @@ function GlobeComponent() {
       id="cobe"
       className="z-0 mx-auto"
       style={{ width: "1000px", height: "1000px" }}
-      width="750px"
-      height="750px"
+      width="1000px"
+      height="1000px"
     />
   );
 }

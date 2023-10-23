@@ -48,8 +48,9 @@ body {
 }
 
 .globe-position {
-  padding-left: 3.6rem;
-  top: calc(-5%);
+  top: calc(50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 body::-webkit-scrollbar {
@@ -62,10 +63,10 @@ body {
 }
 
 @font-face {
-  font-family: "Mona-Sans";
-  src: url("./assets/fonts/Mona-Sans.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
+  font-family: "Mona Sans";
+  src:
+    url("Mona-Sans.woff2") format("woff2 supports variations"),
+    url("Mona-Sans.woff2") format("woff2-variations");
 }
 
 @font-face {
@@ -73,6 +74,10 @@ body {
   src: url("./assets/fonts/Hubot-Sans.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+.customFont {
+  font-weight: 800;
 }
 
 .HomeContainer {
