@@ -27,7 +27,7 @@ function Home() {
               {/*Main content / Hero section
                */}
               <div className="HomeContainer ">
-                <h1 className="text-center  lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl sm:text-4xl max-w-[48rem] ">
+                <h1 className="text-center  lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl max-w-[48rem] ">
                   Rank the top GitHub users in <TypingAnimation />
                 </h1>
 

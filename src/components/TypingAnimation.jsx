@@ -40,9 +40,10 @@ const TypingAnimation = () => {
       () => {
         setSubIndex((prevSubIndex) => prevSubIndex + (reverse ? -1 : 1));
       },
-      reverse ? 100 : 150
+      reverse ? Math.random() * 50 + 50 : Math.random() * 100 + 100
     );
 
+    const speed = reverse ? Math.random() * 50 + 50 : Math.random() * 100 + 100;
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, isPaused]);
 

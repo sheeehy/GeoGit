@@ -10,7 +10,11 @@ function App() {
   const LoginButton = () => {
     const { loginWithRedirect } = useAuth0();
 
-    return <button onClick={() => loginWithRedirect()}>Login</button>;
+    return (
+      <button onClick={() => loginWithRedirect()} style={{}}>
+        Login
+      </button>
+    );
   };
   return (
     <Router>
@@ -27,8 +31,8 @@ function App() {
             </span>
           </Link>
 
-          <nav className="flex items-center">
-            <ul className="flex space-x-4 sm:space-x-8 text-white font-bold">
+          <nav className="flex items-center font-Hublot">
+            <ul className="flex space-x-4 sm:space-x-8 text-white ">
               <li>
                 <Link to="/" className="">
                   Home
@@ -44,7 +48,7 @@ function App() {
                   About
                 </Link>
               </li>
-              <li>
+              <li className="font-bold">
                 <LoginButton>Log in</LoginButton>
               </li>
             </ul>
