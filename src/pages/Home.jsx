@@ -27,11 +27,11 @@ function Home() {
               {/*Main content / Hero section
                */}
               <div className="HomeContainer ">
-                <h1 className="text-center lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl max-w-[48rem] ">
+                <h1 className="text-center  lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl sm:text-4xl max-w-[48rem] ">
                   Rank the top GitHub users in <TypingAnimation />
                 </h1>
 
-                <h2 className="h2text pointer-events-none select-none text-center font-Hublot text-gray-300 text-xl max-w-[30.5rem] leading-20 pt-4 pb-4 ">
+                <h2 className="h2text pb-6 pointer-events-none select-none text-center font-Hublot text-gray-300 text-xl max-w-[30.5rem] leading-20 pt-4 pb-4 ">
                   Start by entering the city you want to rank{" "}
                   <IoLogoOctocat className="inline align-text-bottom" />{" "}
                   <span className="text-white">GitHub</span> users from, based
