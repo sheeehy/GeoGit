@@ -77,6 +77,7 @@ body {
 }
 
 .customFont {
+  text-wrap: balance;
   font-weight: 800;
 }
 
@@ -105,6 +106,8 @@ body {
   justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 @media (max-width: 42rem) {
@@ -195,4 +198,25 @@ body {
 
 .balance {
   text-wrap: balance;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-enter,
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.fade-enter-active,
+.fade-exit {
+  opacity: 1;
+  transition: opacity 300ms;
 }

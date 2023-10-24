@@ -2,16 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
 
-const BLANK_USERS = [...Array(10)].map((_, idx) => ({
-  id: -idx - 1,
-  avatar_url:
-    "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
-  login: "Github User",
-  name: " ",
-  followers: "0",
-  reposCount: "0",
-  publicCommits: "0", // Added publicCommits
-}));
+const BLANK_USERS = [...Array(0)].map(() => ({}));
 
 async function getPublicCommits(username) {
   const query = gql`
@@ -42,7 +33,7 @@ async function getPublicCommits(username) {
 }
 
 export default function TopGitHubUsers({ city }) {
-  const [users, setUsers] = useState(BLANK_USERS);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     if (!city) {
@@ -96,49 +87,54 @@ export default function TopGitHubUsers({ city }) {
   return (
     <div>
       <ul>
-        {users.map((user, index) => (
-          <li key={user.id} className="github-user">
-            <div className="flex items-center ">
-              <strong>#{index + 1}</strong>
-              <a
-                href={user.html_url || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pl-3"
-              >
-                <img
-                  src={user.avatar_url}
-                  alt={user.login}
-                  className="w-12 h-12 rounded-full"
-                />
-              </a>
-              <a
-                href={user.html_url || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[10rem] pl-3"
-              >
-                {user.login}
-              </a>
-              {user.name && (
-                <div className="hidden md:block max-w-[8rem] whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-300 pl-2">
-                  {user.name}
+        {users.length > 0 &&
+          users.map((user, index) => (
+            <li
+              key={user.id}
+              style={{ animationDelay: `${index * 0.1}s` }}
+              className="github-user"
+            >
+              <div className="flex items-center ">
+                <strong>{index + 1}</strong>
+                <a
+                  href={user.html_url || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pl-3 "
+                >
+                  <img
+                    src={user.avatar_url}
+                    alt={user.login}
+                    className="w-12 h-12 rounded-full"
+                  />
+                </a>
+                <a
+                  href={user.html_url || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[10rem] pl-3 font-bold"
+                >
+                  {user.login}
+                </a>
+                {user.name && (
+                  <div className="hidden md:block max-w-[8rem] whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-300 pl-2">
+                    {user.name}
+                  </div>
+                )}
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 min-w-[3rem]">
+                  <GoPeople /> {user.followers}
                 </div>
-              )}
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 min-w-[3rem]">
-                <GoPeople /> {user.followers}
+                <div className="flex items-center gap-2 min-w-[3rem]">
+                  <GoGitPullRequest /> {user.publicCommits}
+                </div>
+                <div className="flex items-center gap-2 min-w-[3rem]">
+                  <GoRepo /> {user.reposCount}
+                </div>
               </div>
-              <div className="flex items-center gap-2 min-w-[3rem]">
-                <GoGitPullRequest /> {user.publicCommits}
-              </div>
-              <div className="flex items-center gap-2 min-w-[3rem]">
-                <GoRepo /> {user.reposCount}
-              </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          ))}
       </ul>
     </div>
   );

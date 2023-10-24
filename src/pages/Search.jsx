@@ -65,16 +65,6 @@ function Search() {
             <TopGithubUsers city={city} />
           </div>
         </div>
-
-        <a
-          href="https://github.com/sheeehy/Geo-Git-v2"
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" font-Hublot leading-5 tracking-wider pb-10 jack-sheehy transition duration-100 ease-in-out hover:text-gray-200 font-bold text-gray-300"
-        >
-          Leave a <span className="text-white">★</span> on the{" "}
-          <span className="text-white">repo</span>!
-        </a>
       </main>
     </>
   );

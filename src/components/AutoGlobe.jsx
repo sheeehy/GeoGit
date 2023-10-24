@@ -31,13 +31,13 @@ function Cobe({ coordinates = defaultCoordinates }) {
       phi: 1,
       theta: 0,
       dark: 1,
-      diffuse: 1,
+      diffuse: 2,
       mapSamples: 9000,
-      mapBrightness: 2,
-      baseColor: [0.5, 0.5, 0.5],
+      mapBrightness: 8,
+      baseColor: [0.1, 0.1, 0.1],
       markerColor: [0.815, 0.904, 0.99],
       glowColor: [0.63, 0.808, 0.98],
-      markers: [{ location: coordinates, size: 0.1 }],
+      markers: [{ location: coordinates, size: 0.075 }],
       onRender: (state) => {
         state.phi = currentPhi;
         state.theta = currentTheta;
