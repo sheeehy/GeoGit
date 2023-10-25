@@ -28,7 +28,7 @@ function Home() {
                */}
               <div className="HomeContainer ">
                 <h1 className="text-center  lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl max-w-[53rem] ">
-                  Rank top <span className="pr-10">software</span>{" "}
+                  Rank the top <span className="pr-10">software</span>{" "}
                   <span className="pl-5">developers</span> in{" "}
                   <TypingAnimation />
                 </h1>
@@ -73,8 +73,9 @@ function Home() {
             rel="noopener noreferrer"
             className=" font-Hublot leading-12 tracking-wider pb-2 jack-sheehy"
           >
-            <span className="text-gray-300 font-bold">Jack Sheehy :) </span> <br />
-           <span className="text-gray-400"> ©2023 </span>
+            <span className="text-gray-300 font-bold">Jack Sheehy :) </span>{" "}
+            <br />
+            <span className="text-gray-400"> ©2023 </span>
           </a>
         </div>
       </main>
