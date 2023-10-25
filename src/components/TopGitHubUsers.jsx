@@ -6,8 +6,8 @@ const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
   avatar_url:
     "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
-  login: "GeoGit",
-  name: "Geo Git",
+  login: "GeoGit User",
+  name: "",
   followers: "0",
   reposCount: "0",
   publicCommits: "0",
