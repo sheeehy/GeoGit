@@ -49,6 +49,9 @@ The app displays profile details of each ranked user, such as their profile pict
    <b>React Icons </b> - For icons.<br>
    <b>React Router Dom </b> - For routing SPAs.<br>
     <b>React Select</b> - For autosuggest user input.
+        <b>AuthO</b> - For user authentication.
+
+
 
 
 </p>
