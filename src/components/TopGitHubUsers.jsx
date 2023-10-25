@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { GoPeople, GoRepo, GoGitPullRequest,  } from "react-icons/go";
+import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
 
-const BLANK_USERS = [...Array(10)].map(() => ({}));
+const BLANK_USERS = [...Array(10)].map((_, idx) => ({
+  id: -idx - 1,
+  avatar_url:
+    "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
+  login: "GeoGit",
+  name: "Geo Git",
+  followers: "0",
+  reposCount: "0",
+  publicCommits: "0",
+  score: "0",
+}));
 
-async function getPublicCommits(username) {
+const fetchPublicCommits = async (username) => {
   const query = gql`
-    {
-      user(login: "${username}") {
+    query ($username: String!) {
+      user(login: $username) {
         contributionsCollection {
           contributionCalendar {
             totalContributions
@@ -17,53 +27,51 @@ async function getPublicCommits(username) {
     }
   `;
 
+  const variables = { username };
+  const headers = {
+    Authorization: `bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+  };
+
   try {
-    const endpoint = "https://api.github.com/graphql";
-    const token = import.meta.env.VITE_GITHUB_TOKEN;
-    const headers = {
-      Authorization: `bearer ${token}`,
-    };
-    const data = await request(endpoint, query, {}, headers);
+    const data = await request(
+      "https://api.github.com/graphql",
+      query,
+      variables,
+      headers
+    );
     return data.user.contributionsCollection.contributionCalendar
       .totalContributions;
   } catch (error) {
     console.error(`Failed to get commit count for ${username}`, error);
     return 0;
   }
-}
+};
 
 export default function TopGitHubUsers({ city }) {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(BLANK_USERS);
 
   useEffect(() => {
-    if (!city) {
-      setUsers(BLANK_USERS);
-      return;
-    }
+    const fetchTopUsers = async () => {
+      if (!city) {
+        setUsers(BLANK_USERS); // Reset to default
+        return;
+      }
+      const baseUrl = `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`;
+      const headers = {
+        Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+      };
 
-    async function fetchTopUsers() {
-      const base_url = `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`;
-      const response = await fetch(base_url, {
-        headers: {
-          Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-        },
-      });
+      const response = await fetch(baseUrl, { headers });
       const data = await response.json();
-      const usersList = data.items;
+      const usersList = data.items || [];
 
       const usersWithDetails = await Promise.allSettled(
         usersList.map(async (user) => {
           const userDetailsPromise = fetch(
             `https://api.github.com/users/${user.login}`,
-            {
-              headers: {
-                Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-              },
-            }
+            { headers }
           ).then((res) => res.json());
-
-          const publicCommitsPromise = getPublicCommits(user.login);
-
+          const publicCommitsPromise = fetchPublicCommits(user.login);
           const [userDetails, publicCommits] = await Promise.all([
             userDetailsPromise,
             publicCommitsPromise,
@@ -71,9 +79,8 @@ export default function TopGitHubUsers({ city }) {
 
           return {
             ...user,
-            name: userDetails.name,
+            ...userDetails,
             reposCount: userDetails.public_repos,
-            followers: userDetails.followers,
             publicCommits,
             score: 0.7 * userDetails.followers + 0.3 * publicCommits,
           };
@@ -86,18 +93,16 @@ export default function TopGitHubUsers({ city }) {
           .map((result) => result.value)
           .sort((a, b) => b.score - a.score)
       );
-    }
+    };
 
     fetchTopUsers();
   }, [city]);
 
-
-
-return (
-  <div>
-    <ul>
-      {users.length > 0 &&
-        users.map((user, index) => (
+  return (
+    <div>
+      <ul>
+        {users.length > 0 &&
+          users.map((user, index) => (
             <li
               key={user.id || index}
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -147,9 +152,7 @@ return (
                 </>
               ) : (
                 <div className="flex  items-center ">
-                  <div                     
-                        className="w-12 h-12"
-                      />
+                  <div className="w-12 h-12" />
                 </div>
               )}
             </li>
@@ -157,4 +160,4 @@ return (
       </ul>
     </div>
   );
-              }
+}
