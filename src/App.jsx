@@ -32,7 +32,7 @@ function App() {
           </Link>
 
           <nav className="flex items-center font-Hublot">
-            <ul className="flex space-x-4 sm:space-x-8 text-white ">
+            <ul className="flex space-x-4 sm:space-x-8 text-gray-300 font-bold ">
               <li>
                 <Link to="/" className="">
                   Home
@@ -48,7 +48,7 @@ function App() {
                   About
                 </Link>
               </li>
-              <li className="font-bold">
+              <li className="font-bold text-white">
                 <LoginButton>Log in</LoginButton>
               </li>
             </ul>

@@ -27,7 +27,7 @@ function About() {
 
               <div className="pt-10 max-w-[42rem] px-5">
                 <h1 className="text-left font-Mona font-bold text-white text-4xl leading-20 pb-2  ">
-                  <GoQuestion className="inline align-top text-4xl" /> About
+                  <GoQuestion className="inline align-bottom text-4xl" /> About
                   GeoGit
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
@@ -37,12 +37,12 @@ function About() {
                   offering both a global perspective and a more local viewpoint.{" "}
                   <p className="text-left font-Hublot text-gray-300 text-lg leading-20 pt-2">
                     This project was mainly built to improve my knowledge of
-                    React, Tailwind and API's.
+                    React, Tailwind and API's as well as UI/UX.
                   </p>
                 </p>
 
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
-                  <BsGear className="inline align-top " /> How It Works
+                  <BsGear className="inline align-bottom " /> How It Works
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
                   <h2 className="text-white font-bold text-xl pb-2">
@@ -56,21 +56,21 @@ function About() {
                   </h2>
                   Using the relavent API's, the top 10 developers are compiled
                   across GitHub, GitLab and BitBucket The ranking is based on
-                  followers and public commits this year.
+                  followers, public repositories and public commits this year.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">
                     3 User Insights
                   </h2>
                   Each user has their profile picture, username, full name,
                   followers, public commits this year and number of public
-                  repositories displayed, as well as a link to their GitHub. To
+                  repositories displayed, as well as a link to either their GitHub, GitLab or BitBucket profile. To
                   reduce API usage, only 10 users are displayed.
                 </p>
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
-                  <GoGraph className="inline align-text-top" /> Future Updates
+                  <GoGraph className="inline align-bottom" /> Future Updates
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
                   • Add pageination to display more users at a time
-                  <br /> • Add more locations.
+                  <br /> • Add more locations. <br /> • Add public repositories to ranking criteria.
                 </p>
               </div>
             </div>

@@ -33,7 +33,7 @@ function Home() {
                   <TypingAnimation />
                 </h1>
 
-                <h2 className="h2text pb-6 pointer-events-none  select-none  text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4  ">
+                <h2 className="h2text pb-6  select-none  text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4  ">
                   Start by entering the city you want to rank top developers
                   from. Ranks are based on{" "}
                   <span className="text-white">
@@ -71,10 +71,10 @@ function Home() {
             href="https://github.com/sheeehy"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white font-Hublot leading-12 tracking-wider pb-2 jack-sheehy"
+            className=" font-Hublot leading-12 tracking-wider pb-2 jack-sheehy"
           >
-            <span className="font-bold">Jack Sheehy :) </span> <br />
-            ©2023
+            <span className="text-gray-300 font-bold">Jack Sheehy :) </span> <br />
+           <span className="text-gray-400"> ©2023 </span>
           </a>
         </div>
       </main>
