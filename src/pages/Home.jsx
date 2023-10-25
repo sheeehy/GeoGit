@@ -33,9 +33,9 @@ function Home() {
                   <TypingAnimation />
                 </h1>
 
-                <h2 className="h2text pb-6 pointer-events-none  select-none  text-center font-Hublot text-gray-300 text-xl max-w-[29rem] leading-20 pt-4  ">
+                <h2 className="h2text pb-6 pointer-events-none  select-none  text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4  ">
                   Start by entering the city you want to rank top developers
-                  from, based on{" "}
+                  from. Ranks are based on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
                   </span>{" "}

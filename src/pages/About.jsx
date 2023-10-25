@@ -31,10 +31,10 @@ function About() {
                   GeoGit
                 </h1>
                 <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
-                  GeoGit is a tool designed to provide insights into the GitHub
-                  community around the world. It allows users to rank the top
-                  GitHub users based on location, offering both a global
-                  perspective and a more local viewpoint.{" "}
+                  GeoGit is a tool designed to provide insights into the
+                  software developer community around the world. It allows users
+                  to rank the top software developers based on location,
+                  offering both a global perspective and a more local viewpoint.{" "}
                   <p className="text-left font-Hublot text-gray-300 text-lg leading-20 pt-2">
                     This project was mainly built to improve my knowledge of
                     React, Tailwind and API's.
@@ -54,8 +54,8 @@ function About() {
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">
                     2 Fetch and Display
                   </h2>
-                  Using the GitHub API, the top 10 GitHub users for your
-                  specified location are displayed. The ranking is based on
+                  Using the relavent API's, the top 10 developers are compiled
+                  across GitHub, GitLab and BitBucket The ranking is based on
                   followers and public commits this year.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">
                     3 User Insights

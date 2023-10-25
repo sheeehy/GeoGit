@@ -25,8 +25,8 @@ function Search() {
               Search
             </h1>
             <div className="flex">
-              <p className="font-Hublot text-gray-300 mr-4 max-w-[26rem] leading-[1.7rem]">
-                Start by entering the city you want to rank GitHub users from.
+              <p className="font-Hublot text-gray-300 mr-4 max-w-[24rem] leading-[1.7rem]">
+                Start by entering the city you want to rank developers from.
                 Keep in mind, the results reflect the location users have
                 entered themselves.
               </p>
