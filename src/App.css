@@ -188,16 +188,39 @@ body {
   cursor: pointer;
   overflow: hidden;
   transition: background 0.1s ease-in-out;
+  transition:
+    background 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .get-started-button:hover {
-  background: rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .balance {
   text-wrap: balance;
+}
+.login-button {
+  border: 2px solid rgb(194, 194, 194);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 1);
+
+  transition:
+    background 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.login-button:hover {
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(96, 165, 250, 1);
 }
 
 @keyframes fadeIn {
