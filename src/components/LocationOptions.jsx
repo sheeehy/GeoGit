@@ -1,6 +1,8 @@
 //Array with location options, used in TopGitHubUsers.jsx
 
 export const LOCATION_OPTIONS = [
+
+  //Default Values - first shown in search input.
   {
     value: "San-Francisco",
     label: "San Francisco",
@@ -21,6 +23,11 @@ export const LOCATION_OPTIONS = [
     label: "Barcelona",
     coordinates: [41.385064, 2.173404],
   },
+
+
+
+// European Cities
+
   { value: "Valencia", label: "Valencia", coordinates: [39.469907, -0.376288] },
   { value: "Seville", label: "Seville", coordinates: [37.389092, -5.984459] },
   { value: "Zaragoza", label: "Zaragoza", coordinates: [41.648823, -0.889085] },

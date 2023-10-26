@@ -32,26 +32,29 @@ function App() {
           </Link>
 
           <nav className="flex items-center font-Hublot">
-            <ul className="flex space-x-4 sm:space-x-8 text-gray-300 font-bold ">
-              <li>
-                <Link to="/" className="">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/Search" className="">
-                  Search
-                </Link>
-              </li>
-              <li>
-                <Link to="/About" className="">
-                  About
-                </Link>
-              </li>
-              <li className="font-bold text-white">
-                <LoginButton>Log in</LoginButton>
-              </li>
-            </ul>
+          <ul className="flex space-x-4 sm:space-x-8 text-gray-300 font-bold ">
+  <li>
+    <Link to="/" className="px-4 py-2 block">
+      Home
+    </Link>
+  </li>
+  <li>
+    <Link to="/Search" className="px-4 py-2 block">
+      Search
+    </Link>
+  </li>
+  <li>
+    <Link to="/About" className="px-4 py-2 block">
+      About
+    </Link>
+  </li>
+  <li>
+    <a href="/login" className="px-4 py-2 block font-bold text-white border border-white rounded-xl">
+      <LoginButton>Log in</LoginButton>
+    </a>
+  </li>
+</ul>
+
           </nav>
         </div>
       </header>
