@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TopGithubUsers from "../components/TopGitHubUsers";
 import LocationAutosuggest from "../components/LocationAutosuggest";
 import Cobe from "../components/AutoGlobe";
 import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Search() {
   const [city, setCity] = useState("");
   const [coordinates, setCoordinates] = useState([45, 10]);
+  const navigate = useNavigate(); // <-- Changed this line
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const cityFromURL = params.get("city");
+    if (cityFromURL) {
+      setCity(cityFromURL);
+      // Set coordinates if needed
+    }
+  }, [location]);
+
+  const handleCityChange = (selectedCity, coords) => {
+    setCity(selectedCity);
+    setCoordinates(coords);
+    navigate(`?city=${selectedCity}`);
+  };
 
   return (
     <>
@@ -52,8 +70,7 @@ function Search() {
           <LocationAutosuggest
             selectedCity={city}
             onCityChange={(selectedCity, coords) => {
-              setCity(selectedCity);
-              setCoordinates(coords);
+              handleCityChange(selectedCity, coords);
             }}
           />
         </div>

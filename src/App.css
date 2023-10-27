@@ -196,13 +196,14 @@ body {
 
 .get-started-button:hover {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgb(147, 196, 255);
 }
 
 .balance {
   text-wrap: balance;
 }
 .login-button {
-  border: 2px solid rgb(194, 194, 194);
+  border: 2px solid rgb(184, 184, 184);
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);

@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Select from "react-select";
 import { LOCATION_OPTIONS } from "../components/LocationOptions";
 import { IoSearch } from "react-icons/io5";
+import CreatableSelect from "react-select/creatable";
+import { useNavigate } from "react-router-dom";
 
 //Search input custom styles
 const customStyles = {
   singleValue: (provided) => ({
     ...provided,
     color: "white",
+    maxWidth: "10rem",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   }),
   container: (provided) => ({
     ...provided,
@@ -19,6 +25,10 @@ const customStyles = {
     ...provided,
     color: "white",
     marginTop: "0px",
+    maxWidth: "10rem",
+    textOverflow: "ellipsis", // truncate with ellipsis
+    whiteSpace: "nowrap", // no wrap
+    overflow: "hidden", // hide the overflow
   }),
   menu: (provided) => ({
     ...provided,
@@ -58,9 +68,15 @@ const customStyles = {
 
 //Set loading Icon - needs work -
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
+  const selectRef = useRef();
 
   const filterOption = (option, inputValue) => {
+    if (option.data.__isNew__) {
+      return true;
+    }
     return (
       inputValue.length >= 1 &&
       option.label.toLowerCase().startsWith(inputValue.toLowerCase())
@@ -68,9 +84,13 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
   };
 
   const noOptionsMessage = ({ inputValue }) => {
-    if (inputValue.length < 1) return null; // Don't show any message if less than 3 characters
+    if (inputValue.length < 1) return null;
     return "No Options";
   };
+
+  const selectedValue = LOCATION_OPTIONS.find(
+    (option) => option.value === selectedCity
+  ) || { label: selectedCity, value: selectedCity };
 
   const ValueContainer = ({ children, ...props }) => (
     <div style={{ display: "flex", alignItems: "center", marginLeft: "10px" }}>
@@ -79,12 +99,43 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
     </div>
   );
 
-  const selectRef = React.useRef();
+  const handleChange = (selectedOption) => {
+    if (selectedOption && !selectedOption.__isNew__) {
+      setIsLoading(true);
+      onCityChange(selectedOption.value, selectedOption.coordinates);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 850);
+    } else if (selectedOption && selectedOption.__isNew__) {
+      setIsLoading(true);
+      onCityChange(selectedOption.label, [50, -10]); // assuming coordinates are [0, 0] for new locations
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 850);
+    } else {
+      onCityChange("", [50, 10]);
+      setTimeout(() => selectRef.current.focus(), 0);
+    }
+
+    // Handle navigation here
+    if (selectedOption) {
+      const city = selectedOption.__isNew__
+        ? selectedOption.label
+        : selectedOption.value;
+      navigate(`/Search?city=${city}`);
+    }
+  };
+
+  const handleCreate = (inputValue) => {
+    // Handle navigation or whatever you want to do with the new input value
+    onCityChange(inputValue, [50, 10]);
+    navigate(`/Search?city=${inputValue}`);
+  };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
-        <Select
+        <CreatableSelect
           ref={selectRef}
           placeholder=""
           components={{
@@ -94,29 +145,20 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           styles={customStyles}
           className="basic-single"
           classNamePrefix="select"
-          value={LOCATION_OPTIONS.find(
-            (option) => option.value === selectedCity
-          )}
+          value={selectedValue}
           isClearable={true}
           isSearchable={true}
           isLoading={isLoading}
+          allowCreateWhileLoading={true}
+          formatCreateLabel={(inputValue) => `Try  "${inputValue}"`}
           noOptionsMessage={noOptionsMessage}
           name="location"
           options={LOCATION_OPTIONS}
           filterOption={filterOption}
-          onChange={(selectedOption) => {
-            if (selectedOption) {
-              setIsLoading(true);
-              onCityChange(selectedOption.value, selectedOption.coordinates);
-              setTimeout(() => {
-                setIsLoading(false);
-              }, 850);
-            } else {
-              onCityChange("", [0, 0]);
-              setTimeout(() => selectRef.current.focus(), 0);
-            }
-          }}
+          onChange={handleChange}
+          onCreateOption={handleCreate}
         />
+
         <div
           style={{
             fontFamily: "Hublot-sans",

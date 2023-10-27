@@ -59,7 +59,10 @@ function Home() {
                   </a>
                   !
                 </h2>
-                <Link to="/search" className="get-started-button font-mono">
+                <Link
+                  to="/search"
+                  className="get-started-button font-mono select-none"
+                >
                   <IoSparklesSharp className="inline align-text-top" /> Get
                   Started
                 </Link>

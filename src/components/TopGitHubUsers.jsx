@@ -49,11 +49,13 @@ const fetchPublicCommits = async (username) => {
 
 export default function TopGitHubUsers({ city }) {
   const [users, setUsers] = useState(BLANK_USERS);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     const fetchTopUsers = async () => {
+      setDataLoaded(false);
       if (!city) {
-        setUsers(BLANK_USERS); // Reset to default
+        setUsers(BLANK_USERS);
         return;
       }
       const baseUrl = `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`;
@@ -93,6 +95,7 @@ export default function TopGitHubUsers({ city }) {
           .map((result) => result.value)
           .sort((a, b) => b.score - a.score)
       );
+      setDataLoaded(true);
     };
 
     fetchTopUsers();
@@ -101,7 +104,11 @@ export default function TopGitHubUsers({ city }) {
   return (
     <div>
       <ul>
-        {users.length > 0 &&
+        {dataLoaded && users.length === 0 ? (
+          <div className="font-Hublot text-gray-300 leading-[1.7rem]">
+            No users found for the selected location.
+          </div>
+        ) : (
           users.map((user, index) => (
             <li
               key={user.id || index}
@@ -110,13 +117,13 @@ export default function TopGitHubUsers({ city }) {
             >
               {user.id ? (
                 <>
-                  <div className="flex items-center ">
+                  <div className="flex items-center">
                     <strong>{index + 1}</strong>
                     <a
                       href={user.html_url || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="pl-3 "
+                      className="pl-3"
                     >
                       <img
                         src={user.avatar_url}
@@ -151,12 +158,13 @@ export default function TopGitHubUsers({ city }) {
                   </div>
                 </>
               ) : (
-                <div className="flex items-center ">
+                <div className="flex items-center">
                   <div className="w-12 h-12" />
                 </div>
               )}
             </li>
-          ))}
+          ))
+        )}
       </ul>
     </div>
   );
