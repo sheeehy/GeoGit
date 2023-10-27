@@ -61,13 +61,13 @@ function Cobe({ coordinates = defaultCoordinates }) {
     <div
       style={{
         width: "100%",
-        maxWidth: 600,
+        maxWidth: 650,
         aspectRatio: 1,
         position: "fixed",
         right: 0,
         zIndex: 0,
-        marginTop: "5rem",
-        marginRight: "8rem",
+        marginTop: "4rem",
+        marginRight: "5rem",
       }}
     >
       <canvas
@@ -80,10 +80,6 @@ function Cobe({ coordinates = defaultCoordinates }) {
           transition: "opacity 1s ease",
         }}
       />
-      <div
-        className="flex flex-col md:flex-row justify-center items-center control-buttons"
-        style={{ gap: ".5rem" }}
-      ></div>
     </div>
   );
 }

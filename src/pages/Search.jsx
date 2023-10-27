@@ -39,16 +39,16 @@ function Search() {
         </div>
         <div className="flex flex-col items-start justify-center relative pb-0 px-4 md:px-8 lg:px-32">
           <div className="pt-10 pb-6">
-            <h1 className="font-Mona font-bold text-white text-5xl leading-20 pb-2">
+            <h1 className="font-Mona font-bold text-white text-5xl leading-20 pb-2 fade-in1">
               Search
             </h1>
             <div className="flex">
-              <p className="font-Hublot text-gray-300 mr-4 max-w-[24rem] leading-[1.7rem]">
+              <p className="font-Hublot text-gray-300 mr-4 max-w-[24rem] leading-[1.7rem] fade-in2">
                 Start by entering the city you want to rank developers from.
                 Keep in mind, the results reflect the location users have
                 entered themselves.
               </p>
-              <p className="font-Hublot text-gray-300 hidden md:block">
+              <p className="font-Hublot text-gray-300 hidden md:block fade-in3">
                 <span className="flex items-center mr-4 mb-1">
                   <GoPeople className="text-white" />
                   <span className="ml-2">Followers</span>

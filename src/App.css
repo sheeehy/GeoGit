@@ -86,7 +86,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
 }
 
 .github-user {
@@ -231,6 +231,31 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.fade-in1 {
+  animation: fadeIn ease-in 1;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.fade-in2 {
+  animation: fadeIn ease-in 1;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+.fade-in3 {
+  animation: fadeIn ease-in 1;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+.fade-in-delay {
+  animation: fadeIn ease-in 1;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.3s;
 }
 
 .fade-enter,

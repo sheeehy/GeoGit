@@ -10,7 +10,7 @@ import TypingAnimation from "../components/TypingAnimation";
 function Home() {
   return (
     <>
-      <main className="bg-thegray home-no-scroll">
+      <main className="bg-thegray home-no-scroll fade-in1">
         <div className="min-h-screen flex items-center justify-center relative ">
           {/*Background behind other elemetns */}
           <div className="absolute top-[24rem]  w-[45rem] h-[45rem] bg-blue-300 rounded-full filter blur-5xl opacity-50 animate-blob animation-delay-1"></div>
@@ -18,16 +18,15 @@ function Home() {
 
           <div className="relative">
             {/* Globe behind other elements*/}
-            <div className="absolute flex justify-center globe-position pt-12">
+            <div className="absolute flex justify-center globe-position pt-10">
               <GlobeComponent />
             </div>
             <div className="relative z-10 pt-0 pb-20">
               {/* Other elements */}
 
-              {/*Main content / Hero section
-               */}
+              {/*Main content / Hero section */}
               <div className="HomeContainer ">
-                <h1 className="text-center  lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl max-w-[53rem] ">
+                <h1 className="text-center pb-1  lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl max-w-[53rem] ">
                   Rank the top <span className="pr-10">software</span>{" "}
                   <span className="pl-5">developers</span> in{" "}
                   <TypingAnimation />

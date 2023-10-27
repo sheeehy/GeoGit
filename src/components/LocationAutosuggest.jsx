@@ -146,7 +146,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           className="basic-single"
           classNamePrefix="select"
           value={selectedValue}
-          isClearable={true}
+          isClearable={!!selectedValue.value}
           isSearchable={true}
           isLoading={isLoading}
           allowCreateWhileLoading={true}
