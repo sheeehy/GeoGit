@@ -76,9 +76,10 @@ const TypingAnimation = () => {
       <span
         style={{
           display: isCursorVisible ? "inline-block" : "none",
-          color: "lightgray",
+          color: "white",
           textShadow: "none",
-          transform: "scaleX(0.4)",
+          transform: "scale(0.4, 0.8)",
+          verticalAlign: "top"
         }}
       >
         |
