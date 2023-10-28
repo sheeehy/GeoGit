@@ -73,17 +73,18 @@ const TypingAnimation = () => {
           {char}
         </span>
       ))}
-      <span
-        style={{
-          display: isCursorVisible ? "inline-block" : "none",
-          color: "white",
-          textShadow: "none",
-          transform: "scale(0.4, 0.8)",
-          verticalAlign: "top"
-        }}
-      >
-        |
-      </span>
+      <div style={{ display: "inline-block" }}>
+        <span
+          style={{
+            display: isCursorVisible ? "block" : "none",
+            color: "white",
+            textShadow: "none",
+            transform: "scale(0.25, 1.05)",
+          }}
+        >
+          l
+        </span>
+      </div>
     </span>
   );
 };

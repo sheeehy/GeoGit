@@ -26,9 +26,9 @@ const customStyles = {
     color: "white",
     marginTop: "0px",
     maxWidth: "10rem",
-    textOverflow: "ellipsis", // truncate with ellipsis
-    whiteSpace: "nowrap", // no wrap
-    overflow: "hidden", // hide the overflow
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
   }),
   menu: (provided) => ({
     ...provided,
@@ -40,10 +40,10 @@ const customStyles = {
   }),
   menuList: (provided) => ({
     ...provided,
-    scrollbarWidth: "none", // For Firefox
-    "-ms-overflow-style": "none", // For Internet Explorer and Edge
+    scrollbarWidth: "none",
+    "-ms-overflow-style": "none",
     "&::-webkit-scrollbar": {
-      display: "none", // For Chrome, Safari and Opera
+      display: "none",
     },
   }),
 
@@ -51,14 +51,16 @@ const customStyles = {
     ...provided,
     background: "#070707",
     fontFamily: "Hublot-sans",
-    borderColor: state.isFocused ? "gray" : provided.borderColor,
-    boxShadow: state.isFocused ? "0 0 0 1px gray" : null,
+    borderColor: "white",
+    borderWidth: "1px",
+    boxShadow: state.isFocused ? "0 0 0 1px white" : null,
     color: "white",
     borderRadius: "0.5rem",
     "&:hover": {
       borderColor: "gray",
     },
   }),
+
   option: (provided, state) => ({
     ...provided,
     color: state.isSelected ? "white" : provided.color,
@@ -66,7 +68,6 @@ const customStyles = {
   }),
 };
 
-//Set loading Icon - needs work -
 const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
   const navigate = useNavigate();
 
@@ -108,7 +109,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
       }, 850);
     } else if (selectedOption && selectedOption.__isNew__) {
       setIsLoading(true);
-      onCityChange(selectedOption.label, [50, -10]); // assuming coordinates are [0, 0] for new locations
+      onCityChange(selectedOption.label, [50, -10]);
       setTimeout(() => {
         setIsLoading(false);
       }, 850);
@@ -127,7 +128,6 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
   };
 
   const handleCreate = (inputValue) => {
-    // Handle navigation or whatever you want to do with the new input value
     onCityChange(inputValue, [50, 10]);
     navigate(`/Search?city=${inputValue}`);
   };
@@ -143,7 +143,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
             ValueContainer,
           }}
           styles={customStyles}
-          className="basic-single"
+          className="basic-single "
           classNamePrefix="select"
           value={selectedValue}
           isClearable={!!selectedValue.value}

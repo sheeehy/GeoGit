@@ -11,7 +11,10 @@ function App() {
     const { loginWithRedirect } = useAuth0();
 
     return (
-      <button onClick={() => loginWithRedirect()} style={{}}>
+      <button
+        onClick={() => loginWithRedirect()}
+        style={{ whiteSpace: "nowrap" }}
+      >
         Sign In
       </button>
     );
