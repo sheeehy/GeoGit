@@ -89,7 +89,7 @@ export default function TopGitHubUsers({ city }) {
   }, [city]);
 
   return (
-    <div className="px-2 md:px-0">
+    <div className="px-0 md:px-0">
       {" "}
       {/* padding inline with Search component */}
       <ul>
