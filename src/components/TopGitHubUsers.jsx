@@ -89,10 +89,12 @@ export default function TopGitHubUsers({ city }) {
   }, [city]);
 
   return (
-    <div className="px-4 md:px-0">
+    <div className="">
+      {" "}
+      {/* padding inline with Search component */}
       <ul>
         {dataLoaded && users.length === 0 ? (
-          <div className="font-Hublot text-gray-300 leading-[1.7rem] center-div">No users found :(</div>
+          <div className="font-Hublot text-gray-300 leading-[1.7rem] text-center">No users found :(</div>
         ) : (
           users.map((user, index) => (
             <li key={user.id || index} style={{ animationDelay: `${index * 0.1}s` }} className="github-user">
