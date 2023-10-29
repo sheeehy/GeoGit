@@ -26,11 +26,11 @@ function Home() {
 
               {/*Main content / Hero section */}
               <div className="HomeContainer ">
-                <h1 className="hidden md:block text-center pb-1 lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] max-w-[53rem]">
+                <h1 className="hidden md:block text-center pb-1 lg:pl-6 pointer-events-none select-none customFont text-7xl text-gray-100 leading-[1.1] max-w-[53rem]">
                   Rank the top <span className="pr-10">software</span> <span className="pl-5">developers</span> in <TypingAnimation />
                 </h1>
 
-                <h1 className="md:hidden text-center pb-10 lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] max-w-[53rem]">
+                <h1 className="md:hidden text-center pb-10 lg:pl-6 pointer-events-none select-none px-4 customFont text-3xl text-gray-100 leading-[1.1] max-w-[53rem]">
                   Rank the top software developers by <span className="custom-text-shadow">location</span>.
                 </h1>
 
@@ -58,7 +58,7 @@ function Home() {
                 </h2>
 
                 {/* Display on mobile */}
-                <h2 className="md:hidden pb-6 select-none text-center font-Hublot text-gray-300 text-lg max-w-[24rem] leading-20 pt-2">
+                <h2 className="md:hidden pb-6 select-none text-center font-Hublot text-gray-300 text-lg max-w-[24rem] px-4 leading-20 pt-2">
                   Start by entering the city you want to rank top developers from. Ranks are based on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers{" "}

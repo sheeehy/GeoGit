@@ -79,8 +79,6 @@ body {
 .customFont {
   text-wrap: balance;
   font-weight: 800;
-  font-size: 4.5rem /* 72px */;
-  line-height: 1;
 }
 
 .custom-text-shadow {
