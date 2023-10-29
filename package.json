@@ -12,6 +12,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^2.2.1",
     "@coreui/react": "^5.0.0-alpha.1",
+    "@headlessui/react": "^1.7.17",
     "@tamagui/accordion": "^1.67.0",
     "@vercel/analytics": "^1.0.2",
     "autoprefixer": "^10.4.15",
@@ -22,6 +23,7 @@
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-autosuggest": "^10.1.0",
+    "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
     "react-ga": "^3.3.1",
     "react-icons": "^4.11.0",

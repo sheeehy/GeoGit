@@ -89,6 +89,14 @@ body {
   padding-bottom: 6rem;
 }
 
+.bm-burger-button {
+  color: white;
+}
+
+.bm-item {
+  color: white !important;
+}
+
 .github-user {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.5px);
