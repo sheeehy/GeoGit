@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 
-const NavBar = () => {
+const navBar = () => {
   const LoginButton = () => {
     const { loginWithRedirect } = useAuth0();
     return (
@@ -49,4 +49,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default navBar;
