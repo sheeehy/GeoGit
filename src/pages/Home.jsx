@@ -26,28 +26,20 @@ function Home() {
 
               {/*Main content / Hero section */}
               <div className="HomeContainer ">
-                <h1 className="text-center pb-1  lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1] text-7xl max-w-[53rem] ">
-                  Rank the top <span className="pr-10">software</span>{" "}
-                  <span className="pl-5">developers</span> in{" "}
-                  <TypingAnimation />
+                <h1 className="text-center pb-1   lg:pl-6 pointer-events-none select-none customFont text-gray-100 leading-[1.1]  max-w-[53rem] ">
+                  Rank the top <span className="pr-10">software</span> <span className="pl-5">developers</span> in <TypingAnimation />
                 </h1>
 
                 <h2 className="h2text pb-6  select-none  text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4  ">
-                  Start by entering the city you want to rank top developers
-                  from. Ranks are based on{" "}
+                  Start by entering the city you want to rank top developers from. Ranks are based on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
                   </span>{" "}
                   and{" "}
                   <span className="text-white">
-                    <GoGitPullRequest className="inline align-text-bottom" />{" "}
-                    commits
+                    <GoGitPullRequest className="inline align-text-bottom" /> commits
                   </span>
-                  . Leave a{" "}
-                  <span className="text-white  transition-all duration-300 ease-in-out hover:text-yellow-500  ">
-                    ★
-                  </span>{" "}
-                  on the{" "}
+                  . Leave a <span className="text-white  transition-all duration-300 ease-in-out hover:text-yellow-500  ">★</span> on the{" "}
                   <a
                     href="https://github.com/sheeehy/Geo-Git-v2"
                     target="_blank"
@@ -58,25 +50,15 @@ function Home() {
                   </a>
                   !
                 </h2>
-                <Link
-                  to="/search"
-                  className="get-started-button font-mono select-none"
-                >
-                  <IoSparklesSharp className="inline align-text-top" /> Get
-                  Started
+                <Link to="/search" className="get-started-button font-mono select-none">
+                  <IoSparklesSharp className="inline align-text-top" /> Get Started
                 </Link>
               </div>
             </div>
           </div>
 
-          <a
-            href="https://github.com/sheeehy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className=" font-Hublot leading-12 tracking-wider pb-2 jack-sheehy"
-          >
-            <span className="text-gray-300 font-bold">Jack Sheehy :) </span>{" "}
-            <br />
+          <a href="https://github.com/sheeehy" target="_blank" rel="noopener noreferrer" className=" font-Hublot leading-12 tracking-wider pb-2 jack-sheehy">
+            <span className="text-gray-300 font-bold">Jack Sheehy :) </span> <br />
             <span className="text-gray-400"> ©2023 </span>
           </a>
         </div>

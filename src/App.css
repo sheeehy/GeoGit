@@ -79,14 +79,25 @@ body {
 .customFont {
   text-wrap: balance;
   font-weight: 800;
+  font-size: 4.5rem /* 72px */;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .customFont {
+    font-size: 3rem; /* 40px */
+    margin-bottom: 2rem;
+  }
 }
 
 .HomeContainer {
   display: flex;
+  padding-left: 5px;
+  padding-right: 5px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 6rem;
+  padding-bottom: 7rem;
 }
 
 .bm-burger-button {
