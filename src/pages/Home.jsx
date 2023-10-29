@@ -30,17 +30,17 @@ function Home() {
                   Rank the top <span className="pr-10">software</span> <span className="pl-5">developers</span> in <TypingAnimation />
                 </h1>
 
-                <h1 className="md:hidden text-center pb-10 lg:pl-6 pointer-events-none select-none px-4 customFont text-5xl text-gray-100 leading-[1.1] max-w-[53rem]">
+                <h1 className="md:hidden text-center pb-4 lg:pl-6 pointer-events-none select-none px-4 customFont text-5xl text-gray-100 leading-[1.1] max-w-[53rem]">
                   Rank the top software developers by <span className="custom-text-shadow">location</span>.
                 </h1>
 
                 {/* Display on larger screens */}
                 <h2 className="hidden md:block pb-6 select-none text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4">
-                  Start by entering the city you want to rank top developers from. Ranks are based on
+                  Start by entering the city you want to rank top developers from. Ranks are based on{" "}
                   <span className="text-white">
-                    <GoPeople className="inline align-text-bottom" /> followers
+                    <GoPeople className="inline align-text-bottom" /> followers{" "}
                   </span>
-                  and
+                  and{" "}
                   <span className="text-white">
                     <GoGitPullRequest className="inline align-text-bottom" /> commits
                   </span>
