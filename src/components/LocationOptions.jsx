@@ -1,7 +1,6 @@
 //Array with location options, used in TopGitHubUsers.jsx
 
 export const LOCATION_OPTIONS = [
-
   //Default Values - first shown in search input.
   {
     value: "San-Francisco",
@@ -24,9 +23,7 @@ export const LOCATION_OPTIONS = [
     coordinates: [41.385064, 2.173404],
   },
 
-
-
-// European Cities
+  // European Cities
 
   { value: "Valencia", label: "Valencia", coordinates: [39.469907, -0.376288] },
   { value: "Seville", label: "Seville", coordinates: [37.389092, -5.984459] },
@@ -53,7 +50,7 @@ export const LOCATION_OPTIONS = [
   {
     value: "Frankfurt",
     label: "Frankfurt",
-    coordinates: [50.110924, 8.682127],
+    coordinates: [50.11, 8.68],
   },
   { value: "Rome", label: "Rome", coordinates: [41.902784, 12.496366] },
   { value: "Milan", label: "Milan", coordinates: [45.464204, 9.189982] },
@@ -499,25 +496,6 @@ export const LOCATION_OPTIONS = [
     coordinates: [32.735687, -97.108066],
   },
 
-  { value: "Toronto", label: "Toronto", coordinates: [43.65107, -79.347015] },
-  {
-    value: "Vancouver",
-    label: "Vancouver",
-    coordinates: [49.28273, -123.120735],
-  },
-  {
-    value: "Montreal",
-    label: "Montreal",
-    coordinates: [45.507175, -73.558135],
-  },
-  { value: "Calgary", label: "Calgary", coordinates: [51.044734, -114.071883] },
-  {
-    value: "Edmonton",
-    label: "Edmonton",
-    coordinates: [53.546121, -113.493698],
-  },
-  { value: "Ottawa", label: "Ottawa", coordinates: [45.42153, -75.693187] },
-  { value: "Quebec", label: "Quebec", coordinates: [46.813878, -71.207981] },
   { value: "Sydney", label: "Sydney", coordinates: [-33.865143, 151.2099] },
   {
     value: "Melbourne",
@@ -578,16 +556,7 @@ export const LOCATION_OPTIONS = [
     coordinates: [12.971599, 77.594566],
   },
   { value: "Chennai", label: "Chennai", coordinates: [13.08268, 80.270721] },
-  {
-    value: "Cape-Town",
-    label: "Cape Town",
-    coordinates: [-33.92487, 18.424055],
-  },
-  {
-    value: "Johannesburg",
-    label: "Johannesburg",
-    coordinates: [-26.204103, 28.047305],
-  },
+
   { value: "Durban", label: "Durban", coordinates: [-29.85868, 31.02184] },
   { value: "Pretoria", label: "Pretoria", coordinates: [-25.746111, 28.18805] },
   { value: "Jakarta", label: "Jakarta", coordinates: [-6.208763, 106.845599] },
@@ -614,7 +583,6 @@ export const LOCATION_OPTIONS = [
   { value: "Karachi", label: "Karachi", coordinates: [24.860735, 67.001137] },
   { value: "Istanbul", label: "Istanbul", coordinates: [41.008238, 28.978359] },
   { value: "Dhaka", label: "Dhaka", coordinates: [23.810331, 90.412521] },
-  { value: "Cairo", label: "Cairo", coordinates: [30.04442, 31.235712] },
   { value: "Tehran", label: "Tehran", coordinates: [35.689487, 51.37638] },
   { value: "Baghdad", label: "Baghdad", coordinates: [33.315244, 44.366067] },
   {
@@ -680,4 +648,1240 @@ export const LOCATION_OPTIONS = [
   { value: "Chittagong", label: "Chittagong", coordinates: [22.3569, 91.7832] },
   { value: "Manaus", label: "Manaus", coordinates: [-3.119027, -60.021731] },
   { value: "Lima", label: "Lima", coordinates: [-12.046373, -77.042754] },
+
+  {
+    value: "Bangalore",
+    label: "Bangalore",
+    coordinates: [12.9716, 77.5946],
+  },
+  {
+    value: "Hyderabad",
+    label: "Hyderabad",
+    coordinates: [17.385, 78.4867],
+  },
+  {
+    value: "Ahmedabad",
+    label: "Ahmedabad",
+    coordinates: [23.0225, 72.5714],
+  },
+  {
+    value: "Chennai",
+    label: "Chennai",
+    coordinates: [13.0827, 80.2707],
+  },
+  {
+    value: "Kolkata",
+    label: "Kolkata",
+    coordinates: [22.5726, 88.3639],
+  },
+  {
+    value: "Surat",
+    label: "Surat",
+    coordinates: [21.1702, 72.8311],
+  },
+  {
+    value: "Pune",
+    label: "Pune",
+    coordinates: [18.5204, 73.8567],
+  },
+  {
+    value: "Jaipur",
+    label: "Jaipur",
+    coordinates: [26.9124, 75.7873],
+  },
+  {
+    value: "Lucknow",
+    label: "Lucknow",
+    coordinates: [26.8467, 80.9462],
+  },
+  {
+    value: "Kanpur",
+    label: "Kanpur",
+    coordinates: [26.4499, 80.3319],
+  },
+  {
+    value: "Nagpur",
+    label: "Nagpur",
+    coordinates: [21.1458, 79.0882],
+  },
+  {
+    value: "Indore",
+    label: "Indore",
+    coordinates: [22.7196, 75.8577],
+  },
+  {
+    value: "Thane",
+    label: "Thane",
+    coordinates: [19.2183, 72.9781],
+  },
+  {
+    value: "Bhopal",
+    label: "Bhopal",
+    coordinates: [23.2599, 77.4126],
+  },
+  {
+    value: "Visakhapatnam",
+    label: "Visakhapatnam",
+    coordinates: [17.6868, 83.2185],
+  },
+  {
+    value: "Pimpri-Chinchwad",
+    label: "Pimpri-Chinchwad",
+    coordinates: [18.6298, 73.7997],
+  },
+  {
+    value: "Patna",
+    label: "Patna",
+    coordinates: [25.5941, 85.1376],
+  },
+  {
+    value: "Vadodara",
+    label: "Vadodara",
+    coordinates: [22.3072, 73.1812],
+  },
+  {
+    value: "Ghaziabad",
+    label: "Ghaziabad",
+    coordinates: [28.6692, 77.4538],
+  },
+  {
+    value: "Ludhiana",
+    label: "Ludhiana",
+    coordinates: [30.901, 75.8573],
+  },
+  {
+    value: "Agra",
+    label: "Agra",
+    coordinates: [27.1767, 78.0081],
+  },
+  {
+    value: "Nashik",
+    label: "Nashik",
+    coordinates: [19.9975, 73.7898],
+  },
+  {
+    value: "Faridabad",
+    label: "Faridabad",
+    coordinates: [28.4089, 77.3178],
+  },
+  {
+    value: "Meerut",
+    label: "Meerut",
+    coordinates: [28.9845, 77.7064],
+  },
+  {
+    value: "Rajkot",
+    label: "Rajkot",
+    coordinates: [22.3039, 70.8022],
+  },
+  {
+    value: "Kalyan-Dombivli",
+    label: "Kalyan-Dombivli",
+    coordinates: [19.2424, 73.1207],
+  },
+  {
+    value: "Vasai-Virar",
+    label: "Vasai-Virar",
+    coordinates: [19.3919, 72.8397],
+  },
+  {
+    value: "Varanasi",
+    label: "Varanasi",
+    coordinates: [25.3176, 83.0059],
+  },
+
+  {
+    value: "Toronto",
+    label: "Toronto",
+    coordinates: [43.65107, -79.347015],
+  },
+  {
+    value: "Montreal",
+    label: "Montreal",
+    coordinates: [45.501689, -73.567256],
+  },
+  {
+    value: "Vancouver",
+    label: "Vancouver",
+    coordinates: [49.282729, -123.120738],
+  },
+  {
+    value: "Calgary",
+    label: "Calgary",
+    coordinates: [51.04427, -114.062019],
+  },
+  {
+    value: "Edmonton",
+    label: "Edmonton",
+    coordinates: [53.546124, -113.493822],
+  },
+  {
+    value: "Ottawa",
+    label: "Ottawa",
+    coordinates: [45.42153, -75.697193],
+  },
+  {
+    value: "Quebec-City",
+    label: "Quebec City",
+    coordinates: [46.813878, -71.207981],
+  },
+  {
+    value: "Winnipeg",
+    label: "Winnipeg",
+    coordinates: [49.895136, -97.138374],
+  },
+  {
+    value: "Hamilton",
+    label: "Hamilton",
+    coordinates: [43.25572, -79.871102],
+  },
+  {
+    value: "Kitchener",
+    label: "Kitchener",
+    coordinates: [43.45164, -80.492534],
+  },
+
+  {
+    value: "Victoria",
+    label: "Victoria",
+    coordinates: [48.428421, -123.365644],
+  },
+  {
+    value: "Halifax",
+    label: "Halifax",
+    coordinates: [44.648766, -63.575237],
+  },
+  {
+    value: "Oshawa",
+    label: "Oshawa",
+    coordinates: [43.897545, -78.865719],
+  },
+  {
+    value: "Windsor",
+    label: "Windsor",
+    coordinates: [42.314937, -83.036363],
+  },
+  {
+    value: "Saskatoon",
+    label: "Saskatoon",
+    coordinates: [52.133214, -106.670046],
+  },
+  {
+    value: "Regina",
+    label: "Regina",
+    coordinates: [50.445211, -104.618894],
+  },
+  {
+    value: "Sherbrooke",
+    label: "Sherbrooke",
+    coordinates: [45.400991, -71.899238],
+  },
+  {
+    value: "St.-John's",
+    label: "St.John's",
+    coordinates: [47.561701, -52.712246],
+  },
+  {
+    value: "Barrie",
+    label: "Barrie",
+    coordinates: [44.389356, -79.690331],
+  },
+  {
+    value: "Kelowna",
+    label: "Kelowna",
+    coordinates: [49.895077, -119.484121],
+  },
+  {
+    value: "Abbotsford",
+    label: "Abbotsford",
+    coordinates: [49.050438, -122.30447],
+  },
+  {
+    value: "Sudbury",
+    label: "Sudbury",
+    coordinates: [46.49172, -80.990993],
+  },
+  {
+    value: "Kingston",
+    label: "Kingston",
+    coordinates: [44.231172, -76.486144],
+  },
+  {
+    value: "Saguenay",
+    label: "Saguenay",
+    coordinates: [48.428054, -71.068092],
+  },
+  {
+    value: "Trois-Rivières",
+    label: "Trois-Rivières",
+    coordinates: [46.343231, -72.54009],
+  },
+  {
+    value: "Guelph",
+    label: "Guelph",
+    coordinates: [43.544804, -80.248167],
+  },
+  {
+    value: "Moncton",
+    label: "Moncton",
+    coordinates: [46.087818, -64.778231],
+  },
+  {
+    value: "Brantford",
+    label: "Brantford",
+    coordinates: [43.139387, -80.264425],
+  },
+  {
+    value: "Thunder-Bay",
+    label: "Thunder Bay",
+    coordinates: [48.380895, -89.247682],
+  },
+
+  {
+    value: "Salvador",
+    label: "Salvador",
+    coordinates: [-12.971389, -38.501415],
+  },
+
+  {
+    value: "Fortaleza",
+    label: "Fortaleza",
+    coordinates: [-3.71722, -38.543305],
+  },
+  {
+    value: "Belo-Horizonte",
+    label: "Belo Horizonte",
+    coordinates: [-19.916681, -43.934493],
+  },
+  {
+    value: "Manaus",
+    label: "Manaus",
+    coordinates: [-3.119028, -60.021731],
+  },
+  {
+    value: "Curitiba",
+    label: "Curitiba",
+    coordinates: [-25.424429, -49.265382],
+  },
+  {
+    value: "Recife",
+    label: "Recife",
+    coordinates: [-8.047562, -34.877044],
+  },
+  {
+    value: "Porto Alegre",
+    label: "Porto Alegre",
+    coordinates: [-30.034647, -51.217658],
+  },
+  {
+    value: "Goiânia",
+    label: "Goiânia",
+    coordinates: [-16.686891, -49.264794],
+  },
+  {
+    value: "Belém",
+    label: "Belém",
+    coordinates: [-1.4554, -48.49018],
+  },
+  {
+    value: "Guarulhos",
+    label: "Guarulhos",
+    coordinates: [-23.454315, -46.533652],
+  },
+  {
+    value: "Campinas",
+    label: "Campinas",
+    coordinates: [-22.90556, -47.06083],
+  },
+  {
+    value: "São-Luís",
+    label: "São Luís",
+    coordinates: [-2.52997, -44.3028],
+  },
+  {
+    value: "São-Gonçalo",
+    label: "São Gonçalo",
+    coordinates: [-22.82696, -43.05368],
+  },
+  {
+    value: "Maceió",
+    label: "Maceió",
+    coordinates: [-9.649849, -35.708949],
+  },
+  {
+    value: "Duque-de-Caxias",
+    label: "Duque-de-Caxias",
+    coordinates: [-22.785, -43.3042],
+  },
+  {
+    value: "Campo-Grande",
+    label: "Campo Grande",
+    coordinates: [-20.46971, -54.62012],
+  },
+  {
+    value: "Natal",
+    label: "Natal",
+    coordinates: [-5.79448, -35.211],
+  },
+  {
+    value: "Teresina",
+    label: "Teresina",
+    coordinates: [-5.08964, -42.8096],
+  },
+  {
+    value: "Osasco",
+    label: "Osasco",
+    coordinates: [-23.5329, -46.792],
+  },
+  {
+    value: "Santo-André",
+    label: "Santo André",
+    coordinates: [-23.66371, -46.5383],
+  },
+  {
+    value: "São-Bernardo-do-Campo",
+    label: "São Bernardo do Campo",
+    coordinates: [-23.6898, -46.5648],
+  },
+  {
+    value: "Nova-Iguaçu",
+    label: "Nova Iguaçu",
+    coordinates: [-22.7596, -43.4513],
+  },
+
+  {
+    value: "Ribeirão-Preto",
+    label: "Ribeirão Preto",
+    coordinates: [-21.1767, -47.8208],
+  },
+  {
+    value: "Contagem",
+    label: "Contagem",
+    coordinates: [-19.9321, -44.0538],
+  },
+  {
+    value: "Niterói",
+    label: "Niterói",
+    coordinates: [-22.8836, -43.1033],
+  },
+
+  {
+    value: "Lagos",
+    label: "Lagos",
+    coordinates: [6.524379, 3.379206],
+  },
+  {
+    value: "Cairo",
+    label: "Cairo",
+    coordinates: [30.04442, 31.235712],
+  },
+  {
+    value: "Kinshasa",
+    label: "Kinshasa",
+    coordinates: [-4.441931, 15.266293],
+  },
+  {
+    value: "Johannesburg",
+    label: "Johannesburg",
+    coordinates: [-26.204103, 28.047305],
+  },
+  {
+    value: "Luanda",
+    label: "Luanda",
+    coordinates: [-8.839988, 13.289437],
+  },
+  {
+    value: "Casablanca",
+    label: "Casablanca",
+    coordinates: [33.57311, -7.589843],
+  },
+  {
+    value: "Addis Ababa",
+    label: "Addis Ababa",
+    coordinates: [8.980603, 38.757761],
+  },
+  {
+    value: "Nairobi",
+    label: "Nairobi",
+    coordinates: [-1.292066, 36.821946],
+  },
+  {
+    value: "Dakar",
+    label: "Dakar",
+    coordinates: [14.692778, -17.446667],
+  },
+  {
+    value: "Cape Town",
+    label: "Cape Town",
+    coordinates: [-33.924869, 18.424055],
+  },
+  {
+    value: "Algiers",
+    label: "Algiers",
+    coordinates: [36.753778, 3.058756],
+  },
+  {
+    value: "Abidjan",
+    label: "Abidjan",
+    coordinates: [5.359952, -4.008256],
+  },
+  {
+    value: "Alexandria",
+    label: "Alexandria",
+    coordinates: [31.215641, 29.955266],
+  },
+  {
+    value: "Accra",
+    label: "Accra",
+    coordinates: [5.603717, -0.186964],
+  },
+  {
+    value: "Dar es Salaam",
+    label: "Dar es Salaam",
+    coordinates: [-6.792354, 39.208328],
+  },
+  {
+    value: "Khartoum",
+    label: "Khartoum",
+    coordinates: [15.500654, 32.559899],
+  },
+  {
+    value: "Harare",
+    label: "Harare",
+    coordinates: [-17.825166, 31.03351],
+  },
+  {
+    value: "Durban",
+    label: "Durban",
+    coordinates: [-29.85868, 31.02184],
+  },
+  {
+    value: "Rabat",
+    label: "Rabat",
+    coordinates: [34.020882, -6.84165],
+  },
+  {
+    value: "Pretoria",
+    label: "Pretoria",
+    coordinates: [-25.746111, 28.188056],
+  },
+  {
+    value: "Lusaka",
+    label: "Lusaka",
+    coordinates: [-15.387526, 28.322817],
+  },
+  {
+    value: "Tunis",
+    label: "Tunis",
+    coordinates: [36.806495, 10.181532],
+  },
+  {
+    value: "Maputo",
+    label: "Maputo",
+    coordinates: [-25.891968, 32.605135],
+  },
+  {
+    value: "Bamako",
+    label: "Bamako",
+    coordinates: [12.639232, -7.949944],
+  },
+  {
+    value: "Conakry",
+    label: "Conakry",
+    coordinates: [9.641185, -13.578401],
+  },
+  {
+    value: "Kampala",
+    label: "Kampala",
+    coordinates: [0.347596, 32.58252],
+  },
+  {
+    value: "Mogadishu",
+    label: "Mogadishu",
+    coordinates: [2.046934, 45.318162],
+  },
+  {
+    value: "Nouakchott",
+    label: "Nouakchott",
+    coordinates: [18.089302, -15.97842],
+  },
+  {
+    value: "Niamey",
+    label: "Niamey",
+    coordinates: [13.512778, 2.112778],
+  },
+  {
+    value: "Tripoli",
+    label: "Tripoli",
+    coordinates: [32.887209, 13.191338],
+  },
+
+  {
+    value: "Stuttgart",
+    label: "Stuttgart",
+    coordinates: [48.7758, 9.1829],
+  },
+  {
+    value: "Dusseldorf",
+    label: "Dusseldorf",
+    coordinates: [51.2277, 6.7735],
+  },
+  {
+    value: "Dortmund",
+    label: "Dortmund",
+    coordinates: [51.5136, 7.4653],
+  },
+  {
+    value: "Essen",
+    label: "Essen",
+    coordinates: [51.4566, 7.0123],
+  },
+  {
+    value: "Leipzig",
+    label: "Leipzig",
+    coordinates: [51.3397, 12.3731],
+  },
+  {
+    value: "Bremen",
+    label: "Bremen",
+    coordinates: [53.0793, 8.8017],
+  },
+  {
+    value: "Dresden",
+    label: "Dresden",
+    coordinates: [51.0504, 13.7373],
+  },
+  {
+    value: "Hanover",
+    label: "Hanover",
+    coordinates: [52.3759, 9.732],
+  },
+  {
+    value: "Nuremberg",
+    label: "Nuremberg",
+    coordinates: [49.4521, 11.0767],
+  },
+  {
+    value: "Duisburg",
+    label: "Duisburg",
+    coordinates: [51.4344, 6.7623],
+  },
+  {
+    value: "Bochum",
+    label: "Bochum",
+    coordinates: [51.4818, 7.2197],
+  },
+  {
+    value: "Wuppertal",
+    label: "Wuppertal",
+    coordinates: [51.2562, 7.1508],
+  },
+  {
+    value: "Bielefeld",
+    label: "Bielefeld",
+    coordinates: [52.0302, 8.5325],
+  },
+  {
+    value: "Bonn",
+    label: "Bonn",
+    coordinates: [50.7374, 7.0982],
+  },
+  {
+    value: "Mannheim",
+    label: "Mannheim",
+    coordinates: [49.4875, 8.466],
+  },
+  {
+    value: "Karlsruhe",
+    label: "Karlsruhe",
+    coordinates: [49.0069, 8.4037],
+  },
+  {
+    value: "Munster",
+    label: "Munster",
+    coordinates: [51.9607, 7.6261],
+  },
+  {
+    value: "Wiesbaden",
+    label: "Wiesbaden",
+    coordinates: [50.0826, 8.2493],
+  },
+  {
+    value: "Augsburg",
+    label: "Augsburg",
+    coordinates: [48.3705, 10.8978],
+  },
+  {
+    value: "Gelsenkirchen",
+    label: "Gelsenkirchen",
+    coordinates: [51.5177, 7.0857],
+  },
+
+  {
+    value: "Nantes",
+    label: "Nantes",
+    coordinates: [47.2184, -1.5536],
+  },
+  {
+    value: "Strasbourg",
+    label: "Strasbourg",
+    coordinates: [48.5734, 7.7521],
+  },
+  {
+    value: "Montpellier",
+    label: "Montpellier",
+    coordinates: [43.6108, 3.8767],
+  },
+  {
+    value: "Bordeaux",
+    label: "Bordeaux",
+    coordinates: [44.8378, -0.5792],
+  },
+  {
+    value: "Lille",
+    label: "Lille",
+    coordinates: [50.6293, 3.0573],
+  },
+  {
+    value: "Rennes",
+    label: "Rennes",
+    coordinates: [48.1173, -1.6778],
+  },
+  {
+    value: "Reims",
+    label: "Reims",
+    coordinates: [49.2583, 4.0317],
+  },
+  {
+    value: "Saint-Etienne",
+    label: "Saint-Etienne",
+    coordinates: [45.4397, 4.3872],
+  },
+  {
+    value: "Toulon",
+    label: "Toulon",
+    coordinates: [43.1242, 5.928],
+  },
+  {
+    value: "Grenoble",
+    label: "Grenoble",
+    coordinates: [45.1885, 5.7245],
+  },
+  {
+    value: "Dijon",
+    label: "Dijon",
+    coordinates: [47.322, 5.0415],
+  },
+  {
+    value: "Angers",
+    label: "Angers",
+    coordinates: [47.4784, -0.5632],
+  },
+  {
+    value: "Nîmes",
+    label: "Nîmes",
+    coordinates: [43.8367, 4.3601],
+  },
+  {
+    value: "Villeurbanne",
+    label: "Villeurbanne",
+    coordinates: [45.7719, 4.8902],
+  },
+  {
+    value: "Clermont-Ferrand",
+    label: "Clermont-Ferrand",
+    coordinates: [45.7772, 3.087],
+  },
+  {
+    value: "La-Rochelle",
+    label: "La Rochelle",
+    coordinates: [46.1603, -1.152],
+  },
+  {
+    value: "Le-Mans",
+    label: "Le Mans",
+    coordinates: [48.0061, 0.1996],
+  },
+  {
+    value: "Amiens",
+    label: "Amiens",
+    coordinates: [49.8942, 2.3022],
+  },
+  {
+    value: "Tours",
+    label: "Tours",
+    coordinates: [47.3941, 0.6848],
+  },
+  {
+    value: "Limoges",
+    label: "Limoges",
+    coordinates: [45.8336, 1.2611],
+  },
+  {
+    value: "Genoa",
+    label: "Genoa",
+    coordinates: [44.4057, 8.9463],
+  },
+  {
+    value: "Bologna",
+    label: "Bologna",
+    coordinates: [44.4949, 11.3426],
+  },
+  {
+    value: "Florence",
+    label: "Florence",
+    coordinates: [43.7696, 11.2558],
+  },
+  {
+    value: "Bari",
+    label: "Bari",
+    coordinates: [41.1171, 16.8719],
+  },
+  {
+    value: "Catania",
+    label: "Catania",
+    coordinates: [37.5079, 15.083],
+  },
+  {
+    value: "Venice",
+    label: "Venice",
+    coordinates: [45.4408, 12.3155],
+  },
+  {
+    value: "Verona",
+    label: "Verona",
+    coordinates: [45.4384, 10.9916],
+  },
+  {
+    value: "Messina",
+    label: "Messina",
+    coordinates: [38.1938, 15.554],
+  },
+  {
+    value: "Padua",
+    label: "Padua",
+    coordinates: [45.4064, 11.8768],
+  },
+  {
+    value: "Trieste",
+    label: "Trieste",
+    coordinates: [45.6495, 13.7768],
+  },
+  {
+    value: "Taranto",
+    label: "Taranto",
+    coordinates: [40.4644, 17.247],
+  },
+  {
+    value: "Brescia",
+    label: "Brescia",
+    coordinates: [45.5416, 10.2118],
+  },
+  {
+    value: "Parma",
+    label: "Parma",
+    coordinates: [44.8015, 10.3279],
+  },
+  {
+    value: "Prato",
+    label: "Prato",
+    coordinates: [43.8777, 11.1022],
+  },
+  {
+    value: "Modena",
+    label: "Modena",
+    coordinates: [44.6471, 10.9252],
+  },
+  {
+    value: "Reggio-Emilia",
+    label: "Reggio Emilia",
+    coordinates: [44.6983, 10.6299],
+  },
+  {
+    value: "Cagliari",
+    label: "Cagliari",
+    coordinates: [39.2238, 9.1217],
+  },
+  {
+    value: "Salerno",
+    label: "Salerno",
+    coordinates: [40.6824, 14.7681],
+  },
+  {
+    value: "Pescara",
+    label: "Pescara",
+    coordinates: [42.464, 14.2102],
+  },
+  {
+    value: "Terni",
+    label: "Terni",
+    coordinates: [42.5623, 12.6425],
+  },
+
+  {
+    value: "Zaragoza",
+    label: "Zaragoza",
+    coordinates: [41.6488, -0.8891],
+  },
+  {
+    value: "Málaga",
+    label: "Málaga",
+    coordinates: [36.7213, -4.4214],
+  },
+  {
+    value: "Murcia",
+    label: "Murcia",
+    coordinates: [37.9922, -1.1307],
+  },
+  {
+    value: "Palma",
+    label: "Palma",
+    coordinates: [39.5696, 2.6502],
+  },
+  {
+    value: "Las-Palmas",
+    label: "Las Palmas",
+    coordinates: [28.1235, -15.4363],
+  },
+  {
+    value: "Bilbao",
+    label: "Bilbao",
+    coordinates: [43.263, -2.934],
+  },
+
+  {
+    value: "Lisbon",
+    label: "Lisbon",
+    coordinates: [38.7223, -9.1393],
+  },
+  {
+    value: "Porto",
+    label: "Porto",
+    coordinates: [41.1579, -8.6291],
+  },
+  {
+    value: "Vila-Nova-de-Gaia",
+    label: "Vila Nova de Gaia",
+    coordinates: [41.133, -8.6168],
+  },
+  {
+    value: "Amadora",
+    label: "Amadora",
+    coordinates: [38.7523, -9.2322],
+  },
+  {
+    value: "Braga",
+    label: "Braga",
+    coordinates: [41.5515, -8.423],
+  },
+  {
+    value: "Funchal",
+    label: "Funchal",
+    coordinates: [32.6669, -16.9241],
+  },
+  {
+    value: "Coimbra",
+    label: "Coimbra",
+    coordinates: [40.2033, -8.4103],
+  },
+  {
+    value: "Setúbal",
+    label: "Setúbal",
+    coordinates: [38.5233, -8.89],
+  },
+  {
+    value: "Almada",
+    label: "Almada",
+    coordinates: [38.6762, -9.1651],
+  },
+  {
+    value: "Agualva-Cacém",
+    label: "Agualva-Cacém",
+    coordinates: [38.7708, -9.2978],
+  },
+
+  {
+    value: "Leeds",
+    label: "Leeds",
+    coordinates: [53.8008, -1.5491],
+  },
+  {
+    value: "Manchester",
+    label: "Manchester",
+    coordinates: [53.4808, -2.2426],
+  },
+  {
+    value: "Sheffield",
+    label: "Sheffield",
+    coordinates: [53.3811, -1.4701],
+  },
+  {
+    value: "Bristol",
+    label: "Bristol",
+    coordinates: [51.4545, -2.5879],
+  },
+  {
+    value: "Edinburgh",
+    label: "Edinburgh",
+    coordinates: [55.9533, -3.1883],
+  },
+  {
+    value: "Cardiff",
+    label: "Cardiff",
+    coordinates: [51.4816, -3.1791],
+  },
+  {
+    value: "Leicester",
+    label: "Leicester",
+    coordinates: [52.6369, -1.1398],
+  },
+  {
+    value: "Coventry",
+    label: "Coventry",
+    coordinates: [52.4068, -1.5197],
+  },
+  {
+    value: "Nottingham",
+    label: "Nottingham",
+    coordinates: [52.9548, -1.1581],
+  },
+  {
+    value: "Newcastle",
+    label: "Newcastle",
+    coordinates: [54.9784, -1.6174],
+  },
+  {
+    value: "Southampton",
+    label: "Southampton",
+    coordinates: [50.9097, -1.4044],
+  },
+
+  {
+    value: "Copenhagen",
+    label: "Copenhagen",
+    coordinates: [55.6761, 12.5683],
+  },
+  {
+    value: "Aarhus",
+    label: "Aarhus",
+    coordinates: [56.1629, 10.2039],
+  },
+  {
+    value: "Odense",
+    label: "Odense",
+    coordinates: [55.4038, 10.4024],
+  },
+  {
+    value: "Aalborg",
+    label: "Aalborg",
+    coordinates: [57.0488, 9.9217],
+  },
+  {
+    value: "Esbjerg",
+    label: "Esbjerg",
+    coordinates: [55.4764, 8.4594],
+  },
+
+  {
+    value: "Oslo",
+    label: "Oslo",
+    coordinates: [59.9139, 10.7522],
+  },
+  {
+    value: "Bergen",
+    label: "Bergen",
+    coordinates: [60.3913, 5.3221],
+  },
+  {
+    value: "Trondheim",
+    label: "Trondheim",
+    coordinates: [63.4305, 10.3951],
+  },
+  {
+    value: "Stavanger",
+    label: "Stavanger",
+    coordinates: [58.9699756, 5.7331073],
+  },
+  {
+    value: "Drammen",
+    label: "Drammen",
+    coordinates: [59.7439, 10.2045],
+  },
+
+  {
+    value: "Helsinki",
+    label: "Helsinki",
+    coordinates: [60.1695, 24.9354],
+  },
+  {
+    value: "Espoo",
+    label: "Espoo",
+    coordinates: [60.2055, 24.6559],
+  },
+  {
+    value: "Tampere",
+    label: "Tampere",
+    coordinates: [61.4982, 23.7608],
+  },
+  {
+    value: "Vantaa",
+    label: "Vantaa",
+    coordinates: [60.2934, 25.0402],
+  },
+  {
+    value: "Oulu",
+    label: "Oulu",
+    coordinates: [65.0121, 25.465],
+  },
+
+  {
+    value: "Moscow",
+    label: "Moscow",
+    coordinates: [55.7558, 37.6176],
+  },
+  {
+    value: "Saint-Petersburg",
+    label: "Saint Petersburg",
+    coordinates: [59.9343, 30.3351],
+  },
+  {
+    value: "Kiev",
+    label: "Kiev",
+    coordinates: [50.4501, 30.5234],
+  },
+  {
+    value: "Bucharest",
+    label: "Bucharest",
+    coordinates: [44.4268, 26.1025],
+  },
+  {
+    value: "Minsk",
+    label: "Minsk",
+    coordinates: [53.9045, 27.5615],
+  },
+  {
+    value: "Warsaw",
+    label: "Warsaw",
+    coordinates: [52.2297, 21.0122],
+  },
+  {
+    value: "Budapest",
+    label: "Budapest",
+    coordinates: [47.4979, 19.0402],
+  },
+  {
+    value: "Prague",
+    label: "Prague",
+    coordinates: [50.0755, 14.4378],
+  },
+  {
+    value: "Sofia",
+    label: "Sofia",
+    coordinates: [42.6977, 23.3219],
+  },
+  {
+    value: "Belgrade",
+    label: "Belgrade",
+    coordinates: [44.7866, 20.4489],
+  },
+  {
+    value: "Bratislava",
+    label: "Bratislava",
+    coordinates: [48.1486, 17.1077],
+  },
+  {
+    value: "Tallinn",
+    label: "Tallinn",
+    coordinates: [59.437, 24.7536],
+  },
+  {
+    value: "Riga",
+    label: "Riga",
+    coordinates: [56.9496, 24.1052],
+  },
+  {
+    value: "Vilnius",
+    label: "Vilnius",
+    coordinates: [54.6872, 25.2797],
+  },
+  {
+    value: "Zagreb",
+    label: "Zagreb",
+    coordinates: [45.815, 15.9819],
+  },
+  {
+    value: "Chisinau",
+    label: "Chisinau",
+    coordinates: [47.0105, 28.8638],
+  },
+  {
+    value: "Ljubljana",
+    label: "Ljubljana",
+    coordinates: [46.0569, 14.5058],
+  },
+  {
+    value: "Podgorica",
+    label: "Podgorica",
+    coordinates: [42.4304, 19.2594],
+  },
+  {
+    value: "Sarajevo",
+    label: "Sarajevo",
+    coordinates: [43.8563, 18.4131],
+  },
+  {
+    value: "Skopje",
+    label: "Skopje",
+    coordinates: [41.9973, 21.428],
+  },
+  {
+    value: "Tirana",
+    label: "Tirana",
+    coordinates: [41.3275, 19.8187],
+  },
+  {
+    value: "Vaduz",
+    label: "Vaduz",
+    coordinates: [47.141, 9.5209],
+  },
+  {
+    value: "Reykjavik",
+    label: "Reykjavik",
+    coordinates: [64.1466, -21.9426],
+  },
+  {
+    value: "San-Marino",
+    label: "San Marino",
+    coordinates: [43.9424, 12.4578],
+  },
+  {
+    value: "Andorra-la-Vella",
+    label: "Andorra la Vella",
+    coordinates: [42.5063, 1.5218],
+  },
+  {
+    value: "Monaco",
+    label: "Monaco",
+    coordinates: [43.7384, 7.4246],
+  },
+  {
+    value: "Astana",
+    label: "Astana",
+    coordinates: [51.1605, 71.4704],
+  },
+  {
+    value: "Tbilisi",
+    label: "Tbilisi",
+    coordinates: [41.7151, 44.8271],
+  },
+  {
+    value: "Yerevan",
+    label: "Yerevan",
+    coordinates: [40.1792, 44.4991],
+  },
+  {
+    value: "Baku",
+    label: "Baku",
+    coordinates: [40.4093, 49.8671],
+  },
 ];

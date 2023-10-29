@@ -51,7 +51,7 @@ const customStyles = {
     ...provided,
     background: "#070707",
     fontFamily: "Hublot-sans",
-    borderColor: "white",
+    borderColor: "lightgray",
     borderWidth: "1px",
     boxShadow: state.isFocused ? "0 0 0 1px white" : null,
     color: "white",
@@ -78,10 +78,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
     if (option.data.__isNew__) {
       return true;
     }
-    return (
-      inputValue.length >= 1 &&
-      option.label.toLowerCase().startsWith(inputValue.toLowerCase())
-    );
+    return inputValue.length >= 1 && option.label.toLowerCase().startsWith(inputValue.toLowerCase());
   };
 
   const noOptionsMessage = ({ inputValue }) => {
@@ -89,9 +86,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
     return "No Options";
   };
 
-  const selectedValue = LOCATION_OPTIONS.find(
-    (option) => option.value === selectedCity
-  ) || { label: selectedCity, value: selectedCity };
+  const selectedValue = LOCATION_OPTIONS.find((option) => option.value === selectedCity) || { label: selectedCity, value: selectedCity };
 
   const ValueContainer = ({ children, ...props }) => (
     <div style={{ display: "flex", alignItems: "center", marginLeft: "10px" }}>
@@ -120,9 +115,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
 
     // Handle navigation here
     if (selectedOption) {
-      const city = selectedOption.__isNew__
-        ? selectedOption.label
-        : selectedOption.value;
+      const city = selectedOption.__isNew__ ? selectedOption.label : selectedOption.value;
       navigate(`/Search?city=${city}`);
     }
   };

@@ -4,8 +4,7 @@ import { request, gql } from "graphql-request";
 
 const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
-  avatar_url:
-    "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
+  avatar_url: "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
   login: "GeoGit User",
   name: "",
   followers: "0",
@@ -33,14 +32,8 @@ const fetchPublicCommits = async (username) => {
   };
 
   try {
-    const data = await request(
-      "https://api.github.com/graphql",
-      query,
-      variables,
-      headers
-    );
-    return data.user.contributionsCollection.contributionCalendar
-      .totalContributions;
+    const data = await request("https://api.github.com/graphql", query, variables, headers);
+    return data.user.contributionsCollection.contributionCalendar.totalContributions;
   } catch (error) {
     console.error(`Failed to get commit count for ${username}`, error);
     return 0;
@@ -69,15 +62,9 @@ export default function TopGitHubUsers({ city }) {
 
       const usersWithDetails = await Promise.allSettled(
         usersList.map(async (user) => {
-          const userDetailsPromise = fetch(
-            `https://api.github.com/users/${user.login}`,
-            { headers }
-          ).then((res) => res.json());
+          const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
           const publicCommitsPromise = fetchPublicCommits(user.login);
-          const [userDetails, publicCommits] = await Promise.all([
-            userDetailsPromise,
-            publicCommitsPromise,
-          ]);
+          const [userDetails, publicCommits] = await Promise.all([userDetailsPromise, publicCommitsPromise]);
 
           return {
             ...user,
@@ -102,50 +89,31 @@ export default function TopGitHubUsers({ city }) {
   }, [city]);
 
   return (
-    <div>
+    <div className="px-4 md:px-0">
       <ul>
         {dataLoaded && users.length === 0 ? (
-          <div className="font-Hublot text-gray-300 leading-[1.7rem]">
-            No users found for the selected location.
-          </div>
+          <div className="font-Hublot text-gray-300 leading-[1.7rem] center-div">No users found :(</div>
         ) : (
           users.map((user, index) => (
-            <li
-              key={user.id || index}
-              style={{ animationDelay: `${index * 0.1}s` }}
-              className="github-user"
-            >
+            <li key={user.id || index} style={{ animationDelay: `${index * 0.1}s` }} className="github-user">
               {user.id ? (
                 <>
-                  <div className="flex items-center">
+                  <div className="flex items-center mb-2 md:mb-0">
                     <strong>{index + 1}</strong>
-                    <a
-                      href={user.html_url || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pl-3"
-                    >
-                      <img
-                        src={user.avatar_url}
-                        alt={user.login}
-                        className="w-12 h-12 rounded-full"
-                      />
+                    <a href={user.html_url || "#"} target="_blank" rel="noopener noreferrer" className="pl-3">
+                      <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
                     </a>
                     <a
                       href={user.html_url || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[10rem] pl-3 font-bold"
+                      className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[10rem] pl-3 font-bold"
                     >
                       {user.login}
                     </a>
-                    {user.name && (
-                      <div className="hidden md:block max-w-[8rem] whitespace-nowrap overflow-hidden overflow-ellipsis text-gray-300 pl-2">
-                        {user.name}
-                      </div>
-                    )}
+                    {user.name && <div className="hidden md:block max-w-[8rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis text-gray-300 pl-2">{user.name}</div>}
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 md:gap-2">
                     <div className="flex items-center gap-2 min-w-[3rem]">
                       <GoPeople /> {user.followers}
                     </div>
