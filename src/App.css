@@ -83,11 +83,10 @@ body {
   line-height: 1;
 }
 
-@media (max-width: 768px) {
-  .customFont {
-    font-size: 3rem; /* 40px */
-    margin-bottom: 2rem;
-  }
+.custom-text-shadow {
+  text-shadow:
+    0 0 5px lightskyblue,
+    0 0 10px lightskyblue;
 }
 
 .HomeContainer {
