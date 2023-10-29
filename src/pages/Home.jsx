@@ -34,38 +34,42 @@ function Home() {
                   Rank the top software developers by <span className="custom-text-shadow">location</span>.
                 </h1>
 
-                <h2 className="h2text pb-6  select-none  text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4  ">
-                  Start by entering the city you want to rank top developers from. Ranks are based on{" "}
+                {/* Display on larger screens */}
+                <h2 className="hidden md:block pb-6 select-none text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4">
+                  Start by entering the city you want to rank top developers from. Ranks are based on
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
-                  </span>{" "}
-                  and{" "}
+                  </span>
+                  and
                   <span className="text-white">
                     <GoGitPullRequest className="inline align-text-bottom" /> commits
                   </span>
-                  . Leave a <span className="text-white  transition-all duration-300 ease-in-out hover:text-yellow-500  ">★</span> on the{" "}
+                  . Leave a <span className="text-white transition-all duration-300 ease-in-out hover:text-yellow-500">★</span> on the
                   <a
                     href="https://github.com/sheeehy/Geo-Git-v2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition duration-100 ease-in-out hover:text-gray-400 font-bold text-white"
                   >
+                    {" "}
                     repo
                   </a>
                   !
                 </h2>
 
-                <h2 className=" pb-6  select-none  text-center font-Hublot text-gray-300 text-sm max-w-[36rem] leading-20 pt-4  ">
+                {/* Display on mobile */}
+                <h2 className="md:hidden pb-6 select-none text-center font-Hublot text-gray-300 text-lg max-w-[24rem] leading-20 pt-2">
                   Start by entering the city you want to rank top developers from. Ranks are based on{" "}
                   <span className="text-white">
-                    <GoPeople className="inline align-text-bottom" /> followers
-                  </span>{" "}
+                    <GoPeople className="inline align-text-bottom" /> followers{" "}
+                  </span>
                   and{" "}
                   <span className="text-white">
                     <GoGitPullRequest className="inline align-text-bottom" /> commits
                   </span>
                   .
                 </h2>
+
                 <Link to="/search" className="get-started-button font-mono select-none">
                   <IoSparklesSharp className="inline align-text-top" /> Get Started
                 </Link>
