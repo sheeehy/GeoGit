@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { PulseLoader } from "react-spinners";
 import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
 
@@ -14,6 +15,7 @@ const BLANK_USERS = [...Array(10)].map((_, idx) => ({
 }));
 
 const fetchPublicCommits = async (username) => {
+  // GraphQL query for fetching public commits
   const query = gql`
     query ($username: String!) {
       user(login: $username) {
@@ -43,23 +45,29 @@ const fetchPublicCommits = async (username) => {
 export default function TopGitHubUsers({ city }) {
   const [users, setUsers] = useState(BLANK_USERS);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    const fetchTopUsers = async () => {
-      setDataLoaded(false);
-      if (!city) {
-        setUsers(BLANK_USERS);
-        return;
-      }
-      const baseUrl = `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10`;
-      const headers = {
-        Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
-      };
+  const fetchTopUsers = async (pageNumber) => {
+    setDataLoaded(false);
+    // Handling if city is not provided
+    if (!city) {
+      setUsers(BLANK_USERS);
+      setDataLoaded(true);
+      return;
+    }
 
+    // Fetching top GitHub users by city
+    const baseUrl = `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10&page=${pageNumber}`;
+    const headers = {
+      Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+    };
+
+    try {
       const response = await fetch(baseUrl, { headers });
       const data = await response.json();
       const usersList = data.items || [];
 
+      // Fetching additional details for each user
       const usersWithDetails = await Promise.allSettled(
         usersList.map(async (user) => {
           const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
@@ -76,22 +84,41 @@ export default function TopGitHubUsers({ city }) {
         })
       );
 
-      setUsers(
-        usersWithDetails
+      // Updating state with fetched users
+      setUsers((prevUsers) => [
+        ...prevUsers.slice(0, (pageNumber - 1) * 10),
+        ...usersWithDetails
           .filter((result) => result.status === "fulfilled")
           .map((result) => result.value)
-          .sort((a, b) => b.score - a.score)
-      );
+          .sort((a, b) => b.score - a.score),
+      ]);
+    } catch (error) {
+      console.error("An error occurred while fetching data", error);
+    } finally {
       setDataLoaded(true);
-    };
+    }
+  };
 
-    fetchTopUsers();
+  useEffect(() => {
+    setPage(1);
+    setUsers(BLANK_USERS);
+    fetchTopUsers(1);
   }, [city]);
 
+  const loadMoreUsers = () => {
+    setPage((prevPage) => {
+      const newPage = prevPage + 1;
+      if (newPage <= 2) {
+        fetchTopUsers(newPage);
+        return newPage;
+      } else {
+        alert("Please sign in to continue.");
+        return prevPage;
+      }
+    });
+  };
   return (
     <div className="px-0 md:px-0">
-      {" "}
-      {/* padding inline with Search component */}
       <ul>
         {dataLoaded && users.length === 0 ? (
           <div className="font-Hublot text-gray-300 leading-[1.7rem] text-center">No users found :(</div>
@@ -136,6 +163,18 @@ export default function TopGitHubUsers({ city }) {
           ))
         )}
       </ul>
+      {!dataLoaded ? (
+        <div className="text-center width-1rem">
+          <PulseLoader color={"gray"} size={7} loading={!dataLoaded} />
+        </div>
+      ) : (
+        city &&
+        users.length > 0 && (
+          <button onClick={loadMoreUsers} className="font-mono select-none show-more-button mx-auto block">
+            Show More
+          </button>
+        )
+      )}
     </div>
   );
 }

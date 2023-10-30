@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
-import Select from "react-select";
 import { LOCATION_OPTIONS } from "../components/LocationOptions";
 import { IoSearch } from "react-icons/io5";
 import CreatableSelect from "react-select/creatable";
 import { useNavigate } from "react-router-dom";
+import PulseLoader from "react-spinners/PulseLoader";
 
 //Search input custom styles
 const customStyles = {
@@ -119,15 +119,18 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
       navigate(`/Search?city=${city}`);
     }
   };
-
   const handleCreate = (inputValue) => {
+    setIsLoading(true); // Set isLoading to true when a new option is created
     onCityChange(inputValue, [50, 10]);
+    setTimeout(() => {
+      setIsLoading(false); // Set isLoading back to false
+    }, 850);
     navigate(`/Search?city=${inputValue}`);
   };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <div>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <CreatableSelect
           ref={selectRef}
           placeholder=""
@@ -136,12 +139,11 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
             ValueContainer,
           }}
           styles={customStyles}
-          className="basic-single "
+          className="basic-single pb-4"
           classNamePrefix="select"
           value={selectedValue}
           isClearable={!!selectedValue.value}
           isSearchable={true}
-          isLoading={isLoading}
           allowCreateWhileLoading={true}
           formatCreateLabel={(inputValue) => `Try  "${inputValue}"`}
           noOptionsMessage={noOptionsMessage}
@@ -151,18 +153,22 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
           onChange={handleChange}
           onCreateOption={handleCreate}
         />
-
-        <div
-          style={{
-            fontFamily: "Hublot-sans",
-            color: "hsl(0, 0%, 40%)",
-            display: "inline-block",
-            fontSize: 12,
-            fontStyle: "italic",
-            marginTop: "1rem",
-          }}
-        ></div>
+        {isLoading && (
+          <div className="text-center pb-4" style={{ marginLeft: "1rem" }}>
+            <PulseLoader color={"gray"} size={7} loading={isLoading} />
+          </div>
+        )}
       </div>
+      <div
+        style={{
+          fontFamily: "Hublot-sans",
+          color: "hsl(0, 0%, 40%)",
+          display: "inline-block",
+          fontSize: 12,
+          fontStyle: "italic",
+          marginTop: "1rem",
+        }}
+      ></div>
     </div>
   );
 };
