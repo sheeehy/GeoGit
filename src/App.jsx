@@ -1,4 +1,5 @@
 import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
@@ -6,23 +7,60 @@ import About from "./pages/About";
 import GeoGitIcon from "./assets/GeoGitIcon.png";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function App() {
-  const LoginButton = () => {
-    const { loginWithRedirect } = useAuth0();
+const CLIENT_ID = "502ae01831b11391d1ee";
 
-    return (
-      <button onClick={() => loginWithRedirect()} style={{ whiteSpace: "nowrap" }}>
-        Sign In
-      </button>
-    );
-  };
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
+
+  useEffect(() => {
+    setIsAuthenticated(!!localStorage.getItem("accessToken"));
+  }, []);
+
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const codeParam = urlParams.get("code");
+
+    if (codeParam && localStorage.getItem("accessToken") === null) {
+      async function getAccessToken() {
+        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
+          method: "GET",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            if (data.access_token) {
+              localStorage.setItem("accessToken", data.access_token);
+              setIsAuthenticated(true);
+            }
+          });
+      }
+      getAccessToken();
+    }
+  }, []);
+
+  async function getUserData() {
+    await fetch("http://localhost:4000/getUserData", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }
+
+  function loginWithGithub() {
+    window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID);
+  }
+
   return (
     <Router>
-      {/* Display GeoGit icon on small screens */}
-      <div className="block sm:hidden text-center mb-4">
-        <img src={GeoGitIcon} alt="GeoGit Icon" className="GeoIcon mx-auto w-24" />
-      </div>
-
       <header className="bg-transparent py-4">
         <div className="container mx-auto pt-4 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center z-50">
           <Link to="/" className="flex items-center space-x-3 mb-4 sm:mb-0">
@@ -46,11 +84,26 @@ function App() {
                   About
                 </Link>
               </li>
-              <li>
-                <a href="/login" className="px-2 sm:px-4 py-2 block font-bold text-white login-button">
-                  <LoginButton />
-                </a>
-              </li>
+
+              {isAuthenticated ? (
+                <>
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("accessToken");
+                      setIsAuthenticated(false);
+                    }}
+                    className="px-2 sm:px-4 py-2 block font-bold text-white login-button"
+                  >
+                    Log Out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button onClick={loginWithGithub} className="px-2 sm:px-4 py-2 block font-bold text-white login-button">
+                    Sign In
+                  </button>
+                </>
+              )}
             </ul>
           </nav>
         </div>
