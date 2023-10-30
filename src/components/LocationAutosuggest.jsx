@@ -20,6 +20,7 @@ const customStyles = {
     marginBottom: "0rem",
     fontFamily: "Hublot-sans",
     width: "15rem",
+    zIndex: 1000,
   }),
   input: (provided) => ({
     ...provided,
@@ -42,6 +43,7 @@ const customStyles = {
     ...provided,
     scrollbarWidth: "none",
     "-ms-overflow-style": "none",
+
     "&::-webkit-scrollbar": {
       display: "none",
     },
@@ -139,7 +141,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
             ValueContainer,
           }}
           styles={customStyles}
-          className="basic-single pb-4"
+          className="basic-single pb-4 fade-in1"
           classNamePrefix="select"
           value={selectedValue}
           isClearable={!!selectedValue.value}
