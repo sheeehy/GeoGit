@@ -18,53 +18,35 @@ function About() {
           <div className="relative">
             <div className="relative z-10 pt-5 pb-20">
               <div className="flex justify-center">
-                <img
-                  src={GeoGitIcon}
-                  alt="GeoGit Icon"
-                  className="max-w-smallish pb-3"
-                />
+                <img src={GeoGitIcon} alt="GeoGit Icon" className="max-w-smallish pb-3" />
               </div>
 
               <div className="pt-10 max-w-[42rem] px-5">
                 <h1 className="text-left font-Mona font-bold text-white text-4xl leading-20 pb-2  ">
-                  <GoQuestion className="inline align-bottom text-4xl" /> About
-                  GeoGit
+                  <GoQuestion className="inline align-bottom text-4xl" /> About GeoGit
                 </h1>
-                <p className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
-                  GeoGit is a tool designed to provide insights into the
-                  software developer community around the world. It allows users
-                  to rank the top software developers based on location,
-                  offering both a global perspective and a more local viewpoint.{" "}
+                <div className="  text-left font-Hublot text-gray-300 text-lg leading-20 pt-4 pb-4 ">
+                  GeoGit is a tool designed to provide insights into the software developer community around the world. It allows users to rank the top software developers based on
+                  location, offering both a global perspective and a more local viewpoint.{" "}
                   <p className="text-left font-Hublot text-gray-300 text-lg leading-20 pt-2">
-                    This project was mainly built to improve my knowledge of
-                    React, Tailwind and API's as well as UI/UX.
+                    This project was mainly built to improve my knowledge of React, Tailwind and API's as well as UI/UX.
                   </p>
-                </p>
+                </div>
 
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
                   <BsGear className="inline align-bottom " /> How It Works
                 </h1>
-                <p className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
-                  <h2 className="text-white font-bold text-xl pb-2">
-                    1 Choose a City
-                  </h2>
-                  Start by entering your desired city into the search box. For
-                  now, it just includes cities. Keep in mind, the results
-                  reflect the location users have entered themselves.
-                  <h2 className="text-white font-bold text-xl pb-2 pt-4">
-                    2 Fetch and Display
-                  </h2>
-                  Using the relavent API's, the top 10 developers are compiled
-                  across GitHub, GitLab and BitBucket The ranking is based on
-                  followers, public repositories and public commits this year.
-                  <h2 className="text-white font-bold text-xl pb-2 pt-4">
-                    3 User Insights
-                  </h2>
-                  Each user has their profile picture, username, full name,
-                  followers, public commits this year and number of public
-                  repositories displayed, as well as a link to either their GitHub, GitLab or BitBucket profile. To
-                  reduce API usage, only 10 users are displayed.
-                </p>
+                <div className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
+                  <h2 className="text-white font-bold text-xl pb-2">1 Choose a City</h2>
+                  Start by entering your desired city into the search box. For now, it just includes cities. Keep in mind, the results reflect the location users have entered
+                  themselves.
+                  <h2 className="text-white font-bold text-xl pb-2 pt-4">2 Fetch and Display</h2>
+                  Using the relavent API's, the top 10 developers are compiled across GitHub, GitLab and BitBucket The ranking is based on followers, public repositories and public
+                  commits this year.
+                  <h2 className="text-white font-bold text-xl pb-2 pt-4">3 User Insights</h2>
+                  Each user has their profile picture, username, full name, followers, public commits this year and number of public repositories displayed, as well as a link to
+                  either their GitHub, GitLab or BitBucket profile. To reduce API usage, only 10 users are displayed.
+                </div>
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
                   <GoGraph className="inline align-bottom" /> Future Updates
                 </h1>
@@ -76,12 +58,7 @@ function About() {
             </div>
           </div>
 
-          <a
-            href="https://github.com/sheeehy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy"
-          >
+          <a href="https://github.com/sheeehy" target="_blank" rel="noopener noreferrer" className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy">
             Jack Sheehy :) <br />
             ©2023
           </a>

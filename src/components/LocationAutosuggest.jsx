@@ -20,7 +20,7 @@ const customStyles = {
     marginBottom: "0rem",
     fontFamily: "Hublot-sans",
     width: "15rem",
-    zIndex: 1000,
+    zIndex: 50,
   }),
   input: (provided) => ({
     ...provided,

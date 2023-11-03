@@ -1,6 +1,9 @@
 import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+
 import { GoPerson, GoSignOut, GoLocation } from "react-icons/go";
+
+import { BsGithub } from "react-icons/bs";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
@@ -9,6 +12,8 @@ import SignIn from "./pages/SignIn";
 import Terms from "./pages/terms";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./components/dropdown-menu";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./components/dialog";
+import { Separator } from "./components/Separator";
 
 import GeoGitIcon from "./assets/GeoGitIcon.png";
 
@@ -35,6 +40,20 @@ function App() {
     localStorage.removeItem("accessToken");
     setUserData(null);
     window.location.reload();
+  };
+
+  const handleDeleteAccount = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      await fetch(`http://localhost:4000/deleteAccount?accessToken=${accessToken}`, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          handleLogout();
+        });
+    }
   };
 
   return (
@@ -68,24 +87,72 @@ function App() {
                   <DropdownMenuTrigger>
                     <img src={userData.avatar_url} alt="User Avatar" className="w-10 h-10 rounded-full" />
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuLabel className="font-bold font-Mona ">{userData.name}</DropdownMenuLabel>
-                    <DropdownMenuLabel className="font-Hublot pb-1 text-gray-300">{userData.email}</DropdownMenuLabel>
-                    <DropdownMenuSeparator className="bg-neutral-600" />
-                    <DropdownMenuItem className="font-Hublot">
-                      <GoLocation className="mr-2 text-lg" />
-                      Location
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="font-Hublot">
-                      <GoPerson className="mr-2 text-lg" />
-                      Profile
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator className="bg-neutral-600" />
-                    <DropdownMenuItem className="font-Hublot" onClick={handleLogout}>
-                      <GoSignOut className="mr-2 text-lg" />
-                      Logout
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
+                  <Dialog>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel className="font-bold font-Mona text-lg ">{userData.name}</DropdownMenuLabel>
+                      <DropdownMenuLabel className="font-Hublot pb-1 text-gray-300 text-sm">{userData.email}</DropdownMenuLabel>
+                      <DropdownMenuSeparator className="bg-neutral-600" />
+                      <DropdownMenuItem className="font-Hublot text-md">
+                        <GoLocation className="mr-2 text-lg" />
+                        Location
+                      </DropdownMenuItem>
+                      <DialogTrigger asChild>
+                        <DropdownMenuItem className="font-Hublot text-md">
+                          <GoPerson className="mr-2 text-lg" />
+                          <span>Profile</span>
+                        </DropdownMenuItem>
+                      </DialogTrigger>
+                      <DropdownMenuSeparator className="bg-neutral-600" />
+                      <DropdownMenuItem className="font-Hublot" onClick={handleLogout}>
+                        <GoSignOut className="mr-2 text-lg" />
+                        Logout
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle className="text-white text-3xl font-bold">Account</DialogTitle>
+                        <DialogDescription className="text-gray-400 text-md">Manage your account information</DialogDescription>
+                      </DialogHeader>
+                      <DialogDescription className="text-white text-lg pt-2 ">Profile</DialogDescription>
+                      <DialogDescription className="flex items-center space-x-2">
+                        <img src={userData.avatar_url} alt="User Avatar" className="w-14 h-14 rounded-full" />
+                        <DialogDescription className="pl-2 text-md">
+                          <DialogDescription className="text-white font-bold">{userData.name}</DialogDescription>
+                          <DialogDescription className="text-gray-400">{userData.login}</DialogDescription>
+                        </DialogDescription>
+                      </DialogDescription>
+                      <Separator />
+                      <DialogHeader className="text-white text-lg mb-0">Location</DialogHeader>
+                      <DialogDescription className="text-gray-400">{userData.location}</DialogDescription>
+                      <Separator />
+
+                      <DialogHeader className="text-white text-lg mb-0">Email Addresses</DialogHeader>
+                      <DialogDescription className="text-gray-400">{userData.email}</DialogDescription>
+                      <Separator />
+
+                      <DialogHeader className="text-white text-lg mb-0">Connected Accounts</DialogHeader>
+                      <DialogDescription className="flex items-center text-gray-400">
+                        <BsGithub className="mr-3 text-lg" />
+                        <span>{userData.login}</span>
+                      </DialogDescription>
+
+                      <Separator />
+
+                      <DialogHeader className="text-white text-lg mb-0">Danger Zone</DialogHeader>
+                      <DialogDescription className="flex justify-between items-center text-gray-300 w-full">
+                        <DialogDescription className="pb-2">
+                          <DialogDescription className="text-white text-[1.1rem]">Delete your account</DialogDescription>
+                          <DialogDescription className="text-gray-400">Delete your account and all its associated data.</DialogDescription>
+                        </DialogDescription>
+                        <button
+                          onClick={handleDeleteAccount}
+                          className="text-red-500 border border-red-500  px-3 py-1 transition duration-200 ease-in-out hover:bg-red-500 hover:text-white"
+                        >
+                          Delete Account
+                        </button>
+                      </DialogDescription>
+                    </DialogContent>
+                  </Dialog>
                 </DropdownMenu>
               ) : (
                 <Link to="/SignIn" className="px-2 sm:px-4 py-2 block font-bold text-white login-button">
