@@ -1,63 +1,41 @@
 import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { GoPerson, GoSignOut, GoLocation } from "react-icons/go";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import About from "./pages/About";
-import GeoGitIcon from "./assets/GeoGitIcon.png";
-import { useAuth0 } from "@auth0/auth0-react";
+import SignIn from "./pages/SignIn";
+import Terms from "./pages/terms";
 
-const CLIENT_ID = "502ae01831b11391d1ee";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./components/dropdown-menu";
+
+import GeoGitIcon from "./assets/GeoGitIcon.png";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    setIsAuthenticated(!!localStorage.getItem("accessToken"));
-  }, []);
-
-  useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const codeParam = urlParams.get("code");
-
-    if (codeParam && localStorage.getItem("accessToken") === null) {
-      async function getAccessToken() {
-        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
+    const fetchGithubUserData = async () => {
+      const accessToken = localStorage.getItem("accessToken");
+      if (accessToken) {
+        await fetch(`http://localhost:4000/getGithubUserData?accessToken=${accessToken}`, {
           method: "GET",
         })
-          .then((response) => {
-            return response.json();
-          })
+          .then((response) => response.json())
           .then((data) => {
-            if (data.access_token) {
-              localStorage.setItem("accessToken", data.access_token);
-              setIsAuthenticated(true);
-            }
+            setUserData(data);
           });
       }
-      getAccessToken();
-    }
+    };
+    fetchGithubUserData();
   }, []);
 
-  async function getUserData() {
-    await fetch("http://localhost:4000/getUserData", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("accessToken"),
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  }
-
-  function loginWithGithub() {
-    window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID);
-  }
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    setUserData(null);
+    window.location.reload();
+  };
 
   return (
     <Router>
@@ -85,24 +63,34 @@ function App() {
                 </Link>
               </li>
 
-              {isAuthenticated ? (
-                <>
-                  <button
-                    onClick={() => {
-                      localStorage.removeItem("accessToken");
-                      setIsAuthenticated(false);
-                    }}
-                    className="px-2 sm:px-4 py-2 block font-bold text-white login-button"
-                  >
-                    Log Out
-                  </button>
-                </>
+              {userData ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <img src={userData.avatar_url} alt="User Avatar" className="w-10 h-10 rounded-full" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel className="font-bold font-Mona ">{userData.name}</DropdownMenuLabel>
+                    <DropdownMenuLabel className="font-Hublot pb-1 text-gray-300">{userData.email}</DropdownMenuLabel>
+                    <DropdownMenuSeparator className="bg-neutral-600" />
+                    <DropdownMenuItem className="font-Hublot">
+                      <GoLocation className="mr-2 text-lg" />
+                      Location
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="font-Hublot">
+                      <GoPerson className="mr-2 text-lg" />
+                      Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator className="bg-neutral-600" />
+                    <DropdownMenuItem className="font-Hublot" onClick={handleLogout}>
+                      <GoSignOut className="mr-2 text-lg" />
+                      Logout
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               ) : (
-                <>
-                  <button onClick={loginWithGithub} className="px-2 sm:px-4 py-2 block font-bold text-white login-button">
-                    Sign In
-                  </button>
-                </>
+                <Link to="/SignIn" className="px-2 sm:px-4 py-2 block font-bold text-white login-button">
+                  Sign In
+                </Link>
               )}
             </ul>
           </nav>
@@ -113,6 +101,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Search" element={<Search />} />
         <Route path="/About" element={<About />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/Terms" element={<Terms />} />
       </Routes>
     </Router>
   );

@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-
-const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
+import fetch from "node-fetch";
 
 const CLIENT_ID = "502ae01831b11391d1ee";
 const CLIENT_SECRET = "fd7922e790404eaeea244d2acc78de329d07cb14";
