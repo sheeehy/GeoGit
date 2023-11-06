@@ -7,7 +7,7 @@ import { BsGear } from "react-icons/bs";
 function About() {
   return (
     <>
-      <main className="bg-thegray home-no-scroll">
+      <main className="bg-thegray home-no-scroll fade-in1">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
           {/* Background GIT! blobs */}
           <div className="absolute w-full max-w-lg -right-64">

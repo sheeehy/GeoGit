@@ -4,18 +4,6 @@ import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
 
-const BLANK_USERS = [...Array(10)].map((_, idx) => ({
-  id: -idx - 1,
-  placeholder: true,
-  avatar_url: "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
-  login: "GeoGit User",
-  name: "",
-  followers: "0",
-  reposCount: "0",
-  publicCommits: "0",
-  score: "0",
-}));
-
 const fetchPublicCommits = async (username) => {
   // GraphQL query for fetching public commits
   const query = gql`
@@ -45,7 +33,7 @@ const fetchPublicCommits = async (username) => {
 };
 
 export default function TopGitHubUsers({ city, isAuthenticated }) {
-  const [users, setUsers] = useState(BLANK_USERS);
+  const [users, setUsers] = useState([]);
   const [prefetchedUsers, setPrefetchedUsers] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [page, setPage] = useState(1);
@@ -53,7 +41,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
 
   const fetchTopUsers = async (pageNumber, prefetch = false) => {
     if (!city) {
-      setUsers(BLANK_USERS);
+      setUsers([]);
       setDataLoaded(true);
       return;
     }
@@ -85,12 +73,10 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       );
 
       if (prefetch) {
-        // Background pre-fetching
         setPrefetchedUsers(usersWithDetails);
       } else {
         // Initial fetch or Load More clicked
         setUsers((prevUsers) => [...prevUsers.slice(0, (pageNumber - 1) * 10), ...usersWithDetails, ...prevUsers.slice(pageNumber * 10)]);
-        // Trigger background pre-fetch for the next batch of users
         fetchTopUsers(pageNumber + 1, true);
       }
     } catch (error) {
@@ -104,8 +90,13 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
 
   useEffect(() => {
     setPage(1);
-    setUsers(BLANK_USERS);
-    fetchTopUsers(1);
+    setUsers([]);
+    if (city) {
+      fetchTopUsers(1);
+      setDataLoaded(false);
+    } else {
+      setDataLoaded(false);
+    }
   }, [city]);
 
   const loadMoreUsers = () => {
@@ -113,7 +104,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       if (isAuthenticated) {
         const newPage = prevPage + 1;
         setUsers((prevUsers) => [...prevUsers, ...prefetchedUsers]);
-        // Fetch next set of users for future use
         fetchTopUsers(newPage + 1, true);
         return newPage;
       } else {
@@ -168,19 +158,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
           ))
         )}
       </ul>
-      {!dataLoaded ? (
-        <div className="text-center width-1rem">
-          <PulseLoader color={"gray"} size={7} loading={!dataLoaded} />
-        </div>
-      ) : (
-        city &&
-        users.length > 0 &&
-        page < 10 && (
-          <button onClick={loadMoreUsers} className="font-mono select-none show-more-button mx-auto block">
-            Show More
-          </button>
-        )
-      )}
     </div>
   );
 }

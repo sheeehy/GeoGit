@@ -3,7 +3,7 @@ import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoSparklesSharp } from "react-icons/io5";
-import { GoPeople, GoGitPullRequest } from "react-icons/go";
+import { GoPeople, GoGitPullRequest, GoRepo } from "react-icons/go";
 
 import TypingAnimation from "../components/TypingAnimation";
 
@@ -36,15 +36,19 @@ function Home() {
 
                 {/* Display on larger screens */}
                 <h2 className="hidden md:block pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4">
-                  Start by entering the city you want to rank top developers from. Ranks are based on{" "}
+                  Start by entering the location you want to rank devs from. Ranks are based on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers{" "}
                   </span>
-                  and{" "}
+                  ,{" "}
                   <span className="text-white">
                     <GoGitPullRequest className="inline align-text-bottom" /> commits
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-white">
+                    <GoRepo className="inline align-text-bottom" /> repos
                   </span>
-                  . Leave a <span className="text-white transition-all duration-300 ease-in-out hover:text-yellow-500">★</span> on the
+                  . Also check out the
                   <a
                     href="https://github.com/sheeehy/Geo-Git-v2"
                     target="_blank"

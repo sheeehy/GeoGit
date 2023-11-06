@@ -41,6 +41,7 @@ const customStyles = {
   }),
   menuList: (provided) => ({
     ...provided,
+    MaxHeight: "15.5rem",
     scrollbarWidth: "none",
     "-ms-overflow-style": "none",
 
