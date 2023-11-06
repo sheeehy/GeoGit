@@ -1,6 +1,6 @@
 
 <div align="center">
-<img alt="Logo" src="https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png" width="100" />
+<img alt="Logo" src="https://raw.githubusercontent.com/sheeehy/GeoGit/main/src/assets/GeoGitIcon.png" width="100" />
 </div>
 <h1 align="center">
   GeoGit - v2
