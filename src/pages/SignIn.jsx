@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
+import { IoSparklesSharp } from "react-icons/io5";
+
 import "../App.css";
 
 const CLIENT_ID = "502ae01831b11391d1ee";
 
-export default function SignIn() {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
+export default function SignIn({ setIsAuthenticated }) {
+  const isAuthenticated = !!localStorage.getItem("accessToken");
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function SignIn() {
             if (data.access_token) {
               localStorage.setItem("accessToken", data.access_token);
               setIsAuthenticated(true);
-              window.location.reload();
+              window.location.href = "/Search";
             }
           });
       };
@@ -53,6 +55,13 @@ export default function SignIn() {
   const loginWithGithub = () => {
     window.location.assign(`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`);
   };
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      setIsAuthenticated(true);
+    }
+  }, []);
   return (
     <>
       <main className="bg-thegray home-no-scroll fade-in1">
@@ -63,30 +72,41 @@ export default function SignIn() {
 
           <div className="relative z-10 pt-0 pb-40">
             <div className="px-7 py-8 signInCard">
-              <div className="flex items-center flex-nowrap">
-                <img src={GeoGitIcon} alt="GeoGit Icon" className="max-w-smaller" />
-                <h1 className="font-Mona font-bold text-3xl pl-3">GeoGit</h1>
-              </div>
+              <div className="flex items-center flex-nowrap"></div>
 
-              <h2 className="font-Mona font-bold pt-8 text-xl">Sign in</h2>
-              <h3 className="font-Mona pt-1 text-gray-300 text-lg pb-5">
-                to continue to <span className="text-gray-300 font-bold">GeoGit</span>
-              </h3>
               {isAuthenticated && userData ? (
-                <h2>Welcome, {userData.login}</h2>
+                <>
+                  <h1 className="font-Mona font-bold text-4xl ">
+                    <span className="text-white">Welcome</span>, {userData.login}!
+                  </h1>
+                  <h2 className="text-center pt-3 pb-4 text-gray-300"> You have successfully signed in.</h2>
+                  <div className="flex justify-center items-center">
+                    <Link to="/search" className="get-started-button font-mono select-none ">
+                      <IoSparklesSharp className="inline align-text-top " /> Get Started
+                    </Link>
+                  </div>
+                </>
               ) : (
-                <button className="signInButton text-md flex items-center px-28 py-2.5" onClick={!isAuthenticated ? loginWithGithub : null}>
-                  <AiFillGithub className="text-2xl" />
-                  <span className="ml-3 ">Sign in With GitHub</span>
-                </button>
+                <>
+                  <h1 className="font-Mona font-bold text-4xl ">GeoGit</h1>
+
+                  <h2 className="font-Mona font-bold pt-6 text-xl">Sign in</h2>
+                  <h3 className="font-Mona pt-1 text-gray-300 text-lg pb-5">
+                    to continue to <span className="text-gray-300 font-bold">GeoGit</span>
+                  </h3>
+                  <button className="signInButton text-md flex items-center px-28 py-2.5" onClick={!isAuthenticated ? loginWithGithub : null}>
+                    <AiFillGithub className="text-2xl" />
+                    <span className="ml-3 ">Sign in With GitHub</span>
+                  </button>
+                  <h3 className="flex items-center justify-center text-gray-400 pt-2">
+                    By signing in, you agree to our&nbsp;
+                    <Link to="/Terms" className="text-gray-200">
+                      Terms of Service
+                    </Link>
+                    .
+                  </h3>
+                </>
               )}
-              <h3 className="flex items-center justify-center text-gray-400 pt-2">
-                By signing in, you agree to our&nbsp;
-                <Link to="/Terms" className="text-gray-200">
-                  Terms of Service
-                </Link>
-                .
-              </h3>
             </div>
           </div>
         </div>

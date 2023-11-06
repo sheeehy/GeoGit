@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 import { GoPerson, GoSignOut, GoLocation } from "react-icons/go";
@@ -19,6 +19,7 @@ import GeoGitIcon from "./assets/GeoGitIcon.png";
 
 function App() {
   const [userData, setUserData] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
 
   useEffect(() => {
     const fetchGithubUserData = async () => {
@@ -89,13 +90,9 @@ function App() {
                   </DropdownMenuTrigger>
                   <Dialog>
                     <DropdownMenuContent>
-                      <DropdownMenuLabel className="font-bold font-Mona text-lg ">{userData.name}</DropdownMenuLabel>
-                      <DropdownMenuLabel className="font-Hublot pb-1 text-gray-300 text-sm">{userData.email}</DropdownMenuLabel>
+                      <DropdownMenuLabel className="font-bold font-Mona max-w-[12rem] whitespace-nowrap  text-lg ">{userData.name}</DropdownMenuLabel>
+                      <DropdownMenuLabel className="font-Hublot custom-width pb-1 text-gray-300 text-sm">{userData.location}</DropdownMenuLabel>{" "}
                       <DropdownMenuSeparator className="bg-neutral-600" />
-                      <DropdownMenuItem className="font-Hublot text-md">
-                        <GoLocation className="mr-2 text-lg" />
-                        Location
-                      </DropdownMenuItem>
                       <DialogTrigger asChild>
                         <DropdownMenuItem className="font-Hublot text-md">
                           <GoPerson className="mr-2 text-lg" />
@@ -166,9 +163,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Search" element={<Search />} />
+        <Route path="/Search" element={<Search isAuthenticated={isAuthenticated} />} />
         <Route path="/About" element={<About />} />
-        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/SignIn" element={<SignIn setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/Terms" element={<Terms />} />
       </Routes>
     </Router>

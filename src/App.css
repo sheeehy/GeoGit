@@ -410,3 +410,11 @@ body {
       "calt" 1;
   }
 }
+
+.custom-width {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 12rem;
+  display: inline-block;
+}

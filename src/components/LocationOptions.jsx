@@ -549,7 +549,6 @@ export const LOCATION_OPTIONS = [
     label: "New Delhi",
     coordinates: [28.613939, 77.209023],
   },
-  { value: "Kolkata", label: "Kolkata", coordinates: [22.572646, 88.363895] },
   {
     value: "Bengaluru",
     label: "Bengaluru",

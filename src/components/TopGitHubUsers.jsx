@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
 import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
+import { useNavigate } from "react-router-dom";
 
 const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   id: -idx - 1,
+  placeholder: true,
   avatar_url: "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
   login: "GeoGit User",
   name: "",
@@ -42,21 +44,20 @@ const fetchPublicCommits = async (username) => {
   }
 };
 
-export default function TopGitHubUsers({ city }) {
+export default function TopGitHubUsers({ city, isAuthenticated }) {
   const [users, setUsers] = useState(BLANK_USERS);
+  const [prefetchedUsers, setPrefetchedUsers] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
-  const fetchTopUsers = async (pageNumber) => {
-    setDataLoaded(false);
-    // Handling if city is not provided
+  const fetchTopUsers = async (pageNumber, prefetch = false) => {
     if (!city) {
       setUsers(BLANK_USERS);
       setDataLoaded(true);
       return;
     }
 
-    // Fetching top GitHub users by city
     const baseUrl = `https://api.github.com/search/users?q=location:${city}&sort=followers&order=desc&per_page=10&page=${pageNumber}`;
     const headers = {
       Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
@@ -67,8 +68,7 @@ export default function TopGitHubUsers({ city }) {
       const data = await response.json();
       const usersList = data.items || [];
 
-      // Fetching additional details for each user
-      const usersWithDetails = await Promise.allSettled(
+      const usersWithDetails = await Promise.all(
         usersList.map(async (user) => {
           const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
           const publicCommitsPromise = fetchPublicCommits(user.login);
@@ -84,18 +84,21 @@ export default function TopGitHubUsers({ city }) {
         })
       );
 
-      // Updating state with fetched users
-      setUsers((prevUsers) => [
-        ...prevUsers.slice(0, (pageNumber - 1) * 10),
-        ...usersWithDetails
-          .filter((result) => result.status === "fulfilled")
-          .map((result) => result.value)
-          .sort((a, b) => b.score - a.score),
-      ]);
+      if (prefetch) {
+        // Background pre-fetching
+        setPrefetchedUsers(usersWithDetails);
+      } else {
+        // Initial fetch or Load More clicked
+        setUsers((prevUsers) => [...prevUsers.slice(0, (pageNumber - 1) * 10), ...usersWithDetails, ...prevUsers.slice(pageNumber * 10)]);
+        // Trigger background pre-fetch for the next batch of users
+        fetchTopUsers(pageNumber + 1, true);
+      }
     } catch (error) {
       console.error("An error occurred while fetching data", error);
     } finally {
-      setDataLoaded(true);
+      if (!prefetch) {
+        setDataLoaded(true);
+      }
     }
   };
 
@@ -107,12 +110,14 @@ export default function TopGitHubUsers({ city }) {
 
   const loadMoreUsers = () => {
     setPage((prevPage) => {
-      const newPage = prevPage + 1;
-      if (newPage <= 2) {
-        fetchTopUsers(newPage);
+      if (isAuthenticated) {
+        const newPage = prevPage + 1;
+        setUsers((prevUsers) => [...prevUsers, ...prefetchedUsers]);
+        // Fetch next set of users for future use
+        fetchTopUsers(newPage + 1, true);
         return newPage;
       } else {
-        alert("Please sign in to continue.");
+        navigate("/SignIn");
         return prevPage;
       }
     });
@@ -169,7 +174,8 @@ export default function TopGitHubUsers({ city }) {
         </div>
       ) : (
         city &&
-        users.length > 0 && (
+        users.length > 0 &&
+        page < 10 && (
           <button onClick={loadMoreUsers} className="font-mono select-none show-more-button mx-auto block">
             Show More
           </button>

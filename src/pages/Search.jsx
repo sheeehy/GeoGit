@@ -5,10 +5,10 @@ import Cobe from "../components/AutoGlobe";
 import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { useNavigate, useLocation } from "react-router-dom";
 
-function Search() {
+function Search({ isAuthenticated }) {
   const [city, setCity] = useState("");
   const [coordinates, setCoordinates] = useState([45, 10]);
-  const navigate = useNavigate(); // <-- Changed this line
+  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -16,7 +16,6 @@ function Search() {
     const cityFromURL = params.get("city");
     if (cityFromURL) {
       setCity(cityFromURL);
-      // Set coordinates if needed
     }
   }, [location]);
 
@@ -75,7 +74,7 @@ function Search() {
 
         <div className="flex flex-col items-start justify-center relative pb-32 px-4 md:px-8 lg:px-32">
           <div className="relative z-1000 pt-0 pb-0">
-            <TopGithubUsers city={city} />
+            <TopGithubUsers city={city} isAuthenticated={isAuthenticated} />
           </div>
         </div>
       </main>
