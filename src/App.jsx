@@ -25,7 +25,7 @@ function App() {
     const fetchGithubUserData = async () => {
       const accessToken = localStorage.getItem("accessToken");
       if (accessToken) {
-        await fetch(`http://localhost:4000/getGithubUserData?accessToken=${accessToken}`, {
+        await fetch(`https://shrouded-thicket-64208-c185a4c1d6b4.herokuapp.com/getGithubUserData?accessToken=${accessToken}`, {
           method: "GET",
         })
           .then((response) => response.json())
@@ -46,7 +46,7 @@ function App() {
   const handleDeleteAccount = async () => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
-      await fetch(`http://localhost:4000/deleteAccount?accessToken=${accessToken}`, {
+      await fetch(`https://shrouded-thicket-64208-c185a4c1d6b4.herokuapp.com/deleteAccount?accessToken=${accessToken}`, {
         method: "DELETE",
       })
         .then((response) => response.json())

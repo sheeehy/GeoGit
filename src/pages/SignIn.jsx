@@ -19,7 +19,7 @@ export default function SignIn({ setIsAuthenticated }) {
 
     if (codeParam && localStorage.getItem("accessToken") === null) {
       const getAccessToken = async () => {
-        await fetch(`http://localhost:4000/getAccessToken?code=${codeParam}`, {
+        await fetch(`https://shrouded-thicket-64208-c185a4c1d6b4.herokuapp.com/getAccessToken?code=${codeParam}`, {
           method: "GET",
         })
           .then((response) => response.json())
@@ -37,7 +37,7 @@ export default function SignIn({ setIsAuthenticated }) {
 
   useEffect(() => {
     const fetchGithubUserData = async (accessToken) => {
-      await fetch(`http://localhost:4000/getGithubUserData?accessToken=${accessToken}`, {
+      await fetch(`https://shrouded-thicket-64208-c185a4c1d6b4.herokuapp.com/getGithubUserData?accessToken=${accessToken}`, {
         method: "GET",
       })
         .then((response) => response.json())
