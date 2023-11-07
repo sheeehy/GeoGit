@@ -94,7 +94,7 @@ export default function SignIn({ setIsAuthenticated }) {
                   <h3 className="font-Mona pt-1 text-gray-300 text-lg pb-5">
                     to continue to <span className="text-gray-300 font-bold">GeoGit</span>
                   </h3>
-                  <button className="signInButton text-md flex items-center px-20 sm:px-10 py-2.5 whitespace-nowrap" onClick={!isAuthenticated ? loginWithGithub : null}>
+                  <button className="signInButton text-md flex items-center px-20 sm:px-15 py-2.5 whitespace-nowrap" onClick={!isAuthenticated ? loginWithGithub : null}>
                     <AiFillGithub className="text-2xl" />
                     <span className="ml-3 ">Sign in With GitHub</span>
                   </button>
