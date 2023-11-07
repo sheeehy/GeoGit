@@ -105,29 +105,23 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   useEffect(() => {
     setPage(1);
     setUsers(BLANK_USERS);
-    if (isAuthenticated) {
-      fetchTopUsers(1);
-    } else {
-      // Potentially show a message or handle the case where the user is not authenticated
-    }
-  }, [city, isAuthenticated]);
+    fetchTopUsers(1);
+  }, [city]);
 
   const loadMoreUsers = () => {
-    if (!isAuthenticated) {
-      navigate("/SignIn"); // Redirects to sign-in page if the user is not authenticated
-      return; // Exit the function to prevent further execution
-    }
-
-    // If the user is authenticated, proceed to fetch and display more users
     setPage((prevPage) => {
-      const newPage = prevPage + 1;
-      setUsers((prevUsers) => [...prevUsers, ...prefetchedUsers]);
-      // Fetch next set of users for future use
-      fetchTopUsers(newPage + 1, true);
-      return newPage;
+      if (isAuthenticated) {
+        const newPage = prevPage + 1;
+        setUsers((prevUsers) => [...prevUsers, ...prefetchedUsers]);
+        // Fetch next set of users for future use
+        fetchTopUsers(newPage + 1, true);
+        return newPage;
+      } else {
+        navigate("/SignIn");
+        return prevPage;
+      }
     });
   };
-
   return (
     <div className="px-0 md:px-0">
       <ul>
