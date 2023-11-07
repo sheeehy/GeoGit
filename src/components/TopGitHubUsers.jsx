@@ -4,17 +4,7 @@ import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
 
-const BLANK_USERS = [...Array(10)].map((_, idx) => ({
-  id: -idx - 1,
-  placeholder: true,
-  avatar_url: "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
-  login: "GeoGit User",
-  name: "",
-  followers: "0",
-  reposCount: "0",
-  publicCommits: "0",
-  score: "0",
-}));
+const BLANK_USERS = [];
 const fetchPublicCommits = async (username) => {
   // GraphQL query for fetching public commits
   const query = gql`
@@ -45,6 +35,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   const [users, setUsers] = useState(BLANK_USERS);
   const [prefetchedUsers, setPrefetchedUsers] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [searchAttempted, setSearchAttempted] = useState(false); // new state to track search attempts
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
@@ -100,9 +91,12 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   useEffect(() => {
     setPage(1);
     setUsers(BLANK_USERS);
-    fetchTopUsers(1);
+    setDataLoaded(false); // Reset data loaded flag
+    if (city) {
+      setSearchAttempted(false); // Reset search attempted flag only when city is present
+      fetchTopUsers(1).finally(() => setSearchAttempted(true)); // Set search attempted flag after fetch
+    }
   }, [city]);
-
   const loadMoreUsers = () => {
     setPage((prevPage) => {
       if (isAuthenticated) {
@@ -120,7 +114,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   return (
     <div className="px-0 md:px-0">
       <ul>
-        {dataLoaded && users.length === 0 ? (
+        {dataLoaded && searchAttempted && users.length === 0 ? (
           <div className="font-Hublot text-gray-300 leading-[1.7rem] text-center">No users found :(</div>
         ) : (
           users.map((user, index) => (
@@ -164,9 +158,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
         )}
       </ul>
       {!dataLoaded ? (
-        <div className="text-center width-1rem">
-          <PulseLoader color={"gray"} size={7} loading={!dataLoaded} />
-        </div>
+        <div className="text-center width-1rem"></div>
       ) : (
         city &&
         users.length > 0 &&
