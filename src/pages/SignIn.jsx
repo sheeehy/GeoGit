@@ -94,13 +94,13 @@ export default function SignIn({ setIsAuthenticated }) {
                   <h3 className="font-Mona pt-1 text-gray-300 text-lg pb-5">
                     to continue to <span className="text-gray-300 font-bold">GeoGit</span>
                   </h3>
-                  <button className="signInButton text-md flex items-center px-20 py-2.5" onClick={!isAuthenticated ? loginWithGithub : null}>
+                  <button className="signInButton text-md flex items-center px-20 py-2.5 whitespace-nowrap" onClick={!isAuthenticated ? loginWithGithub : null}>
                     <AiFillGithub className="text-2xl" />
                     <span className="ml-3 ">Sign in With GitHub</span>
                   </button>
-                  <h3 className="flex items-center justify-center text-gray-400 pt-2">
+                  <h3 className="flex items-center whitespace-nowrap justify-center text-gray-400 pt-2">
                     By signing in, you agree to our&nbsp;
-                    <Link to="/Terms" className="text-gray-200">
+                    <Link to="/Terms" className="text-gray-200 whitespace-nowrap">
                       Terms of Service
                     </Link>
                     .

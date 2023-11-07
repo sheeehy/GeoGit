@@ -4,7 +4,7 @@ import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
 
-const BLANK_USERS = [...Array(10)].map((_, idx) => ({
+const BLANK_USERS = [...Array(0)].map((_, idx) => ({
   id: -idx - 1,
   placeholder: true,
   avatar_url: "https://raw.githubusercontent.com/sheeehy/Geo-Git-v2/main/src/assets/GeoGitIcon.png",
@@ -84,13 +84,11 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
         })
       );
 
+      //Background Pre-Fetching
       if (prefetch) {
-        // Background pre-fetching
         setPrefetchedUsers(usersWithDetails);
       } else {
-        // Initial fetch or Load More clicked
         setUsers((prevUsers) => [...prevUsers.slice(0, (pageNumber - 1) * 10), ...usersWithDetails, ...prevUsers.slice(pageNumber * 10)]);
-        // Trigger background pre-fetch for the next batch of users
         fetchTopUsers(pageNumber + 1, true);
       }
     } catch (error) {
@@ -108,12 +106,12 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
     fetchTopUsers(1);
   }, [city]);
 
+  //Pageination Logic
   const loadMoreUsers = () => {
     setPage((prevPage) => {
       if (isAuthenticated) {
         const newPage = prevPage + 1;
         setUsers((prevUsers) => [...prevUsers, ...prefetchedUsers]);
-        // Fetch next set of users for future use
         fetchTopUsers(newPage + 1, true);
         return newPage;
       } else {
@@ -125,7 +123,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   return (
     <div className="px-0 md:px-0">
       <ul>
-        {dataLoaded && users.length === 0 ? (
+        {dataLoaded && city && users.length === 0 ? (
           <div className="font-Hublot text-gray-300 leading-[1.7rem] text-center">No users found :(</div>
         ) : (
           users.map((user, index) => (
