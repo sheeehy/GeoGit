@@ -15,7 +15,6 @@ const BLANK_USERS = [...Array(10)].map((_, idx) => ({
   publicCommits: "0",
   score: "0",
 }));
-
 const fetchPublicCommits = async (username) => {
   // GraphQL query for fetching public commits
   const query = gql`
@@ -29,12 +28,10 @@ const fetchPublicCommits = async (username) => {
       }
     }
   `;
-
   const variables = { username };
   const headers = {
     Authorization: `bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
   };
-
   try {
     const data = await request("https://api.github.com/graphql", query, variables, headers);
     return data.user.contributionsCollection.contributionCalendar.totalContributions;
@@ -62,7 +59,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
     const headers = {
       Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
     };
-
     try {
       const response = await fetch(baseUrl, { headers });
       const data = await response.json();
@@ -73,7 +69,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
           const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
           const publicCommitsPromise = fetchPublicCommits(user.login);
           const [userDetails, publicCommits] = await Promise.all([userDetailsPromise, publicCommitsPromise]);
-
           return {
             ...user,
             ...userDetails,
