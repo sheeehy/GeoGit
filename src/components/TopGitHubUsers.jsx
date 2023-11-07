@@ -35,7 +35,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   const [users, setUsers] = useState(BLANK_USERS);
   const [prefetchedUsers, setPrefetchedUsers] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
-  const [searchAttempted, setSearchAttempted] = useState(false); // new state to track search attempts
+  const [searchAttempted, setSearchAttempted] = useState(false);
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
 

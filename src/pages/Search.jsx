@@ -41,7 +41,7 @@ function Search({ isAuthenticated }) {
             <h1 className="font-Mona select-none font-bold text-white text-5xl leading-20 pb-2 fade-in1">Search</h1>
             <div className="flex select-none">
               <p className="font-Hublot select-none text-gray-300 mr-4 max-w-[24rem] leading-[1.7rem] fade-in2">
-                Start by entering the city you want to rank developers from. Keep in mind, the results reflect the location users have entered themselves.
+                Start by entering the location you want to rank developers from. Keep in mind, the results reflect the location users have entered themselves.
               </p>
               <p className="font-Hublot text-gray-300 hidden md:block fade-in3">
                 <span className="flex items-center mr-4 mb-1">

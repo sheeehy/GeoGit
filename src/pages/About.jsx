@@ -37,15 +37,15 @@ function About() {
                   <BsGear className="inline align-bottom " /> How It Works
                 </h1>
                 <div className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
-                  <h2 className="text-white font-bold text-xl pb-2">1 Choose a City</h2>
-                  Start by entering your desired city into the search box. For now, it just includes cities. Keep in mind, the results reflect the location users have entered
+                  <h2 className="text-white font-bold text-xl pb-2">1 Choose a Location</h2>
+                  Start by entering your desired location into the search box. For now, it just includes cities. Keep in mind, the results reflect the location users have entered
                   themselves.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">2 Fetch and Display</h2>
-                  Using the relavent API's, the top 10 developers are compiled across GitHub, GitLab and BitBucket The ranking is based on followers, public repositories and public
+                  Using the relavent API's, the top developers are compiled across GitHub, GitLab and BitBucket The ranking is based on followers, public repositories and public
                   commits this year.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">3 User Insights</h2>
                   Each user has their profile picture, username, full name, followers, public commits this year and number of public repositories displayed, as well as a link to
-                  either their GitHub, GitLab or BitBucket profile. To reduce API usage, only 10 users are displayed.
+                  either their GitHub, GitLab or BitBucket profile.
                 </div>
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
                   <GoGraph className="inline align-bottom" /> Future Updates
