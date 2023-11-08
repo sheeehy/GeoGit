@@ -116,6 +116,8 @@ body {
   border: 1px solid rgb(189, 189, 189);
   color: white;
   transition: background 0.1s ease-in-out;
+  padding-right: 20%;
+  padding-left: 20%;
 }
 
 .signInButton:hover {
@@ -324,6 +326,25 @@ body {
 .fade-exit {
   opacity: 1;
   transition: opacity 300ms;
+}
+
+.fade-in {
+  animation: fade-in-animation 0.5s forwards;
+}
+
+@keyframes fade-in-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#canvas-background {
+  background: red;
+  opacity: 0; /* Start invisible */
+  transition: opacity 0.5s ease-out;
 }
 
 /* SHADCN UI CSS */

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import createGlobe from "cobe";
 
-//Home page globe component - stil taking up too much memory
 function GlobeComponent() {
   const canvasRef = useRef(null);
+  const [isGlobeInitialized, setGlobeInitialized] = useState(false);
   let globe;
   let phi = 0;
 
@@ -28,6 +28,9 @@ function GlobeComponent() {
         onRender: (state) => {
           state.phi = phi;
           phi += 0.0075;
+          if (!isGlobeInitialized) {
+            setGlobeInitialized(true);
+          }
         },
       });
 
@@ -39,14 +42,26 @@ function GlobeComponent() {
     }
   }, []);
 
+  useEffect(() => {
+    if (isGlobeInitialized) {
+      canvasRef.current.style.transition = "opacity 0.5s ease-out";
+      canvasRef.current.style.opacity = 1;
+    }
+  }, [isGlobeInitialized]);
+
   return (
     <canvas
       ref={canvasRef}
       id="cobe"
-      className="z-0 mx-auto"
-      style={{ width: "1000px", height: "1000px" }}
-      width="1000px"
-      height="1000px"
+      className={`z-0 mx-auto ${isGlobeInitialized ? "fade-in1" : ""}`}
+      style={{
+        width: "1000px",
+        height: "1000px",
+        opacity: 0,
+        backgroundColor: "transparent",
+      }}
+      width="1000"
+      height="1000"
     />
   );
 }

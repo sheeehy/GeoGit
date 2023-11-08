@@ -65,7 +65,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
             ...userDetails,
             reposCount: userDetails.public_repos,
             publicCommits,
-            score: 0.7 * userDetails.followers + 0.3 * publicCommits,
+            score: 0.6 * userDetails.followers + 0.3 * publicCommits + userDetails.public_repos * 0.1,
           };
         })
       );
