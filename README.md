@@ -9,8 +9,7 @@
   The second iteration of <a href="https://geogit.vercel.app/" target="_blank">GeoGit</a> built with <a href="https://react.dev/" target="_blank">React</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>.
 </p>
 <p align="center">
-  Previous iterations:
-  <a href="https://geo-git-sheeehy.vercel.app/" target="_blank">v1</a>
+ 
  
 
 
