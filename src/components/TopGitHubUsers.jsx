@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
-import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
+import { GoPeople, GoRepo, GoGitPullRequest, GoLocation, GoOrganization } from "react-icons/go";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./dropdown-menu";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
+import { Separator } from "@radix-ui/react-separator";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 
 const BLANK_USERS = [];
 const fetchPublicCommits = async (username) => {
@@ -113,7 +115,12 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
         return prevPage;
       }
     });
+    const TooltipProvider = TooltipPrimitive.Provider;
+    const Tooltip = TooltipPrimitive.Root;
+    const TooltipTrigger = TooltipPrimitive.Trigger;
+    const TooltipContent = TooltipPrimitive.Content;
   };
+
   return (
     <div className="px-0 md:px-0">
       <ul>
@@ -135,42 +142,64 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                         </a>
                       </DialogTrigger>
                       <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle className="text-white">User Details</DialogTitle>
-                        </DialogHeader>
-                        <div className="space-y-2 p-4 text-white">
-                          <div className="select-none pointer-events-none">
-                            <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full mx-auto " />
-                          </div>
-                          {user.name && (
-                            <div>
-                              <strong>Name:</strong> <span>{user.name}</span>
+                        <DialogHeader className="flex items-left  text-white">
+                          <div className="flex items-start">
+                            <div className="select-none pointer-events-none">
+                              <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
                             </div>
-                          )}
-                          <div>
-                            <strong>Username:</strong> <span>{user.login}</span>
-                          </div>
-                          <div>
-                            <strong>Bio:</strong> <span>{user.bio || "Not available"}</span>
-                          </div>
-                          <br></br>
 
-                          <div>
-                            <strong>Followers:</strong> <span>{user.followers}</span>
+                            <div className="flex flex-col justify-left ml-4 mt-2">
+                              {" "}
+                              {user.name && (
+                                <div>
+                                  <span className="font-bold text-xl font-Mona pb-1">{user.name}</span>
+                                </div>
+                              )}
+                              <div>
+                                <span className="text-gray-300 font-Hublot">{user.login}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="max-w-[26rem] pt-2 pb-6">
+                            <span> {user.bio || " "}</span>
                           </div>
 
-                          <div>
-                            <strong>Public Repositories:</strong> <span>{user.public_repos}</span>
+                          <div className=" text-lg font-Hublot space-y-1 ">
+                            <div className="flex items-center">
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger>
+                                    <GoLocation className="inline-block mr-2 font-bold" />
+                                  </TooltipTrigger>
+                                  <TooltipContent sideOffset={5}>
+                                    <p>Location</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+
+                              <span className="text-gray-300">{user.location}</span>
+                            </div>
+
+                            <div className="flex items-center ">
+                              <GoOrganization className="inline-block mr-2 font-bold" />
+                              <span className="text-gray-300">{user.company || "Not Specified"}</span>
+                            </div>
+
+                            <div className="flex items-center">
+                              <GoPeople className="inline-block mr-2 font-bold" /> <span className="text-gray-300">{user.followers}</span>
+                            </div>
+
+                            <div className="flex items-center">
+                              <GoGitPullRequest className="inline-block mr-2 font-bold" />
+                              <span className="text-gray-300">{user.publicCommits}</span>
+                            </div>
+
+                            <div className="flex items-center">
+                              <GoRepo className="inline-block mr-2 font-bold" />
+                              <span className="text-gray-300">{user.public_repos}</span>
+                            </div>
                           </div>
-                          <div>
-                            <strong>Public Commits:</strong> <span>{user.publicCommits}</span>
-                          </div>
-                          <div>
-                            <strong>Location:</strong> <span>{user.location || "Not available"}</span>
-                          </div>
-                          <div>
-                            <strong>Company:</strong> <span>{user.company || "Not available"}</span>
-                          </div>
+
                           <div>
                             <br></br>
                             <strong>Personal Site:</strong> <span>{user.blog || "Not available"}</span>
@@ -188,8 +217,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                               Visit Profile
                             </a>
                           </div>
-                          {/* Any other user information you wish to include can be added here */}
-                        </div>
+                        </DialogHeader>
+
+                        {/* Maybe something with repos or languages? */}
                       </DialogContent>
                     </Dialog>
 
