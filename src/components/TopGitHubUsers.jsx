@@ -131,7 +131,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       <DialogTrigger asChild>
                         <a className="pl-3 flex items-center cursor-pointer">
                           <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
-                          <div className="hidden md:block max-w-[8rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">{user.name}</div>
+                          <div className="hidden md:block max-w-[12rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">{user.name}</div>
                         </a>
                       </DialogTrigger>
                       <DialogContent>
@@ -139,7 +139,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                           <DialogTitle className="text-white">User Details</DialogTitle>
                         </DialogHeader>
                         <div className="space-y-2 p-4 text-white">
-                          <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full mx-auto" />
+                          <div className="select-none pointer-events-none">
+                            <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full mx-auto " />
+                          </div>
                           {user.name && (
                             <div>
                               <strong>Name:</strong> <span>{user.name}</span>
@@ -148,6 +150,11 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                           <div>
                             <strong>Username:</strong> <span>{user.login}</span>
                           </div>
+                          <div>
+                            <strong>Bio:</strong> <span>{user.bio || "Not available"}</span>
+                          </div>
+                          <br></br>
+
                           <div>
                             <strong>Followers:</strong> <span>{user.followers}</span>
                           </div>
@@ -165,13 +172,15 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                             <strong>Company:</strong> <span>{user.company || "Not available"}</span>
                           </div>
                           <div>
+                            <br></br>
                             <strong>Personal Site:</strong> <span>{user.blog || "Not available"}</span>
                           </div>
-                          <div>
-                            <strong>Bio:</strong> <span>{user.bio || "Not available"}</span>
-                          </div>
+
                           <div>
                             <strong>Email:</strong> <span>{user.email || "Not available"}</span>
+                          </div>
+                          <div>
+                            <strong>Twitter:</strong> <span>{user.twitter_username || "Not available"}</span>
                           </div>
                           <div>
                             <strong>GitHub Profile:</strong>
@@ -184,7 +193,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       </DialogContent>
                     </Dialog>
 
-                    {user.login && <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[10rem] text-gray-300 pl-2">{user.login}</span>}
+                    {user.login && <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[6rem] text-gray-300 pl-2">{user.login}</span>}
                   </div>
                   <div className="flex items-center gap-4 md:gap-2">
                     <div className="flex items-center gap-2 min-w-[3rem]">
