@@ -44,7 +44,7 @@ function GlobeComponent() {
 
   useEffect(() => {
     if (isGlobeInitialized) {
-      canvasRef.current.style.transition = "opacity 0.5s ease-out";
+      canvasRef.current.style.transition = "opacity 0.0s ease-out";
       canvasRef.current.style.opacity = 1;
     }
   }, [isGlobeInitialized]);
@@ -53,7 +53,7 @@ function GlobeComponent() {
     <canvas
       ref={canvasRef}
       id="cobe"
-      className={`z-0 mx-auto ${isGlobeInitialized ? "fade-in1" : ""}`}
+      className={`z-0 mx-auto ${isGlobeInitialized ? "fade" : ""}`}
       style={{
         width: "1000px",
         height: "1000px",

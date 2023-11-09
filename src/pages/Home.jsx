@@ -38,7 +38,7 @@ function Home() {
                 <h2 className="hidden md:block pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4 fade-in2">
                   Start by entering the location you want to rank devs from. Ranks are based on{" "}
                   <span className="text-white">
-                    <GoPeople className="inline align-text-bottom" /> followers{" "}
+                    <GoPeople className="inline align-text-bottom" /> followers
                   </span>
                   ,{" "}
                   <span className="text-white">

@@ -38,8 +38,7 @@ function About() {
                 </h1>
                 <div className="  text-left font-Hublot text-gray-300 text-lg  leading-20 pt-4 pb-4 ">
                   <h2 className="text-white font-bold text-xl pb-2">1 Choose a Location</h2>
-                  Start by entering your desired location into the search box. For now, it just includes cities. Keep in mind, the results reflect the location users have entered
-                  themselves.
+                  Start by entering your desired location into the search box. Keep in mind, the results reflect the location users have entered themselves.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">2 Fetch and Display</h2>
                   Using the relavent API's, the top developers are compiled across GitHub, GitLab and BitBucket The ranking is based on followers, public repositories and public
                   commits this year.

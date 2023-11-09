@@ -4,6 +4,9 @@ import { GoPeople, GoRepo, GoGitPullRequest } from "react-icons/go";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
 
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./dropdown-menu";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
+
 const BLANK_USERS = [];
 const fetchPublicCommits = async (username) => {
   // GraphQL query for fetching public commits
@@ -123,18 +126,65 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                 <>
                   <div className="flex items-center mb-2 md:mb-0">
                     <strong>{index + 1}</strong>
-                    <a href={user.html_url || "#"} target="_blank" rel="noopener noreferrer" className="pl-3">
-                      <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
-                    </a>
-                    <a
-                      href={user.html_url || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[10rem] pl-3 font-bold"
-                    >
-                      {user.login}
-                    </a>
-                    {user.name && <div className="hidden md:block max-w-[8rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis text-gray-300 pl-2">{user.name}</div>}
+                    {/* Use DialogTrigger as the click target */}
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <a className="pl-3 flex items-center cursor-pointer">
+                          <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
+                          <div className="hidden md:block max-w-[8rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">{user.name}</div>
+                        </a>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle className="text-white">User Details</DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-2 p-4 text-white">
+                          <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full mx-auto" />
+                          {user.name && (
+                            <div>
+                              <strong>Name:</strong> <span>{user.name}</span>
+                            </div>
+                          )}
+                          <div>
+                            <strong>Username:</strong> <span>{user.login}</span>
+                          </div>
+                          <div>
+                            <strong>Followers:</strong> <span>{user.followers}</span>
+                          </div>
+
+                          <div>
+                            <strong>Public Repositories:</strong> <span>{user.public_repos}</span>
+                          </div>
+                          <div>
+                            <strong>Public Commits:</strong> <span>{user.publicCommits}</span>
+                          </div>
+                          <div>
+                            <strong>Location:</strong> <span>{user.location || "Not available"}</span>
+                          </div>
+                          <div>
+                            <strong>Company:</strong> <span>{user.company || "Not available"}</span>
+                          </div>
+                          <div>
+                            <strong>Personal Site:</strong> <span>{user.blog || "Not available"}</span>
+                          </div>
+                          <div>
+                            <strong>Bio:</strong> <span>{user.bio || "Not available"}</span>
+                          </div>
+                          <div>
+                            <strong>Email:</strong> <span>{user.email || "Not available"}</span>
+                          </div>
+                          <div>
+                            <strong>GitHub Profile:</strong>
+                            <a href={`https://github.com/${user.login}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                              Visit Profile
+                            </a>
+                          </div>
+                          {/* Any other user information you wish to include can be added here */}
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+
+                    {user.login && <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[10rem] text-gray-300 pl-2">{user.login}</span>}
                   </div>
                   <div className="flex items-center gap-4 md:gap-2">
                     <div className="flex items-center gap-2 min-w-[3rem]">
