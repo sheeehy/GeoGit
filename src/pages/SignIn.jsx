@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
+import { BsLink45Deg } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import GeoGitIcon from "../assets/GeoGitIcon.png";
 import { IoSparklesSharp } from "react-icons/io5";

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
-import { GoPeople, GoRepo, GoGitPullRequest, GoLocation, GoOrganization } from "react-icons/go";
+import { GoPeople, GoRepo, GoGitPullRequest, GoLocation, GoOrganization, GoMail, GoLink } from "react-icons/go";
+import { FaXTwitter } from "react-icons/fa6";
+import { BsGithub } from "react-icons/bs";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./dropdown-menu";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "./Separator";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 
 const BLANK_USERS = [];
@@ -115,10 +117,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
         return prevPage;
       }
     });
-    const TooltipProvider = TooltipPrimitive.Provider;
-    const Tooltip = TooltipPrimitive.Root;
-    const TooltipTrigger = TooltipPrimitive.Trigger;
-    const TooltipContent = TooltipPrimitive.Content;
   };
 
   return (
@@ -160,62 +158,78 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                               </div>
                             </div>
                           </div>
-                          <div className="max-w-[26rem] pt-2 pb-6">
-                            <span> {user.bio || " "}</span>
+                          <div className="max-w-[26rem] pt-3 pb-1 text-lg text-center justify-center">
+                            <span className="text-center"> {user.bio || " "}</span>
+                          </div>
+                          <div className=" px-4  mt-2   h-[1px] bg-gray-500"></div>
+
+                          <div className="text-lg font-Hublot pt-2 pb-2">
+                            <table className="w-full border-collapse">
+                              <tbody>
+                                <tr className="align-middle">
+                                  <td className="pr-2 ">
+                                    <GoLocation className="inline-block font-bold mr-2" />
+                                    Location
+                                  </td>
+                                  <td className="pl-2 text-gray-300 max-w-[19rem]">{user.location}</td>
+                                </tr>
+
+                                <tr className="align-left">
+                                  <td className="pr-2 ">
+                                    <GoOrganization className="inline-block font-bold mr-2" />
+                                    Company
+                                  </td>
+                                  <td className="pl-2 text-gray-300 max-w-[19rem]">{user.company || "Not Specified"}</td>
+                                </tr>
+
+                                <tr className="align-middle">
+                                  <td className="pr-2">
+                                    <GoPeople className="inline-block font-bold mr-2" />
+                                    Followers
+                                  </td>
+                                  <td className="pl-2 text-gray-300">{user.followers}</td>
+                                </tr>
+
+                                <tr className="align-middle">
+                                  <td className="pr-2 ">
+                                    <GoGitPullRequest className="inline-block font-bold mr-2" />
+                                    Commits
+                                  </td>
+                                  <td className="pl-2 text-gray-300">{user.publicCommits}</td>
+                                </tr>
+
+                                <tr className="align-middle">
+                                  <td className="pr-2 ">
+                                    <GoRepo className="inline-block font-bold mr-2" />
+                                    Repos
+                                  </td>
+                                  <td className="pl-2 text-gray-300">{user.public_repos}</td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
 
-                          <div className=" text-lg font-Hublot space-y-1 ">
-                            <div className="flex items-center">
-                              <TooltipProvider>
-                                <Tooltip>
-                                  <TooltipTrigger>
-                                    <GoLocation className="inline-block mr-2 font-bold" />
-                                  </TooltipTrigger>
-                                  <TooltipContent sideOffset={5}>
-                                    <p>Location</p>
-                                  </TooltipContent>
-                                </Tooltip>
-                              </TooltipProvider>
-
-                              <span className="text-gray-300">{user.location}</span>
-                            </div>
-
-                            <div className="flex items-center ">
-                              <GoOrganization className="inline-block mr-2 font-bold" />
-                              <span className="text-gray-300">{user.company || "Not Specified"}</span>
-                            </div>
-
-                            <div className="flex items-center">
-                              <GoPeople className="inline-block mr-2 font-bold" /> <span className="text-gray-300">{user.followers}</span>
-                            </div>
-
-                            <div className="flex items-center">
-                              <GoGitPullRequest className="inline-block mr-2 font-bold" />
-                              <span className="text-gray-300">{user.publicCommits}</span>
-                            </div>
-
-                            <div className="flex items-center">
-                              <GoRepo className="inline-block mr-2 font-bold" />
-                              <span className="text-gray-300">{user.public_repos}</span>
-                            </div>
-                          </div>
-
-                          <div>
-                            <br></br>
-                            <strong>Personal Site:</strong> <span>{user.blog || "Not available"}</span>
-                          </div>
-
-                          <div>
-                            <strong>Email:</strong> <span>{user.email || "Not available"}</span>
-                          </div>
-                          <div>
-                            <strong>Twitter:</strong> <span>{user.twitter_username || "Not available"}</span>
-                          </div>
-                          <div>
-                            <strong>GitHub Profile:</strong>
-                            <a href={`https://github.com/${user.login}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                              Visit Profile
+                          <div className="flex space-x-5 justify-center items-center pt-1">
+                            <a href={`https://github.com/${user.login}`} target="_blank" rel="noopener noreferrer" className="">
+                              <BsGithub />
                             </a>
+                            {user.blog && (
+                              <a href={user.blog} target="_blank" rel="noopener noreferrer">
+                                <GoLink className="" />
+                              </a>
+                            )}
+
+                            {user.email && (
+                              <a href={`mailto:${user.email}`} target="_blank" rel="noopener noreferrer">
+                                <GoMail className="" />
+                              </a>
+                            )}
+
+                            {user.twitter_username && (
+                              <a href={`https://twitter.com/${user.twitter_username}`} target="_blank" rel="noopener noreferrer">
+                                <FaXTwitter className="" />
+                              </a>
+                            )}
                           </div>
                         </DialogHeader>
 
