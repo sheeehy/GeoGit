@@ -38,6 +38,46 @@ const fetchPublicCommits = async (username) => {
   }
 };
 
+const fetchLanguagesInPinnedRepos = async (username, setLanguages, token) => {
+  const query = `
+    query {
+      user(login: "${username}") {
+        pinnedItems(first: 6, types: [REPOSITORY]) {
+          edges {
+            node {
+              ... on Repository {
+                name
+                owner {
+                  login
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const { user } = await request("https://api.github.com/graphql", query, {}, { Authorization: `bearer ${token}` });
+    const pinnedRepos = user.pinnedItems.edges.map((edge) => edge.node);
+
+    let languages = {};
+    for (const repo of pinnedRepos) {
+      const repoLanguagesResponse = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/languages`, { headers: { Authorization: `token ${token}` } });
+      const repoLanguages = await repoLanguagesResponse.json();
+      for (const [language, bytes] of Object.entries(repoLanguages)) {
+        languages[language] = (languages[language] || 0) + bytes;
+      }
+    }
+
+    setLanguages(languages);
+  } catch (error) {
+    console.error("Error fetching languages from pinned repos:", error);
+    setLanguages({});
+  }
+};
+
 export default function TopGitHubUsers({ city, isAuthenticated }) {
   const [users, setUsers] = useState(BLANK_USERS);
   const [prefetchedUsers, setPrefetchedUsers] = useState([]);
@@ -141,75 +181,53 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader className="flex items-left  text-white">
-                          <div className="flex items-start">
+                          <div className="">
                             <div className="select-none pointer-events-none">
                               <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
                             </div>
 
-                            <div className="flex flex-col justify-left ml-4 mt-2">
-                              {" "}
+                            <div className="flex justify-left pt-2  items-center">
                               {user.name && (
-                                <div>
-                                  <span className="font-bold text-xl font-Mona pb-1">{user.name}</span>
+                                <div className="">
+                                  <span className="font-bold text-xl font-Mona">{user.name}</span>
                                 </div>
                               )}
-                              <div>
-                                <span className="text-gray-300 font-Hublot">{user.login}</span>
+                              <div className="px-2 pt-1 text-gray-500">•</div>
+                              <div className="flex items-center">
+                                <div className="text-gray-300 max-w-[19rem] text-xl truncate">{user.location}</div>
                               </div>
                             </div>
+
+                            <div className=" pt-2 pb-2  text-md text-left justify-left">
+                              <span className="text-left font-Hublot"> {user.bio || " "}</span>
+                            </div>
                           </div>
-                          <div className="max-w-[26rem] pt-3 pb-1 text-lg text-center justify-center">
-                            <span className="text-center"> {user.bio || " "}</span>
-                          </div>
+
                           <div className=" px-4  mt-2   h-[1px] bg-gray-500"></div>
 
                           <div className="text-lg font-Hublot pt-2 pb-2">
-                            <table className="w-full border-collapse">
-                              <tbody>
-                                <tr className="align-middle">
-                                  <td className="pr-2 ">
-                                    <GoLocation className="inline-block font-bold mr-2" />
-                                    Location
-                                  </td>
-                                  <td className="pl-2 text-gray-300 max-w-[19rem]">{user.location}</td>
-                                </tr>
+                            <div className="flex items-center " title="Company">
+                              <GoOrganization className="inline-block font-bold mr-2" />
+                              <div className="text-gray-300 max-w-[19rem]">{user.company || "Not Specified"}</div>
+                            </div>
 
-                                <tr className="align-left">
-                                  <td className="pr-2 ">
-                                    <GoOrganization className="inline-block font-bold mr-2" />
-                                    Company
-                                  </td>
-                                  <td className="pl-2 text-gray-300 max-w-[19rem]">{user.company || "Not Specified"}</td>
-                                </tr>
+                            <div className="flex items-center">
+                              <GoPeople className="inline-block font-bold mr-2" />
+                              <div className="text-gray-300">{user.followers}</div>
+                            </div>
 
-                                <tr className="align-middle">
-                                  <td className="pr-2">
-                                    <GoPeople className="inline-block font-bold mr-2" />
-                                    Followers
-                                  </td>
-                                  <td className="pl-2 text-gray-300">{user.followers}</td>
-                                </tr>
+                            <div className="flex items-center">
+                              <GoGitPullRequest className="inline-block font-bold mr-2" />
+                              <div className="text-gray-300">{user.publicCommits}</div>
+                            </div>
 
-                                <tr className="align-middle">
-                                  <td className="pr-2 ">
-                                    <GoGitPullRequest className="inline-block font-bold mr-2" />
-                                    Commits
-                                  </td>
-                                  <td className="pl-2 text-gray-300">{user.publicCommits}</td>
-                                </tr>
-
-                                <tr className="align-middle">
-                                  <td className="pr-2 ">
-                                    <GoRepo className="inline-block font-bold mr-2" />
-                                    Repos
-                                  </td>
-                                  <td className="pl-2 text-gray-300">{user.public_repos}</td>
-                                </tr>
-                              </tbody>
-                            </table>
+                            <div className="flex items-center">
+                              <GoRepo className="inline-block font-bold mr-2" />
+                              <div className="text-gray-300">{user.public_repos}</div>
+                            </div>
                           </div>
 
-                          <div className="flex space-x-5 justify-center items-center pt-1">
+                          <div className="flex space-x-5 justify-center items-center pt-1 text-xl">
                             <a href={`https://github.com/${user.login}`} target="_blank" rel="noopener noreferrer" className="">
                               <BsGithub />
                             </a>
@@ -230,6 +248,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                                 <FaXTwitter className="" />
                               </a>
                             )}
+                          </div>
+                          <div className="pt-4">
+                            <UserLanguages username={user.login} token={import.meta.env.VITE_GITHUB_TOKEN} />
                           </div>
                         </DialogHeader>
 
@@ -271,6 +292,33 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
           </button>
         )
       )}
+    </div>
+  );
+}
+
+function UserLanguages({ username, token }) {
+  const [languages, setLanguages] = useState(null);
+
+  useEffect(() => {
+    fetchLanguagesInPinnedRepos(username, setLanguages, token);
+  }, [username, token]);
+
+  if (languages === null) return <PulseLoader />;
+
+  return (
+    <div>
+      <h3 className="font-bold">Languages in Pinned Repositories:</h3>
+      <ul>
+        {Object.entries(languages).length === 0 ? (
+          <li>No languages found.</li>
+        ) : (
+          Object.entries(languages).map(([language, bytes]) => (
+            <li key={language}>
+              {language}: {bytes.toLocaleString()} bytes
+            </li>
+          ))
+        )}
+      </ul>
     </div>
   );
 }
