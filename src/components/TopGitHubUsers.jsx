@@ -5,6 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { BsGithub } from "react-icons/bs";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
+import "./github-colors.css";
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
 
@@ -32,46 +33,6 @@ const fetchPublicCommits = async (username) => {
   } catch (error) {
     console.error(`Failed to get commit count for ${username}`, error);
     return 0;
-  }
-};
-
-const fetchLanguagesInPinnedRepos = async (username, setLanguages, token) => {
-  const query = `
-    query {
-      user(login: "${username}") {
-        pinnedItems(first: 6, types: [REPOSITORY]) {
-          edges {
-            node {
-              ... on Repository {
-                name
-                owner {
-                  login
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  try {
-    const { user } = await request("https://api.github.com/graphql", query, {}, { Authorization: `bearer ${token}` });
-    const pinnedRepos = user.pinnedItems.edges.map((edge) => edge.node);
-
-    let languages = {};
-    for (const repo of pinnedRepos) {
-      const repoLanguagesResponse = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/languages`, { headers: { Authorization: `token ${token}` } });
-      const repoLanguages = await repoLanguagesResponse.json();
-      for (const [language, bytes] of Object.entries(repoLanguages)) {
-        languages[language] = (languages[language] || 0) + bytes;
-      }
-    }
-
-    setLanguages(languages);
-  } catch (error) {
-    console.error("Error fetching languages from pinned repos:", error);
-    setLanguages({});
   }
 };
 
@@ -155,26 +116,89 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       }
     });
   };
+
+  const fetchTopLanguages = async (username, setLanguages, token) => {
+    const query = `
+      query {
+        user(login: "${username}") {
+          repositories(first: 10, orderBy: {field: UPDATED_AT, direction: DESC}) {
+            edges {
+              node {
+                name
+                languages(first: 5) {
+                  edges {
+                    node {
+                      name
+                    }
+                    size
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    try {
+      const { user } = await request("https://api.github.com/graphql", query, {}, { Authorization: `bearer ${import.meta.env.VITE_GITHUB_TOKEN}` });
+      let languages = {};
+
+      user.repositories.edges.forEach(({ node }) => {
+        node.languages.edges.forEach(({ node: languageNode, size }) => {
+          const language = languageNode.name;
+          languages[language] = (languages[language] || 0) + size;
+        });
+      });
+
+      const sortedLanguages = Object.entries(languages)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .reduce((acc, [language, size]) => ({ ...acc, [language]: size }), {});
+
+      setLanguages(sortedLanguages);
+    } catch (error) {
+      console.error("Error fetching top languages:", error);
+      setLanguages({});
+    }
+  };
+
   function UserLanguages({ username, token }) {
     const [languages, setLanguages] = useState(null);
 
     useEffect(() => {
-      fetchLanguagesInPinnedRepos(username, setLanguages, token);
+      fetchTopLanguages(username, setLanguages, token);
     }, [username, token]);
 
-    if (languages === null) return <PulseLoader color={"gray"} size={7} className="pt-14" />;
-    const getTopFiveLanguages = (languages) => {
-      return Object.entries(languages)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 5);
-    };
+    if (languages === null) {
+      return <PulseLoader color={"gray"} size={7} className="pt-14" />;
+    }
+    const getLanguageClassName = (language) => {
+      const specialCases = {
+        "C#": "CSharp",
+        "C++": "cpp",
+        "Jupyter Notebook": "Jupyter-Notebook",
+        "Vim Script": "VimScript",
+      };
 
-    const topLanguages = getTopFiveLanguages(languages);
+      return specialCases[language] || language;
+    };
 
     return (
       <div>
-        <h3 className="font-bold">Top Languages</h3>
-        <ul>{topLanguages.length === 0 ? <li>No languages found.</li> : topLanguages.map(([language]) => <li key={language}>{language}</li>)}</ul>
+        <h3 className="font-bold pb-1">Top Languages</h3>
+        <ul className="text-gray-300">
+          {Object.keys(languages).length === 0 ? (
+            <li>No languages found.</li>
+          ) : (
+            Object.entries(languages).map(([language]) => (
+              <li key={language} className="flex items-center">
+                <span className={`language-color-dot ${getLanguageClassName(language)} WhiteColor`}></span>
+                {language}
+              </li>
+            ))
+          )}
+        </ul>
       </div>
     );
   }
@@ -196,6 +220,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                         <a className="pl-3 flex items-center cursor-pointer">
                           <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
                           <div className="hidden md:block max-w-[12rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">{user.name}</div>
+                          {user.login && (
+                            <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[6rem] text-gray-300 pl-2">{user.login}</span>
+                          )}
                         </a>
                       </DialogTrigger>
                       <DialogContent>
@@ -217,87 +244,84 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                               </div>
                             </div>
 
-                            <div className=" pt-2 pb-2  text-md text-left justify-left">
-                              <span className="text-left font-Hublot"> {user.bio || " "}</span>
+                            <div className="pt-2 pb-2 text-md text-left justify-left">
+                              <span className="text-left font-Hublot break-words overflow-hidden">{user.bio || " "}</span>
                             </div>
                           </div>
 
-                          <div className=" px-4  mt-2   h-[1px] bg-gray-500"></div>
+                          <div className="px-4 mt-2 h-[1px] bg-gray-500"></div>
 
-                          <div className="text-lg font-Hublot pt-2 pb-2">
+                          <div className="text-lg font-Hublot pt-6 pb-2">
                             <div className="flex flex-row items-start">
                               {/* Left Section for Stats */}
                               <div className="flex-grow">
                                 <ul>
                                   {/* Company Info */}
-                                  <li className="flex items-center mb-2" title="Company">
-                                    <GoOrganization className="inline-block font-bold mr-2" />
+                                  <li className="flex items-center mb-2">
+                                    <GoOrganization className="inline-block font-bold mr-2 text-white" />
                                     <div className="text-gray-300 max-w-[15rem] truncate">{user.company || "Not Specified"}</div>
                                   </li>
 
+                                  {/* Hireable Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoBriefcase className="inline-block font-bold mr-2" />
-                                    <div className="text-gray-300">{user.hireable === null ? "Undisclosed" : user.hireable ? "Open to Work" : "Not Seeking Employment"}</div>{" "}
+                                    <GoBriefcase className="inline-block font-bold mr-2 text-white" />
+                                    <div className="text-gray-300">{user.hireable === null ? "Undisclosed" : user.hireable ? "Open to Work" : "Not Seeking Employment"}</div>
                                   </li>
 
                                   {/* Followers Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoPeople className="inline-block font-bold mr-2" />
+                                    <GoPeople className="inline-block font-bold mr-2 text-white" />
                                     <div className="text-gray-300">{user.followers}</div>
                                   </li>
 
                                   {/* Public Commits Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoGitPullRequest className="inline-block font-bold mr-2" />
+                                    <GoGitPullRequest className="inline-block font-bold mr-2 text-white" />
                                     <div className="text-gray-300">{user.publicCommits}</div>
                                   </li>
 
                                   {/* Public Repos Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoRepo className="inline-block font-bold mr-2" />
+                                    <GoRepo className="inline-block font-bold mr-2 text-white" />
                                     <div className="text-gray-300">{user.public_repos}</div>
                                   </li>
                                 </ul>
                               </div>
 
-                              {/* Flex Container for User Languages with flex-grow */}
+                              {/* Right Section for User Languages */}
                               <div className="flex-grow">
                                 <UserLanguages username={user.login} token={import.meta.env.VITE_GITHUB_TOKEN} />
                               </div>
                             </div>
                           </div>
 
-                          <div className="flex space-x-5 justify-center items-center pt-1 text-xl">
-                            <a href={`https://github.com/${user.login}`} target="_blank" rel="noopener noreferrer" className="">
+                          <div className="flex space-x-5 justify-center items-center pt-1 text-2xl">
+                            {/* Social Links and Contact Info */}
+                            <a href={`https://github.com/${user.login}`} target="_blank" rel="noopener noreferrer">
                               <BsGithub />
                             </a>
                             {user.blog && (
                               <a href={user.blog} target="_blank" rel="noopener noreferrer">
-                                <GoLink className="" />
+                                <GoLink />
                               </a>
                             )}
-
                             {user.email && (
                               <a href={`mailto:${user.email}`} target="_blank" rel="noopener noreferrer">
-                                <GoMail className="" />
+                                <GoMail />
                               </a>
                             )}
-
                             {user.twitter_username && (
                               <a href={`https://twitter.com/${user.twitter_username}`} target="_blank" rel="noopener noreferrer">
-                                <FaXTwitter className="" />
+                                <FaXTwitter />
                               </a>
                             )}
                           </div>
                         </DialogHeader>
-
-                        {/* Maybe something with repos or languages? */}
                       </DialogContent>
                     </Dialog>
-
-                    {user.login && <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[6rem] text-gray-300 pl-2">{user.login}</span>}
                   </div>
                   <div className="flex items-center gap-4 md:gap-2">
+                    {/* Quick Stats */}
                     <div className="flex items-center gap-2 min-w-[3rem]">
                       <GoPeople /> {user.followers}
                     </div>
@@ -305,7 +329,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       <GoGitPullRequest /> {user.publicCommits}
                     </div>
                     <div className="flex items-center gap-2 min-w-[3rem]">
-                      <GoRepo /> {user.reposCount}
+                      <GoRepo /> {user.public_repos}
                     </div>
                   </div>
                 </>
