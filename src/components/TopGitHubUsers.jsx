@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
-import { GoPeople, GoRepo, GoGitPullRequest, GoLocation, GoOrganization, GoMail, GoLink } from "react-icons/go";
+import { GoPeople, GoRepo, GoGitPullRequest, GoBriefcase, GoOrganization, GoMail, GoLink } from "react-icons/go";
 import { FaXTwitter } from "react-icons/fa6";
 import { BsGithub } from "react-icons/bs";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./dropdown-menu";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
-import { Separator } from "./Separator";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 
 const BLANK_USERS = [];
 const fetchPublicCommits = async (username) => {
@@ -158,6 +155,29 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       }
     });
   };
+  function UserLanguages({ username, token }) {
+    const [languages, setLanguages] = useState(null);
+
+    useEffect(() => {
+      fetchLanguagesInPinnedRepos(username, setLanguages, token);
+    }, [username, token]);
+
+    if (languages === null) return <PulseLoader color={"gray"} size={7} className="pt-14" />;
+    const getTopFiveLanguages = (languages) => {
+      return Object.entries(languages)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+    };
+
+    const topLanguages = getTopFiveLanguages(languages);
+
+    return (
+      <div>
+        <h3 className="font-bold">Top Languages</h3>
+        <ul>{topLanguages.length === 0 ? <li>No languages found.</li> : topLanguages.map(([language]) => <li key={language}>{language}</li>)}</ul>
+      </div>
+    );
+  }
 
   return (
     <div className="px-0 md:px-0">
@@ -171,7 +191,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                 <>
                   <div className="flex items-center mb-2 md:mb-0">
                     <strong>{index + 1}</strong>
-                    {/* Use DialogTrigger as the click target */}
                     <Dialog>
                       <DialogTrigger asChild>
                         <a className="pl-3 flex items-center cursor-pointer">
@@ -189,7 +208,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                             <div className="flex justify-left pt-2  items-center">
                               {user.name && (
                                 <div className="">
-                                  <span className="font-bold text-xl font-Mona">{user.name}</span>
+                                  <span className="font-bold text-xl font-Mona whitespace-no-wrap">{user.name}</span>
                                 </div>
                               )}
                               <div className="px-2 pt-1 text-gray-500">•</div>
@@ -206,24 +225,45 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                           <div className=" px-4  mt-2   h-[1px] bg-gray-500"></div>
 
                           <div className="text-lg font-Hublot pt-2 pb-2">
-                            <div className="flex items-center " title="Company">
-                              <GoOrganization className="inline-block font-bold mr-2" />
-                              <div className="text-gray-300 max-w-[19rem]">{user.company || "Not Specified"}</div>
-                            </div>
+                            <div className="flex flex-row items-start">
+                              {/* Left Section for Stats */}
+                              <div className="flex-grow">
+                                <ul>
+                                  {/* Company Info */}
+                                  <li className="flex items-center mb-2" title="Company">
+                                    <GoOrganization className="inline-block font-bold mr-2" />
+                                    <div className="text-gray-300 max-w-[15rem] truncate">{user.company || "Not Specified"}</div>
+                                  </li>
 
-                            <div className="flex items-center">
-                              <GoPeople className="inline-block font-bold mr-2" />
-                              <div className="text-gray-300">{user.followers}</div>
-                            </div>
+                                  <li className="flex items-center mb-2">
+                                    <GoBriefcase className="inline-block font-bold mr-2" />
+                                    <div className="text-gray-300">{user.hireable === null ? "Undisclosed" : user.hireable ? "Open to Work" : "Not Seeking Employment"}</div>{" "}
+                                  </li>
 
-                            <div className="flex items-center">
-                              <GoGitPullRequest className="inline-block font-bold mr-2" />
-                              <div className="text-gray-300">{user.publicCommits}</div>
-                            </div>
+                                  {/* Followers Info */}
+                                  <li className="flex items-center mb-2">
+                                    <GoPeople className="inline-block font-bold mr-2" />
+                                    <div className="text-gray-300">{user.followers}</div>
+                                  </li>
 
-                            <div className="flex items-center">
-                              <GoRepo className="inline-block font-bold mr-2" />
-                              <div className="text-gray-300">{user.public_repos}</div>
+                                  {/* Public Commits Info */}
+                                  <li className="flex items-center mb-2">
+                                    <GoGitPullRequest className="inline-block font-bold mr-2" />
+                                    <div className="text-gray-300">{user.publicCommits}</div>
+                                  </li>
+
+                                  {/* Public Repos Info */}
+                                  <li className="flex items-center mb-2">
+                                    <GoRepo className="inline-block font-bold mr-2" />
+                                    <div className="text-gray-300">{user.public_repos}</div>
+                                  </li>
+                                </ul>
+                              </div>
+
+                              {/* Flex Container for User Languages with flex-grow */}
+                              <div className="flex-grow">
+                                <UserLanguages username={user.login} token={import.meta.env.VITE_GITHUB_TOKEN} />
+                              </div>
                             </div>
                           </div>
 
@@ -248,9 +288,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                                 <FaXTwitter className="" />
                               </a>
                             )}
-                          </div>
-                          <div className="pt-4">
-                            <UserLanguages username={user.login} token={import.meta.env.VITE_GITHUB_TOKEN} />
                           </div>
                         </DialogHeader>
 
@@ -292,33 +329,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
           </button>
         )
       )}
-    </div>
-  );
-}
-
-function UserLanguages({ username, token }) {
-  const [languages, setLanguages] = useState(null);
-
-  useEffect(() => {
-    fetchLanguagesInPinnedRepos(username, setLanguages, token);
-  }, [username, token]);
-
-  if (languages === null) return <PulseLoader />;
-
-  return (
-    <div>
-      <h3 className="font-bold">Languages in Pinned Repositories:</h3>
-      <ul>
-        {Object.entries(languages).length === 0 ? (
-          <li>No languages found.</li>
-        ) : (
-          Object.entries(languages).map(([language, bytes]) => (
-            <li key={language}>
-              {language}: {bytes.toLocaleString()} bytes
-            </li>
-          ))
-        )}
-      </ul>
     </div>
   );
 }
