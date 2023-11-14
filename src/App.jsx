@@ -148,7 +148,7 @@ function App() {
                           <DialogDescription className="text-gray-400">Delete your account and all its associated data.</DialogDescription>
                         </DialogDescription>
                         <button
-                          onClick={deleteAccount}
+                          onClick={handleLogout}
                           className="text-red-500 border border-red-500  px-3 py-1 transition duration-200 ease-in-out hover:bg-red-500 hover:text-white"
                         >
                           Delete Account
