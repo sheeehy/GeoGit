@@ -43,20 +43,27 @@ function App() {
     window.location.reload();
   };
 
-  const handleDeleteAccount = async () => {
+  const deleteAccount = async () => {
     const accessToken = localStorage.getItem("accessToken");
+
     if (accessToken) {
-      await fetch(`https://shrouded-thicket-64208-c185a4c1d6b4.herokuapp.com/deleteAccount?accessToken=${accessToken}`, {
+      await fetch("https://shrouded-thicket-64208-c185a4c1d6b4.herokuapp.com/deleteAccount", {
         method: "DELETE",
+        headers: {
+          Authorization: accessToken,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          handleLogout();
+          if (data.message === "Account deleted") {
+            localStorage.removeItem("accessToken");
+            setIsAuthenticated(false);
+          } else {
+            console.error("Failed to delete the account.");
+          }
         });
     }
   };
-
   return (
     <Router>
       <header className="bg-transparent py-4">
@@ -135,14 +142,13 @@ function App() {
 
                       <Separator />
 
-                      <DialogHeader className="text-white text-lg mb-0">Danger Zone</DialogHeader>
                       <DialogDescription className="flex justify-between items-center text-gray-300 w-full">
                         <DialogDescription className="pb-2">
                           <DialogDescription className="text-white text-[1.1rem]">Delete your account</DialogDescription>
                           <DialogDescription className="text-gray-400">Delete your account and all its associated data.</DialogDescription>
                         </DialogDescription>
                         <button
-                          onClick={handleDeleteAccount}
+                          onClick={deleteAccount}
                           className="text-red-500 border border-red-500  px-3 py-1 transition duration-200 ease-in-out hover:bg-red-500 hover:text-white"
                         >
                           Delete Account
