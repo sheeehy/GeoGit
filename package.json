@@ -20,6 +20,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@tamagui/accordion": "^1.67.0",
+    "@tippyjs/react": "^4.2.6",
     "@vercel/analytics": "^1.0.2",
     "autoprefixer": "^10.4.15",
     "body-parser": "^1.20.2",
@@ -49,7 +50,8 @@
     "react-text-typist": "^1.1.8",
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.3.3",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

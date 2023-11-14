@@ -5,6 +5,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import { BsGithub } from "react-icons/bs";
 import { request, gql } from "graphql-request";
 import { useNavigate } from "react-router-dom";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 import "./github-colors.css";
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
@@ -258,31 +260,51 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                                 <ul>
                                   {/* Company Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoOrganization className="inline-block font-bold mr-2 text-white" />
+                                    <Tippy content="Company">
+                                      <span>
+                                        <GoOrganization className="inline-block font-bold mr-2 text-white" />
+                                      </span>
+                                    </Tippy>
                                     <div className="text-gray-300 max-w-[15rem] truncate">{user.company || "Not Specified"}</div>
                                   </li>
 
                                   {/* Hireable Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoBriefcase className="inline-block font-bold mr-2 text-white" />
+                                    <Tippy content="Job Status">
+                                      <span>
+                                        <GoBriefcase className="inline-block font-bold mr-2 text-white" />
+                                      </span>
+                                    </Tippy>
                                     <div className="text-gray-300">{user.hireable === null ? "Undisclosed" : user.hireable ? "Open to Work" : "Not Seeking Employment"}</div>
                                   </li>
 
                                   {/* Followers Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoPeople className="inline-block font-bold mr-2 text-white" />
+                                    <Tippy content="Followers">
+                                      <span>
+                                        <GoPeople className="inline-block font-bold mr-2 text-white" />
+                                      </span>
+                                    </Tippy>
                                     <div className="text-gray-300">{user.followers}</div>
                                   </li>
 
                                   {/* Public Commits Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoGitPullRequest className="inline-block font-bold mr-2 text-white" />
+                                    <Tippy content="Public Commits (2023)">
+                                      <span>
+                                        <GoGitPullRequest className="inline-block font-bold mr-2 text-white" />
+                                      </span>
+                                    </Tippy>
                                     <div className="text-gray-300">{user.publicCommits}</div>
                                   </li>
 
                                   {/* Public Repos Info */}
                                   <li className="flex items-center mb-2">
-                                    <GoRepo className="inline-block font-bold mr-2 text-white" />
+                                    <Tippy content="Public Repos">
+                                      <span>
+                                        <GoRepo className="inline-block font-bold mr-2 text-white" />
+                                      </span>
+                                    </Tippy>
                                     <div className="text-gray-300">{user.public_repos}</div>
                                   </li>
                                 </ul>
