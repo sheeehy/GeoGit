@@ -195,7 +195,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
           ) : (
             Object.entries(languages).map(([language]) => (
               <li key={language} className="flex items-center">
-                <span className={`language-color-dot ${getLanguageClassName(language)} WhiteColor`}></span>
+                <span className={`language-color-dot ${getLanguageClassName(language)} White`}></span>
                 {language}
               </li>
             ))
@@ -255,10 +255,8 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
 
                           <div className="text-lg font-Hublot pt-6 pb-2">
                             <div className="flex flex-row items-start">
-                              {/* Left Section for Stats */}
                               <div className="flex-grow">
                                 <ul>
-                                  {/* Company Info */}
                                   <li className="flex items-center mb-2">
                                     <Tippy content="Company">
                                       <span>
@@ -310,7 +308,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                                 </ul>
                               </div>
 
-                              {/* Right Section for User Languages */}
+                              {/*User Languages */}
                               <div className="flex-grow">
                                 <UserLanguages username={user.login} token={import.meta.env.VITE_GITHUB_TOKEN} />
                               </div>
@@ -318,7 +316,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                           </div>
 
                           <div className="flex space-x-5 justify-center items-center pt-1 text-2xl">
-                            {/* Social Links and Contact Info */}
+                            {/* Social Links */}
                             <a href={`https://github.com/${user.login}`} target="_blank" rel="noopener noreferrer">
                               <BsGithub />
                             </a>

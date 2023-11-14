@@ -101,7 +101,7 @@ export default function SignIn({ setIsAuthenticated }) {
                   </button>
                   <h3 className="flex items-center  justify-center text-gray-400 pt-2">
                     <Link to="/Terms">
-                      By signing in, you agree to our <b>terms of service</b>.
+                      By signing in you agree to <b>terms of service</b>.
                     </Link>
                   </h3>
                 </>
