@@ -72,7 +72,7 @@ export default function SignIn({ setIsAuthenticated }) {
           <div className="absolute top-[24rem]  w-[30rem] h-[30rem] bg-blue-400 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>
 
           <div className="relative z-10 pt-0 pb-40">
-            <div className="px-7 py-8 signInCard">
+            <div className="px-9 py-8 signInCard">
               <div className="flex items-center flex-nowrap"></div>
 
               {isAuthenticated && userData ? (
@@ -95,11 +95,11 @@ export default function SignIn({ setIsAuthenticated }) {
                   <h3 className="font-Mona pt-1 text-gray-300 text-lg pb-5">
                     to continue to <span className="text-gray-300 font-bold">GeoGit</span>
                   </h3>
-                  <button className="signInButton text-md flex items-center  py-2.5 whitespace-nowrap" onClick={!isAuthenticated ? loginWithGithub : null}>
+                  <button className="signInButton text-md flex items-center py-2.5 whitespace-nowrap" onClick={!isAuthenticated ? loginWithGithub : null}>
                     <AiFillGithub className="text-2xl" />
                     <span className="ml-3 ">Sign in With GitHub</span>
                   </button>
-                  <h3 className="flex items-center  justify-center text-gray-400 pt-2">
+                  <h3 className="flex items-center text-md  justify-center text-gray-400 pt-2">
                     <Link to="/Terms">
                       By signing in you agree to <b>terms of service</b>.
                     </Link>

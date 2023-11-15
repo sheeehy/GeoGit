@@ -2071,7 +2071,7 @@ export const LOCATION_OPTIONS = [
   { value: "Palau", label: "Palau", coordinates: [7.515, 134.5825] },
   { value: "Papua-New-Guinea", label: "Papua New Guinea", coordinates: [-6.315, 143.9555] },
   { value: "Samoa", label: "Samoa", coordinates: [-13.759, -172.1046] },
-  { value: "Solomon Islands", label: "Solomon Islands", coordinates: [-9.6457, 160.1562] },
+  { value: "Solomon-Islands", label: "Solomon Islands", coordinates: [-9.6457, 160.1562] },
   { value: "Tonga", label: "Tonga", coordinates: [-21.1789, -175.1982] },
   { value: "Tuvalu", label: "Tuvalu", coordinates: [-7.4783, 178.6799] },
   { value: "Vanuatu", label: "Vanuatu", coordinates: [-15.3767, 166.9592] },
