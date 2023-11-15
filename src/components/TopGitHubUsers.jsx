@@ -62,8 +62,11 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       const data = await response.json();
       const usersList = data.items || [];
 
+      // Filter out only user-type entries
+      const usersOnlyList = usersList.filter((user) => user.type === "User");
+
       const usersWithDetails = await Promise.all(
-        usersList.map(async (user) => {
+        usersOnlyList.map(async (user) => {
           const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
           const publicCommitsPromise = fetchPublicCommits(user.login);
           const [userDetails, publicCommits] = await Promise.all([userDetailsPromise, publicCommitsPromise]);
@@ -221,7 +224,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       <DialogTrigger asChild>
                         <a className="pl-3 flex items-center cursor-pointer">
                           <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
-                          <div className="hidden md:block max-w-[12rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">{user.name}</div>
+                          <div className="hidden md:block max-w-[12rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">
+                            {user.login} {/* Display full name or username */}
+                          </div>
                           {user.login && (
                             <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[6rem] text-gray-300 pl-2">{user.login}</span>
                           )}
