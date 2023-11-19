@@ -224,9 +224,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       <DialogTrigger asChild>
                         <a className="pl-3 flex items-center cursor-pointer">
                           <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
-                          <div className="hidden md:block max-w-[12rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">
-                            {user.login} {/* Display full name or username */}
-                          </div>
+                          <div className="hidden md:block max-w-[12rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">{user.name}</div>
                           {user.login && (
                             <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[6rem] text-gray-300 pl-2">{user.login}</span>
                           )}
@@ -242,7 +240,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                             <div className="flex justify-left pt-2  items-center">
                               {user.name && (
                                 <div className="">
-                                  <span className="font-bold text-xl font-Mona whitespace-no-wrap">{user.name}</span>
+                                  <span className="font-bold text-xl font-Mona max-w-xl  ">{user.name}</span>
                                 </div>
                               )}
                               <div className="px-2 pt-1 text-gray-500">•</div>

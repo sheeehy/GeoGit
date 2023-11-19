@@ -70,6 +70,10 @@ function Home() {
                   and{" "}
                   <span className="text-white">
                     <GoGitPullRequest className="inline align-text-bottom" /> commits
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-white">
+                    <GoRepo className="inline align-text-bottom" /> repos
                   </span>
                   .
                 </h2>

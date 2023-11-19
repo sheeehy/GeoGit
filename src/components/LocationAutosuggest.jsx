@@ -107,12 +107,12 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
       }, 850);
     } else if (selectedOption && selectedOption.__isNew__) {
       setIsLoading(true);
-      onCityChange(selectedOption.label, [50, -10]);
+      onCityChange(selectedOption.label, [51.507351, -0.127758]);
       setTimeout(() => {
         setIsLoading(false);
       }, 850);
     } else {
-      onCityChange("", [50, 10]);
+      onCityChange("", [51.507351, -0.127758]);
       setTimeout(() => selectRef.current.focus(), 0);
     }
 
@@ -124,7 +124,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
   };
   const handleCreate = (inputValue) => {
     setIsLoading(true); // Set isLoading to true when a new option is created
-    onCityChange(inputValue, [50, 10]);
+    onCityChange(inputValue, [51.507351, -0.127758]);
     setTimeout(() => {
       setIsLoading(false); // Set isLoading back to false
     }, 850);

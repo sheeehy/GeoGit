@@ -2,14 +2,11 @@ import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 
 //Search page auto-rotating globe component - taking too much memory
-const defaultCoordinates = [50, -10];
+const defaultCoordinates = [51.507351, -0.127758];
 function Cobe({ coordinates = defaultCoordinates }) {
   const canvasRef = useRef();
   const locationToAngles = (lat, long) => {
-    return [
-      Math.PI - ((long * Math.PI) / 180 - Math.PI / 2),
-      (lat * Math.PI) / 180,
-    ];
+    return [Math.PI - ((long * Math.PI) / 180 - Math.PI / 2), (lat * Math.PI) / 180];
   };
 
   const focusRef = useRef(locationToAngles(...coordinates));
@@ -20,8 +17,7 @@ function Cobe({ coordinates = defaultCoordinates }) {
     let currentPhi = 0;
     let currentTheta = 0;
     const doublePi = Math.PI * 2;
-    const onResize = () =>
-      canvasRef.current && (width = canvasRef.current.offsetWidth);
+    const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth);
     window.addEventListener("resize", onResize);
     onResize();
     const globe = createGlobe(canvasRef.current, {
@@ -32,7 +28,7 @@ function Cobe({ coordinates = defaultCoordinates }) {
       theta: 0,
       dark: 1,
       diffuse: 2,
-      mapSamples: 9000,
+      mapSamples: 14000,
       mapBrightness: 8,
       baseColor: [0.1, 0.1, 0.1],
       markerColor: [0.815, 0.904, 0.99],
