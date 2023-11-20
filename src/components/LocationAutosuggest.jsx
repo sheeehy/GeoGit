@@ -18,7 +18,7 @@ const customStyles = {
   container: (provided) => ({
     ...provided,
     marginBottom: "0rem",
-    fontFamily: "Hublot-sans",
+    fontFamily: "Helvetica",
     width: "15rem",
     zIndex: 50,
   }),
@@ -53,7 +53,7 @@ const customStyles = {
   control: (provided, state) => ({
     ...provided,
     background: "#070707",
-    fontFamily: "Hublot-sans",
+    fontFamily: "Helvetica",
     borderColor: "lightgray",
     borderWidth: "1px",
     boxShadow: state.isFocused ? "0 0 0 1px white" : null,
@@ -164,7 +164,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
       </div>
       <div
         style={{
-          fontFamily: "Hublot-sans",
+          fontFamily: "Helvetica",
           color: "hsl(0, 0%, 40%)",
           display: "inline-block",
           fontSize: 12,
