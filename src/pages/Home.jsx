@@ -35,7 +35,7 @@ function Home() {
                 </h1>
 
                 {/* Display on larger screens */}
-                <h2 className="hidden md:block pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[36rem] leading-20 pt-4 fade-in2">
+                <h2 className="hidden md:block pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[35rem] leading-20 pt-4 fade-in2">
                   Start by entering the location you want to rank devs from. Ranks are based on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
@@ -85,7 +85,7 @@ function Home() {
             </div>
           </div>
 
-          <a href="https://github.com/sheeehy" target="_blank" rel="noopener noreferrer" className=" font-Hublot leading-12 tracking-wider pb-2 jack-sheehy">
+          <a href="https://jacksheehy.live" target="_blank" rel="noopener noreferrer" className=" font-Hublot leading-12 tracking-wider pb-2 jack-sheehy">
             <span className="text-gray-300 font-bold">Jack Sheehy :) </span> <br />
             <span className="text-gray-400"> ©2023 </span>
           </a>
