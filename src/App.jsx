@@ -70,8 +70,9 @@ function App() {
   return (
     <Router>
       {showBanner && (
-        <div className="bg-[#DA552F] h-14 flex items-center justify-center select-none relative ">
-          <a href="https://www.producthunt.com/posts/geogit" target="_blank" rel="noopener noreferrer">
+        <div className="bg-[#DA552F] h-14 flex items-center justify-center select-none relative">
+          {/* Always visible link for the Product Hunt badge */}
+          <a href="https://www.producthunt.com/posts/geogit" target="_blank" rel="noopener noreferrer" className="hidden md:block">
             <h1 className="text-white font-semibold tracking-wide">😺 GeoGit is featured on Product Hunt today - Check it out :)</h1>
           </a>
           <a href="https://www.producthunt.com/posts/geogit?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-geogit" target="_blank">
@@ -83,6 +84,8 @@ function App() {
               height="54"
             />
           </a>
+
+          {/* Text visible only on desktop (medium screens and above) */}
 
           <button className="absolute right-2 top-2 text-white text-2xl font-bold" onClick={() => setShowBanner(false)}>
             ×
