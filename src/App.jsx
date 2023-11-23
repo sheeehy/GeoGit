@@ -69,9 +69,10 @@ function App() {
 
   return (
     <Router>
+      {/*
       {showBanner && (
         <div className="bg-[#DA552F] h-14 flex items-center justify-center select-none relative">
-          {/* Always visible link for the Product Hunt badge */}
+          Always visible link for the Product Hunt badge 
           <a href="https://www.producthunt.com/posts/geogit" target="_blank" rel="noopener noreferrer" className="hidden md:block">
             <h1 className="text-white font-semibold tracking-wide">😺 GeoGit is featured on Product Hunt today - Check it out :)</h1>
           </a>
@@ -85,13 +86,12 @@ function App() {
             />
           </a>
 
-          {/* Text visible only on desktop (medium screens and above) */}
-
           <button className="absolute right-2 top-2 text-white text-2xl font-bold" onClick={() => setShowBanner(false)}>
             ×
           </button>
         </div>
       )}
+      */}
 
       <header className="bg-transparent py-4">
         <div className="container mx-auto pt-4 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center z-50">

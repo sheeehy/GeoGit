@@ -208,6 +208,18 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
     );
   }
 
+  function formatUrl(url) {
+    if (!url) return "";
+
+    // Check if the URL starts with http:// or https://
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      return url;
+    } else {
+      // If not, prepend 'http://' to the URL
+      return "http://" + url;
+    }
+  }
+
   return (
     <div className="px-0 md:px-0">
       <ul>
@@ -324,7 +336,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                               <BsGithub />
                             </a>
                             {user.blog && (
-                              <a href={user.blog} target="_blank" rel="noopener noreferrer">
+                              <a href={formatUrl(user.blog)} target="_blank" rel="noopener noreferrer">
                                 <GoLink />
                               </a>
                             )}
