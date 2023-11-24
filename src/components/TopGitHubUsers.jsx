@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
-import { GoPeople, GoRepo, GoGitPullRequest, GoBriefcase, GoOrganization, GoMail, GoLink } from "react-icons/go";
+import { GoPeople, GoRepo, GoGitPullRequest, GoBriefcase, GoOrganization, GoMail, GoLink, GoStar } from "react-icons/go";
 import { FaXTwitter } from "react-icons/fa6";
 import { BsGithub } from "react-icons/bs";
 import { request, gql } from "graphql-request";
@@ -9,7 +9,7 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "./github-colors.css";
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "./dialog";
 
 const BLANK_USERS = [];
 const fetchPublicCommits = async (username) => {
@@ -34,6 +34,56 @@ const fetchPublicCommits = async (username) => {
     return data.user.contributionsCollection.contributionCalendar.totalContributions;
   } catch (error) {
     console.error(`Failed to get commit count for ${username}`, error);
+    return 0;
+  }
+};
+
+const fetchMostStarredRepo = async (username, headers) => {
+  try {
+    let highestStars = 0;
+
+    // GraphQL query to fetch the star count of the most starred repositories
+    const query = `
+      query($username: String!) {
+        user(login: $username) {
+          repositories(first: 10, orderBy: {field: STARGAZERS, direction: DESC}) {
+            nodes {
+              stargazers {
+                totalCount
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    const variables = { username };
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        ...headers,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`GitHub GraphQL API returned ${response.status}`);
+    }
+
+    const { data } = await response.json();
+    const repos = data.user.repositories.nodes;
+
+    if (repos.length > 0) {
+      highestStars = repos[0].stargazers.totalCount; // Assuming the first one has the highest stars as they are ordered by star count
+    }
+
+    return highestStars;
+  } catch (error) {
+    console.error("Error fetching most starred repo:", error);
     return 0;
   }
 };
@@ -69,13 +119,16 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
         usersOnlyList.map(async (user) => {
           const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
           const publicCommitsPromise = fetchPublicCommits(user.login);
+          const highestStars = await fetchMostStarredRepo(user.login, headers); // Fetch the most starred repo
           const [userDetails, publicCommits] = await Promise.all([userDetailsPromise, publicCommitsPromise]);
+
           return {
             ...user,
             ...userDetails,
             reposCount: userDetails.public_repos,
             publicCommits,
-            score: 0.6 * userDetails.followers + 0.3 * publicCommits + userDetails.public_repos * 0.1,
+            highestStars,
+            score: 0.4 * userDetails.followers + 0.2 * publicCommits + userDetails.public_repos * 0.1 + highestStars * 0.3,
           };
         })
       );
@@ -301,6 +354,16 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                                     <div className="text-gray-300">{user.followers}</div>
                                   </li>
 
+                                  {/* Most Starred Repo Info */}
+                                  <li className="flex items-center mb-2">
+                                    <Tippy content="Most Starred Repo">
+                                      <span>
+                                        <GoStar className="inline-block font-bold mr-2 text-white" />
+                                      </span>
+                                    </Tippy>
+                                    <div className="text-gray-300">{user.highestStars}</div>
+                                  </li>
+
                                   {/* Public Commits Info */}
                                   <li className="flex items-center mb-2">
                                     <Tippy content="Public Commits (2023)">
@@ -359,6 +422,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                     {/* Quick Stats */}
                     <div className="flex items-center gap-2 min-w-[3rem]">
                       <GoPeople /> {user.followers}
+                    </div>
+                    <div className="flex items-center gap-2 min-w-[3rem]">
+                      <GoStar /> {user.highestStars}
                     </div>
                     <div className="flex items-center gap-2 min-w-[3rem]">
                       <GoGitPullRequest /> {user.publicCommits}

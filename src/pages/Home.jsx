@@ -1,5 +1,4 @@
 import "../App.css";
-import GeoGitIcon from "../assets/GeoGitIcon.png";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoSparklesSharp } from "react-icons/io5";
