@@ -34,6 +34,7 @@
     "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.291.0",
     "node-fetch": "^3.3.2",
+    "numeral": "^2.0.6",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",
     "react": "^18.2.0",

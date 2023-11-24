@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "./github-colors.css";
+import numeral from "numeral";
 
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "./dialog";
 
@@ -31,7 +32,10 @@ const fetchPublicCommits = async (username) => {
   };
   try {
     const data = await request("https://api.github.com/graphql", query, variables, headers);
-    return data.user.contributionsCollection.contributionCalendar.totalContributions;
+    const totalContributions = data.user.contributionsCollection.contributionCalendar.totalContributions;
+
+    // Format the number with numeral.js
+    return numeral(totalContributions).format("0.[0]a");
   } catch (error) {
     console.error(`Failed to get commit count for ${username}`, error);
     return 0;
@@ -81,13 +85,12 @@ const fetchMostStarredRepo = async (username, headers) => {
       highestStars = repos[0].stargazers.totalCount; // Assuming the first one has the highest stars as they are ordered by star count
     }
 
-    return highestStars;
+    return numeral(highestStars).format("0.[0]a");
   } catch (error) {
     console.error("Error fetching most starred repo:", error);
     return 0;
   }
 };
-
 export default function TopGitHubUsers({ city, isAuthenticated }) {
   const [users, setUsers] = useState(BLANK_USERS);
   const [prefetchedUsers, setPrefetchedUsers] = useState([]);
@@ -107,6 +110,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
     const headers = {
       Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
     };
+
     try {
       const response = await fetch(baseUrl, { headers });
       const data = await response.json();
@@ -118,28 +122,25 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       const usersWithDetails = await Promise.all(
         usersOnlyList.map(async (user) => {
           const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
-          const publicCommitsPromise = fetchPublicCommits(user.login);
-          const highestStars = await fetchMostStarredRepo(user.login, headers); // Fetch the most starred repo
+          const publicCommitsPromise = fetchPublicCommits(user.login); // fetchPublicCommits should be updated to use numeral
+          const highestStars = await fetchMostStarredRepo(user.login, headers); // fetchMostStarredRepo should be updated to use numeral
           const [userDetails, publicCommits] = await Promise.all([userDetailsPromise, publicCommitsPromise]);
 
           return {
             ...user,
             ...userDetails,
             reposCount: userDetails.public_repos,
-            publicCommits,
-            highestStars,
+            publicCommits: numeral(publicCommits).format("0.[0]a"), // Apply numeral formatting
+            highestStars: numeral(highestStars).format("0.[0]a"), // Apply numeral formatting
             score: 0.4 * userDetails.followers + 0.2 * publicCommits + userDetails.public_repos * 0.1 + highestStars * 0.3,
           };
         })
       );
 
       if (prefetch) {
-        // Background pre-fetching
         setPrefetchedUsers(usersWithDetails);
       } else {
-        // Initial fetch or Load More clicked
         setUsers((prevUsers) => [...prevUsers.slice(0, (pageNumber - 1) * 10), ...usersWithDetails, ...prevUsers.slice(pageNumber * 10)]);
-        // Trigger background pre-fetch for the next batch of users
         fetchTopUsers(pageNumber + 1, true);
       }
     } catch (error) {
@@ -288,10 +289,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                     <Dialog>
                       <DialogTrigger asChild>
                         <a className="pl-3 flex items-center cursor-pointer">
-                          <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full" />
-                          <div className="hidden md:block max-w-[12rem] md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis pl-3 font-bold">{user.name}</div>
-                          {user.login && (
-                            <span className="font-Mona md:whitespace-nowrap md:overflow-hidden md:overflow-ellipsis md:max-w-[6rem] text-gray-300 pl-2">{user.login}</span>
+                          <img src={user.avatar_url} alt={user.name} className="w-12 h-12 rounded-full" />
+                          {user.name && (
+                            <span className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[16rem] text-white pl-4 md:font-bold">{user.name}</span>
                           )}
                         </a>
                       </DialogTrigger>
@@ -351,7 +351,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                                         <GoPeople className="inline-block font-bold mr-2 text-white" />
                                       </span>
                                     </Tippy>
-                                    <div className="text-gray-300">{user.followers}</div>
+                                    <div className="text-gray-300"> {numeral(user.followers).format("0.[0]a")}</div>
                                   </li>
 
                                   {/* Most Starred Repo Info */}
@@ -418,19 +418,19 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       </DialogContent>
                     </Dialog>
                   </div>
-                  <div className="flex items-center gap-4 md:gap-2">
+                  <div className="flex items-center gap-6 md:gap-4">
                     {/* Quick Stats */}
-                    <div className="flex items-center gap-2 min-w-[3rem]">
-                      <GoPeople /> {user.followers}
+                    <div className="flex items-center gap-1 min-w-[3rem]">
+                      <GoPeople /> {numeral(user.followers).format("0.[0]a")}
                     </div>
-                    <div className="flex items-center gap-2 min-w-[3rem]">
+                    <div className="flex items-center gap-1 min-w-[3rem]">
                       <GoStar /> {user.highestStars}
                     </div>
-                    <div className="flex items-center gap-2 min-w-[3rem]">
+                    <div className="flex items-center gap-1 min-w-[3rem]">
                       <GoGitPullRequest /> {user.publicCommits}
                     </div>
-                    <div className="flex items-center gap-2 min-w-[3rem]">
-                      <GoRepo /> {user.public_repos}
+                    <div className="flex items-center gap-1 min-w-[3rem]">
+                      <GoRepo /> {numeral(user.public_repos).format("0.[0]a")}
                     </div>
                   </div>
                 </>
