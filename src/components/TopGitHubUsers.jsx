@@ -245,13 +245,13 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
 
     return (
       <div>
-        <h3 className="font-bold pb-1">Top Languages</h3>
+        <h3 className="font-bold pb-2">Top Languages</h3>
         <ul className="text-gray-300">
           {Object.keys(languages).length === 0 ? (
             <li>No languages found.</li>
           ) : (
             Object.entries(languages).map(([language]) => (
-              <li key={language} className="flex items-center">
+              <li key={language} className="flex items-center mb-1.5">
                 <span className={`language-color-dot ${getLanguageClassName(language)} White`}></span>
                 {language}
               </li>
@@ -310,12 +310,12 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                               )}
                               <div className="px-2 pt-1 text-gray-500">•</div>
                               <div className="flex items-center">
-                                <div className="text-gray-300 max-w-[19rem] text-xl truncate">{user.location}</div>
+                                <div className="text-gray-300 max-w-[10rem] sm:max-w-[19rem] text-xl truncate">{user.location}</div>
                               </div>
                             </div>
 
                             <div className="pt-2 pb-2 text-md text-left justify-left">
-                              <span className="text-left font-Hublot break-words overflow-hidden">{user.bio || " "}</span>
+                              <span className="text-left font-Hublot break-words overflow-hidden max-w-[10rem] sm:max-w-full">{user.bio || " "}</span>
                             </div>
                           </div>
 
@@ -331,7 +331,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                                         <GoOrganization className="inline-block font-bold mr-2 text-white" />
                                       </span>
                                     </Tippy>
-                                    <div className="text-gray-300 max-w-[15rem] truncate">{user.company || "Not Specified"}</div>
+                                    <div className="text-gray-300 max-w-[10rem] sm:max-w-[15rem] truncate">{user.company || "Not Specified"}</div>
                                   </li>
 
                                   {/* Hireable Info */}
