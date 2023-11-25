@@ -14,7 +14,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "./dialog";
 
 const BLANK_USERS = [];
 const fetchPublicCommits = async (username) => {
-  // GraphQL query for fetching public commits
   const query = gql`
     query ($username: String!) {
       user(login: $username) {
@@ -46,7 +45,6 @@ const fetchMostStarredRepo = async (username, headers) => {
   try {
     let highestStars = 0;
 
-    // GraphQL query to fetch the star count of the most starred repositories
     const query = `
       query($username: String!) {
         user(login: $username) {
@@ -82,7 +80,7 @@ const fetchMostStarredRepo = async (username, headers) => {
     const repos = data.user.repositories.nodes;
 
     if (repos.length > 0) {
-      highestStars = repos[0].stargazers.totalCount; // Assuming the first one has the highest stars as they are ordered by star count
+      highestStars = repos[0].stargazers.totalCount;
     }
 
     return numeral(highestStars).format("0.[0]a");
@@ -116,22 +114,21 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       const data = await response.json();
       const usersList = data.items || [];
 
-      // Filter out only user-type entries
       const usersOnlyList = usersList.filter((user) => user.type === "User");
 
       const usersWithDetails = await Promise.all(
         usersOnlyList.map(async (user) => {
           const userDetailsPromise = fetch(`https://api.github.com/users/${user.login}`, { headers }).then((res) => res.json());
-          const publicCommitsPromise = fetchPublicCommits(user.login); // fetchPublicCommits should be updated to use numeral
-          const highestStars = await fetchMostStarredRepo(user.login, headers); // fetchMostStarredRepo should be updated to use numeral
+          const publicCommitsPromise = fetchPublicCommits(user.login);
+          const highestStars = await fetchMostStarredRepo(user.login, headers);
           const [userDetails, publicCommits] = await Promise.all([userDetailsPromise, publicCommitsPromise]);
 
           return {
             ...user,
             ...userDetails,
             reposCount: userDetails.public_repos,
-            publicCommits: numeral(publicCommits).format("0.[0]a"), // Apply numeral formatting
-            highestStars: numeral(highestStars).format("0.[0]a"), // Apply numeral formatting
+            publicCommits: numeral(publicCommits).format("0.[0]a"),
+            highestStars: numeral(highestStars).format("0.[0]a"),
             score: 0.4 * userDetails.followers + 0.2 * publicCommits + userDetails.public_repos * 0.1 + highestStars * 0.3,
           };
         })
@@ -155,10 +152,10 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   useEffect(() => {
     setPage(1);
     setUsers(BLANK_USERS);
-    setDataLoaded(false); // Reset data loaded flag
+    setDataLoaded(false);
     if (city) {
-      setSearchAttempted(false); // Reset search attempted flag only when city is present
-      fetchTopUsers(1).finally(() => setSearchAttempted(true)); // Set search attempted flag after fetch
+      setSearchAttempted(false);
+      fetchTopUsers(1).finally(() => setSearchAttempted(true));
     }
   }, [city]);
   const loadMoreUsers = () => {
@@ -166,7 +163,6 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
       if (isAuthenticated) {
         const newPage = prevPage + 1;
         setUsers((prevUsers) => [...prevUsers, ...prefetchedUsers]);
-        // Fetch next set of users for future use
         fetchTopUsers(newPage + 1, true);
         return newPage;
       } else {
@@ -265,11 +261,9 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
   function formatUrl(url) {
     if (!url) return "";
 
-    // Check if the URL starts with http:// or https://
     if (url.startsWith("http://") || url.startsWith("https://")) {
       return url;
     } else {
-      // If not, prepend 'http://' to the URL
       return "http://" + url;
     }
   }
@@ -422,7 +416,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                   </div>
                   <div className="flex items-center gap-6 md:gap-4">
                     {/* Quick Stats */}
-                    <div className="flex items-center gap-1 min-w-[3rem] pl-2">
+                    <div className="flex items-center gap-1 min-w-[3rem] pl-1">
                       <GoPeople /> {numeral(user.followers).format("0.[0]a")}
                     </div>
                     <div className="flex items-center gap-1 min-w-[3rem]">
