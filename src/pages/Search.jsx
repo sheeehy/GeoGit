@@ -43,7 +43,8 @@ function Search({ isAuthenticated }) {
             <h1 className="font-Mona select-none font-bold text-white text-5xl leading-20 pb-2 fade-in1">Search</h1>
             <div className="flex select-none">
               <p className="font-Hublot select-none text-gray-300 mr-4 max-w-[28rem] leading-[1.7rem] fade-in2">
-                Start by entering the location you want to rank developers from. Keep in mind, the results reflect the location users have entered themselves and are not definitve.
+                Start by entering the location you want to rank developers from. Keep in mind, the results reflect the location users have entered themselves and are not entirely
+                definitve.
               </p>
             </div>
           </div>
@@ -52,16 +53,14 @@ function Search({ isAuthenticated }) {
             {" "}
             <Dialog>
               <DialogTrigger>
-                <Tippy content="Ranking Criteria">
-                  <div className="fade-in1 mb-4 mr-4 px-3.5 py-[0.4rem] rounded-[0.5rem] bg-transparent font-bold text-white border border-gray-200 hover:border-gray-500 transition ease-in-out">
-                    ?
-                  </div>
-                </Tippy>
+                <div className="fade-in1 mb-4 mr-4 px-3.5 py-[0.4rem] rounded-[0.5rem] bg-transparent   text-white border border-gray-300 hover:border-gray-500 transition ease-in-out">
+                  ?
+                </div>
               </DialogTrigger>
-              <DialogContent className="max-w-xs rounded-s fade-in2">
+              <DialogContent className="max-w-xs rounded-s fade-in2 pointer-events-none select-none">
                 <p className="font-Hublot text-gray-300 text-lg">
-                  <h1 className="text-[1.3rem] text-white font-bold font-Mona ">Ranking Criteria</h1>
-                  <div className=" text-gray-400 pb-2 font-Mona ">In order of signifigance</div>
+                  <div className="text-[1.3rem] text-white font-bold font-Mona ">Ranking Criteria</div>
+                  <div className=" text-gray-400 pb-2 font-Mona ">In order of significance</div>
 
                   <span className="flex items-center mr-4 mb-1">
                     <GoPeople className="text-white" />

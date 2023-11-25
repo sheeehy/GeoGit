@@ -290,8 +290,10 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                       <DialogTrigger asChild>
                         <a className="pl-3 flex items-center cursor-pointer">
                           <img src={user.avatar_url} alt={user.name} className="w-12 h-12 rounded-full" />
-                          {user.name && (
-                            <span className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[16rem] text-white pl-4 md:font-bold">{user.name}</span>
+                          {user.login && (
+                            <span className="font-Mona whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[16rem] text-white pl-4 md:font-bold">
+                              {user.name || user.login}
+                            </span>
                           )}
                         </a>
                       </DialogTrigger>

@@ -19,7 +19,7 @@ const customStyles = {
     ...provided,
     marginBottom: "0rem",
     fontFamily: "Helvetica",
-    width: "15rem",
+    width: "14rem",
     zIndex: 50,
   }),
   input: (provided) => ({
