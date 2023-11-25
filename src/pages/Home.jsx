@@ -2,7 +2,7 @@ import "../App.css";
 import GlobeComponent from "../components/GlobeComponent";
 import { Link } from "react-router-dom";
 import { IoSparklesSharp } from "react-icons/io5";
-import { GoPeople, GoGitPullRequest, GoRepo } from "react-icons/go";
+import { GoPeople, GoGitPullRequest, GoRepo, GoStar } from "react-icons/go";
 
 import TypingAnimation from "../components/TypingAnimation";
 
@@ -34,10 +34,14 @@ function Home() {
                 </h1>
 
                 {/* Display on larger screens */}
-                <h2 className="hidden md:block pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[35rem] leading-20 pt-4 fade-in2">
-                  Start by entering the location you want to rank devs from. Ranks are based on{" "}
+                <div className=" pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[35rem] leading-20 pt-4 fade-in2">
+                  Start by entering the location you want to rank software developers from. Ranks are based on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
+                  </span>
+                  ,{" "}
+                  <span className="text-white">
+                    <GoStar className="inline align-text-bottom" /> starcount
                   </span>
                   ,{" "}
                   <span className="text-white">
@@ -45,37 +49,9 @@ function Home() {
                   </span>{" "}
                   and{" "}
                   <span className="text-white">
-                    <GoRepo className="inline align-text-bottom" /> repos
+                    <GoRepo className="inline align-text-bottom" /> repos.
                   </span>
-                  . Also check out the
-                  <a
-                    href="https://github.com/sheeehy/Geo-Git-v2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition duration-100 ease-in-out hover:text-gray-400 font-bold text-white"
-                  >
-                    {" "}
-                    repo
-                  </a>
-                  !
-                </h2>
-
-                {/* Display on mobile */}
-                <h2 className="md:hidden pb-6 select-none text-center font-Hublot text-gray-300 text-lg max-w-[24rem] px-4 leading-20 pt-2">
-                  Start by entering the city you want to rank top developers from. Ranks are based on{" "}
-                  <span className="text-white">
-                    <GoPeople className="inline align-text-bottom" /> followers{" "}
-                  </span>
-                  and{" "}
-                  <span className="text-white">
-                    <GoGitPullRequest className="inline align-text-bottom" /> commits
-                  </span>{" "}
-                  and{" "}
-                  <span className="text-white">
-                    <GoRepo className="inline align-text-bottom" /> repos
-                  </span>
-                  .
-                </h2>
+                </div>
 
                 <Link to="/search" className="get-started-button font-mono select-none fade-in3">
                   <IoSparklesSharp className="inline align-text-top" /> Get Started

@@ -420,7 +420,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
                   </div>
                   <div className="flex items-center gap-6 md:gap-4">
                     {/* Quick Stats */}
-                    <div className="flex items-center gap-1 min-w-[3rem]">
+                    <div className="flex items-center gap-1 min-w-[3rem] pl-2">
                       <GoPeople /> {numeral(user.followers).format("0.[0]a")}
                     </div>
                     <div className="flex items-center gap-1 min-w-[3rem]">
