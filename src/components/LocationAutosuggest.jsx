@@ -158,7 +158,7 @@ const LocationAutosuggest = ({ selectedCity, onCityChange }) => {
         />
         {isLoading && (
           <div className="text-center pb-4" style={{ marginLeft: "1rem" }}>
-            <PulseLoader color={"gray"} size={7} loading={isLoading} />
+            <PulseLoader color={"white"} size={6} loading={isLoading} />
           </div>
         )}
       </div>

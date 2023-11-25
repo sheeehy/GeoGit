@@ -36,7 +36,7 @@ function About() {
                   <h2 className="text-white font-bold text-xl pb-2">1 Choose a Location</h2>
                   Start by entering your desired location into the search box. Keep in mind, the results reflect the location users have entered themselves.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">2 Fetch and Display</h2>
-                  Using the relavent API's, the top developers are compiled across GitHub, GitLab and BitBucket. The ranking is currently based on followers, public repositories
+                  Using the relavent API's, the top developers are compiled across GitHub, GitLab and BitBucket. The ranking is currently based on followers, most starred repo, public repositories
                   and public commits this year.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">3 User Insights</h2>
                   Each user has their profile picture, username, full name, followers, public commits this year and number of public repositories displayed, as well as a link to
