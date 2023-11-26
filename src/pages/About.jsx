@@ -36,11 +36,11 @@ function About() {
                   <h2 className="text-white font-bold text-xl pb-2">1 Choose a Location</h2>
                   Start by entering your desired location into the search box. Keep in mind, the results reflect the location users have entered themselves.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">2 Fetch and Display</h2>
-                  Using the relavent API's, the top developers are compiled across GitHub, GitLab and BitBucket. The ranking is currently based on followers, most starred repo, public repositories
-                  and public commits this year.
+                  Using the relavent API's, the top developers are compiled across GitHub, GitLab and BitBucket. The ranking is currently based on followers, most starred repo,
+                  public repositories and public commits this year.
                   <h2 className="text-white font-bold text-xl pb-2 pt-4">3 User Insights</h2>
-                  Each user has their profile picture, username, full name, followers, public commits this year and number of public repositories displayed, as well as a link to
-                  either their GitHub, GitLab or BitBucket profile, as well as any other socials.
+                  Each user has their profile picture, username, full name, followers, most starred repo, public commits this year and number of public repositories displayed, as
+                  well as a link to either their GitHub, GitLab or BitBucket profile, as well as any other socials. Now includes a list of their most used languages.
                 </div>
                 <h1 className="pt-10 pb-2 text-left font-Mona font-bold text-white text-4xl leading-20  ">
                   <GoGraph className="inline align-bottom" /> Benefits for Developers

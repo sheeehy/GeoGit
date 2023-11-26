@@ -69,12 +69,13 @@ function App() {
 
   return (
     <Router>
-      {/*
-      {showBanner && (
-        <div className="bg-[#DA552F] h-14 flex items-center justify-center select-none relative">
-          Always visible link for the Product Hunt badge 
+      {/*  {showBanner && (
+        <div className="bg-[#DA552F] h-14 flex items-center justify-center select-none relative ">
+          {" "}
           <a href="https://www.producthunt.com/posts/geogit" target="_blank" rel="noopener noreferrer" className="hidden md:block">
-            <h1 className="text-white font-semibold tracking-wide">😺 GeoGit is featured on Product Hunt today - Check it out :)</h1>
+            <h1 className="text-white  tracking-wide">
+              😺 GeoGit is featured on <span className="font-bold text-white">Product Hunt</span> today - Check it out :)
+            </h1>
           </a>
           <a href="https://www.producthunt.com/posts/geogit?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-geogit" target="_blank">
             <img
@@ -85,14 +86,13 @@ function App() {
               height="54"
             />
           </a>
-
-          <button className="absolute right-2 top-2 text-white text-2xl font-bold" onClick={() => setShowBanner(false)}>
+          <button className="absolute right-6 top-2 text-white text-2xl font-bold" onClick={() => setShowBanner(false)}>
             ×
           </button>
         </div>
       )}
-      */}
 
+    */}
       <header className="bg-transparent py-4">
         <div className="container mx-auto pt-4 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center z-50">
           <Link to="/" className="flex items-center space-x-3 mb-4 sm:mb-0 select-none">

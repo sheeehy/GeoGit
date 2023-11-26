@@ -34,14 +34,14 @@ function Home() {
                 </h1>
 
                 {/* Display on larger screens */}
-                <div className=" pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[35rem] leading-20 pt-4 fade-in2">
+                <div className=" pb-4 select-none text-center font-Hublot text-gray-300 text-xl max-w-[33rem] leading-20 pt-4 fade-in2">
                   Start by entering the location you want to rank software developers from. Ranks are based on{" "}
                   <span className="text-white">
                     <GoPeople className="inline align-text-bottom" /> followers
                   </span>
                   ,{" "}
                   <span className="text-white">
-                    <GoStar className="inline align-text-bottom" /> starcount
+                    <GoStar className="inline align-text-bottom" /> stars
                   </span>
                   ,{" "}
                   <span className="text-white">
