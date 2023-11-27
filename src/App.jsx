@@ -69,7 +69,7 @@ function App() {
 
   return (
     <Router>
-      {/*  {showBanner && (
+      {showBanner && (
         <div className="bg-[#DA552F] h-14 flex items-center justify-center select-none relative ">
           {" "}
           <a href="https://www.producthunt.com/posts/geogit" target="_blank" rel="noopener noreferrer" className="hidden md:block">
@@ -92,7 +92,6 @@ function App() {
         </div>
       )}
 
-    */}
       <header className="bg-transparent py-4">
         <div className="container mx-auto pt-4 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center z-50">
           <Link to="/" className="flex items-center space-x-3 mb-4 sm:mb-0 select-none">
