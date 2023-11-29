@@ -69,6 +69,7 @@ function App() {
 
   return (
     <Router>
+      {/*
       {showBanner && (
         <div className="bg-[#DA552F] h-14 flex items-center justify-center select-none relative ">
           {" "}
@@ -91,6 +92,7 @@ function App() {
           </button>
         </div>
       )}
+      */}
 
       <header className="bg-transparent py-1">
         <div className="container mx-auto pt-4 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center z-50">

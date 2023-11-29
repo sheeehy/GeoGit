@@ -129,7 +129,7 @@ export default function TopGitHubUsers({ city, isAuthenticated }) {
             reposCount: userDetails.public_repos,
             publicCommits: numeral(publicCommits).format("0.[0]a"),
             highestStars: numeral(highestStars).format("0.[0]a"),
-            score: 0.3 * userDetails.followers + 0.2 * publicCommits + userDetails.public_repos * 0.1 + highestStars * 0.4,
+            score: 0.4 * userDetails.followers + 0.2 * publicCommits + userDetails.public_repos * 0.1 + highestStars * 0.3,
           };
         })
       );
