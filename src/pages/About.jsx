@@ -9,7 +9,6 @@ function About() {
     <>
       <main className="bg-thegray home-no-scroll fade-in1">
         <div className="min-h-screen flex items-center justify-center relative pb-32">
-          {/* Background GIT! blobs */}
           <div className="relative">
             <div className="relative z-10 pt-5 pb-20">
               <div className="flex justify-center select-none">
@@ -75,7 +74,19 @@ function About() {
                 </div>{" "}
               </div>
             </div>
+            <div className="flex justify-center">
+              <a href="https://www.producthunt.com/products/geogit?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-geogit" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=561006&theme=dark"
+                  alt="GeoGit - Rank the top software developers by location | Product Hunt"
+                  style={{ width: "250px", height: "54px" }}
+                  width="250"
+                  height="54"
+                />
+              </a>
+            </div>
           </div>
+
           <a href="https://github.com/sheeehy" target="_blank" rel="noopener noreferrer" className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy">
             Jack Sheehy :) <br />
             ©2023
