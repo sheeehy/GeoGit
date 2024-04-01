@@ -30,14 +30,9 @@ function Search({ isAuthenticated }) {
   return (
     <>
       <main className="bg-thegray relative">
-        <div className="fixed w-full max-w-lg right-64">
-          <div className="absolute top-16 -right-12 w-[40rem] h-[40rem] bg-blue-300 rounded-full filter blur-5xl opacity-30 animate-blob animation-delay-1"></div>{" "}
-          <div className="absolute top-64 right-20 w-[30rem] h-[30rem] bg-blue-400 rounded-full filter blur-5xl opacity-20 animate-blob animation-delay-1"></div>{" "}
-        </div>
+        <div className="fixed w-full max-w-lg right-64"></div>
 
-        <div className="hidden lg:block">
-          <Cobe coordinates={coordinates} />
-        </div>
+        <div className="hidden lg:block"></div>
         <div className="flex flex-col items-start justify-center relative pb-0 px-4 md:px-8 lg:px-32">
           <div className="pt-6 pb-6">
             <h1 className="font-Mona select-none font-bold text-white text-5xl leading-20 pb-2 fade-in1">Search</h1>
@@ -95,7 +90,7 @@ function Search({ isAuthenticated }) {
 
         <div className=" pt-2 "></div>
 
-        <div className="flex flex-col items-start justify-center relative pb-32 px-4 md:px-8 lg:px-32">
+        <div className="flex flex-col items-start justify-center relative pb-32 px-4 md:px-8 lg:px-32 mt-[200rem]">
           <div className="relative z-1000 pt-0 pb-0">
             <TopGithubUsers city={city} isAuthenticated={isAuthenticated} />
           </div>
