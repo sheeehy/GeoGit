@@ -91,7 +91,7 @@ function Search({ isAuthenticated }) {
         <div className=" pt-2 "></div>
 
         <div className="flex flex-col items-start justify-center relative pb-32 px-4 md:px-8 lg:px-32 mt-[200rem]">
-          <div className="relative z-1000 pt-0 pb-0">
+          <div className="relative z-1000 pt-0 pb-0 mb-[100rem]">
             <TopGithubUsers city={city} isAuthenticated={isAuthenticated} />
           </div>
         </div>
