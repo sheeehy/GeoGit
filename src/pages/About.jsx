@@ -1,5 +1,4 @@
 import "../App.css";
-import GeoGitIcon from "../assets/GeoGitIcon.png";
 import { FaCity } from "react-icons/fa6";
 import { GoQuestion, GoGraph, GoGitPullRequestClosed } from "react-icons/go";
 import { BsGear } from "react-icons/bs";

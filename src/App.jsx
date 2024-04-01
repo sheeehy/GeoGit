@@ -15,8 +15,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./components/dialog";
 import { Separator } from "./components/Separator";
 
-import GeoGitIcon from "./assets/GeoGitIcon.png";
-
 function App() {
   const [userData, setUserData] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
@@ -97,7 +95,6 @@ function App() {
       <header className="bg-transparent py-1">
         <div className="container mx-auto pt-4 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center z-50">
           <Link to="/" className="flex items-center space-x-3 mb-4 sm:mb-0 select-none">
-            <img src={GeoGitIcon} alt="GeoGit Icon" className="GeoIcon max-w-smaller hidden sm:block" />
             <span className="hidden sm:inline text-white font-bold text-2xl select-none">GeoGit</span>
           </Link>
           <nav className="flex items-center font-Hublot">

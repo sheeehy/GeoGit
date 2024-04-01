@@ -26,7 +26,7 @@ function Home() {
               {/*Main content / Hero section */}
               <div className="HomeContainer ">
                 <h1 className="hidden md:block text-center pb-1 lg:pl-6 pointer-events-none select-none customFont text-7xl text-gray-100 leading-[1.1] max-w-[55rem] fade-in1">
-                  Rank the top <span className="pr-10">software</span> <span className="pl-5">developers</span> in <TypingAnimation />
+                  Rank the top <span className="pr-10">software</span> <span className="pl-5">developers</span> by location.
                 </h1>
 
                 <h1 className="md:hidden text-center pb-4 lg:pl-6 pointer-events-none select-none px-4 customFont text-5xl text-gray-100 leading-[1.1] max-w-[53rem ]">
