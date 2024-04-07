@@ -61,7 +61,7 @@ function Home() {
           </div>
 
           <a href="https://jacksheehy.live" target="_blank" rel="noopener noreferrer" className=" font-Hublot leading-12 tracking-wider pb-2 jack-sheehy">
-            <span className="text-gray-300 font-bold">Jack Sheehy :) </span> <br />
+            <span className="text-gray-300 font-bold">REMISE </span> <br />
             <span className="text-gray-400"> ©2023 </span>
           </a>
         </div>

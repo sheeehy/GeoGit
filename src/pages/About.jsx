@@ -10,10 +10,6 @@ function About() {
         <div className="min-h-screen flex items-center justify-center relative pb-32">
           <div className="relative">
             <div className="relative z-10 pt-5 pb-20">
-              <div className="flex justify-center select-none">
-                <img src={GeoGitIcon} alt="GeoGit Icon" className="max-w-smallish pb-3 select-none pointer-events-none" />
-              </div>
-
               <div className="pt-10 max-w-[42rem] px-5">
                 <h1 className="text-left font-Mona font-bold text-white text-4xl leading-20 pb-2  ">
                   <GoQuestion className="inline align-bottom text-4xl" /> About GeoGit
@@ -86,8 +82,8 @@ function About() {
             </div>
           </div>
 
-          <a href="https://github.com/sheeehy" target="_blank" rel="noopener noreferrer" className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy">
-            Jack Sheehy :) <br />
+          <a href="https://remise.ie" target="_blank" rel="noopener noreferrer" className="text-white font-Hublot leading-5 tracking-wider pb-2 jack-sheehy">
+            Built by REMISE <br />
             ©2023
           </a>
         </div>
